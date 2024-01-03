@@ -9,9 +9,7 @@
 #define CASE_SMTD_TOM(macro_key, tap_key, mod)                \
     case macro_key:                                           \
         switch (action) {                                     \
-            case SMTD_ACTION_INIT:                            \
-                break;                                        \
-            case SMTD_ACTION_INIT_UNDO:                       \
+            case SMTD_ACTION_TOUCH:                           \
                 break;                                        \
             case SMTD_ACTION_TAP:                             \
                 tap_code16(tap_key);                          \
@@ -35,7 +33,7 @@
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
         case CKC_LANG: {
-            if (action == SMTD_ACTION_INIT) {
+            if (action == SMTD_ACTION_TOUCH) {
                 if (tap_count == 0) {
                     layer_move(0);
                 }
@@ -48,8 +46,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_SPACE: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_SPACE);
@@ -73,8 +70,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_ESC: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_ESC);
@@ -98,8 +94,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_ENTER: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_ENTER);
@@ -123,8 +118,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_TAB: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_TAB);
@@ -147,8 +141,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         }
         case CKC_F: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_F);
@@ -174,8 +167,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_J: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     tap_code(KC_J);
@@ -201,8 +193,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_SEMICOLON: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     if (get_mods() & MOD_MASK_SHIFT) {
@@ -223,8 +214,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_A: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_4));
@@ -244,8 +234,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_S: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_B));
@@ -265,8 +254,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_D: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_2));
@@ -286,8 +274,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_F: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_0));
@@ -307,8 +294,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_G: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_F));
@@ -328,8 +314,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_H: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_0));
@@ -349,8 +334,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_J: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_E));
@@ -370,8 +354,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_K: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_B));
@@ -391,8 +374,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_L: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_4));
@@ -412,8 +394,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_SEMICOLON: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
                     if (get_mods() & MOD_MASK_SHIFT) {
@@ -436,8 +417,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_A: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_4));
@@ -457,8 +437,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_S: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_B));
@@ -478,8 +457,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_D: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_2));
@@ -499,8 +477,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_F: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_0));
@@ -518,8 +495,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_G: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_F));
@@ -539,8 +515,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_H: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_0));
@@ -560,8 +535,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_J: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_E));
@@ -579,8 +553,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_K: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_B));
@@ -600,8 +573,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
         case CKC_RU_U_L: {
             switch (action) {
-                case SMTD_ACTION_INIT:
-                case SMTD_ACTION_INIT_UNDO:
+                case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP: {
                     SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_4));
@@ -735,7 +707,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_RU_K:
         case CKC_RU_L:
         case CKC_RU_SEMICOLON:
-            if (timeout == SMTD_TIMEOUT_INIT) return 300;
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
     }
 
     return get_smtd_timeout_default(keycode, timeout);
