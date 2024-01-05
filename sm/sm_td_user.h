@@ -710,5 +710,5 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
     }
 
-    return get_smtd_timeout_default(keycode, timeout);
+    return get_smtd_timeout_default(timeout);
 }
