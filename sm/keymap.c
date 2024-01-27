@@ -6,7 +6,6 @@
 #include "sm_utils.h"
 #include "sm_td.h"
 #include "sm_td_user.h"
-#include "sm_voyager_tapdance_old.h"
 
 static uint8_t mods_before_macro = 0;
 

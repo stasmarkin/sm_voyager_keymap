@@ -121,6 +121,7 @@ enum custom_keycodes {
   MACRO_TO_SEMICOLON,
   MACRO_TO_COLON,
   MACRO_TO_BSLASH,
+  MACRO_SLSH_OR_COLON,
 
   CKC_KP_DOT,
   CKC_KP_4,
@@ -143,12 +144,6 @@ enum custom_keycodes {
   CKC_RIGHT,
   CKC_MEDIA_PREV_TRACK,
 };
-
-
-enum tap_dance_codes {
-  DANCE,
-};
-
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -184,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_PERC,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_RPRN,                                        KC_RABK,        KC_RCBR,        KC_RPRN,        KC_RBRACKET,    KC_QUOTE,       KC_DLR,
     KC_TRANSPARENT, CKC_KP_DOT,     CKC_KP_4,       CKC_KP_5,       CKC_KP_6,       CKC_LPRN_L,                                     CKC_LABK, CKC_LCBR , CKC_LPRN_R,  CKC_LBRACKET, CKC_DQUO,    ST_MACRO_66,
     KC_TRANSPARENT, KC_KP_0,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_MINUS,                                    KC_CIRC,        KC_AMPR,        KC_PIPE,        KC_TILD,        KC_GRAVE,       ST_MACRO_67,
-    KC_TRANSPARENT, TD(DANCE),    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TRANSPARENT,                                 ST_MACRO_68,    ST_MACRO_69,    ST_MACRO_70,    ST_MACRO_71,    KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, MACRO_SLSH_OR_COLON,    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TRANSPARENT,                                 ST_MACRO_68,    ST_MACRO_69,    ST_MACRO_70,    ST_MACRO_71,    KC_NO,          KC_TRANSPARENT,
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [5] = LAYOUT_voyager(

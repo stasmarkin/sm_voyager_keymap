@@ -591,6 +591,36 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
             break;
         }
 
+        case MACRO_SLSH_OR_COLON: {
+            switch (action) {
+                case SMTD_ACTION_TOUCH:
+                    switch (tap_count) {
+                        case 0:
+                            tap_code16(KC_KP_SLASH);
+                            break;
+                        case 1:
+                            tap_code16(KC_BSPACE);
+                            tap_code16(KC_COLN);
+                            break;
+                        case 2:
+                            tap_code16(KC_BSPACE);
+                            tap_code16(KC_KP_SLASH);
+                            tap_code16(KC_KP_SLASH);
+                            tap_code16(KC_KP_SLASH);
+                            break;
+                        default:
+                            tap_code16(KC_KP_SLASH);
+                            break;
+                    }
+                    break;
+                case SMTD_ACTION_TAP:
+                case SMTD_ACTION_HOLD:
+                case SMTD_ACTION_RELEASE:
+                    break;
+            }
+            break;
+        }
+
             CASE_SMTD_TOM(CKC_A, KC_A, KC_LEFT_GUI)
             CASE_SMTD_TOM(CKC_S, KC_S, KC_LEFT_ALT)
             CASE_SMTD_TOM(CKC_D, KC_D, KC_LEFT_CTRL)
