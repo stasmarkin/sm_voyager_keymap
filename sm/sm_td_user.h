@@ -656,6 +656,7 @@ smtd_state smtd_states[] = {
     SMTD(CKC_ENTER),
     SMTD(CKC_TAB),
     SMTD(CKC_LANG),
+    SMTD(MACRO_SLSH_OR_COLON),
 
     SMTD(CKC_A),
     SMTD(CKC_S),
