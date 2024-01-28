@@ -10,7 +10,7 @@ static uint8_t return_layer_cnt = 0;
 #define SM_UNICODE_NO_R(string)                           \
     const uint8_t mods = get_mods();                      \
     unregister_mods(mods);                                \
-    register_mods(MOD_BIT(KC_RALT) | MOD_BIT(KC_RSHIFT)); \
+    register_mods(MOD_MASK_SA); \
     SEND_STRING(string);                                  \
     unregister_mods(MOD_MASK_SA);                         \
     register_mods(mods);
