@@ -150,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
     KC_BSPACE,      CKC_A,         CKC_S,          CKC_D,          CKC_F,          CKC_G,                                          CKC_H,          CKC_J,          CKC_K,          CKC_L,           CKC_SEMICOLON,   KC_TRANSPARENT,
-    CKC_LANG,       KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    CKC_LANG,       KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_HASH,    MACRO_TO_COLON,  MACRO_TO_SEMICOLON, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TAB,                                         KC_TRANSPARENT, KC_MINUS,       KC_AT,          KC_EXLM,        KC_QUES,        KC_TRANSPARENT,
                                                     CKC_SPACE,  CKC_ENTER,                                 CKC_ESC, CKC_TAB
   ),
