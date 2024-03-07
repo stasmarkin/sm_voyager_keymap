@@ -29,7 +29,7 @@ void press_no_mods(uint16_t keycode) {
     SM_PRESS_NO_MODS(keycode);
 }
 
-#define LAYER_MOVE(layer)                              \
+#define LAYER_PUSH(layer)                              \
     return_layer_cnt++;                                \
     if (return_layer == RETURN_LAYER_NOT_SET) {        \
         return_layer = get_highest_layer(layer_state); \
