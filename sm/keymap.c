@@ -101,6 +101,7 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
         case ST_MACRO_72:
             if (record->event.pressed) {
                 SEND_STRING(SS_RGUI(SS_TAP(X_F12)));
+                return false;
             }
             break;
     };

@@ -33,9 +33,7 @@
 //}
 
 
-bool process_smcyr(uint16_t keycode, keyrecord_t *record) {
-    if (!record->event.pressed) return true;
-
+bool press_smcyr(uint16_t keycode) {
     switch (keycode) {
         CASE_CYR(SM_CYR_YY, 0x0439, 0x0419);
         CASE_CYR(SM_CYR_CC, 0x0446, 0x0426);
@@ -73,14 +71,20 @@ bool process_smcyr(uint16_t keycode, keyrecord_t *record) {
         case SM_CYR_DOT:
             if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) {
                 tap_code16(KC_COMMA);
+                //fixme
             } else if (get_mods() == 0) {
                 tap_code16(KC_DOT);
             }
             break;
 
         default:
-            return false;
+            return true;
     }
 
-    return true;
+    return false;
+}
+
+bool process_smcyr(uint16_t keycode, keyrecord_t *record) {
+    if (!record->event.pressed) return true;
+    return press_smcyr(keycode);
 }
