@@ -5,6 +5,8 @@
 
 #define SMCYR_SHORTCUT_LAYER 0 //fixme
 
+//fixme switch to shortcut layer on mods
+
 #define UC_L_OR_U(uc_l, uc_u) \
     if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) { \
         register_unicode(uc_u); \
@@ -70,8 +72,7 @@ bool press_smcyr(uint16_t keycode) {
 
         case SM_CYR_DOT:
             if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) {
-                tap_code16(KC_COMMA);
-                //fixme
+                SM_PRESS_NO_MODS(KC_COMMA);
             } else if (get_mods() == 0) {
                 tap_code16(KC_DOT);
             }
