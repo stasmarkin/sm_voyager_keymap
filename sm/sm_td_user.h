@@ -6,7 +6,7 @@
 #include "sm_td.h"
 #include "sm_utils.h"
 
-
+//fixme broken SMTD_ACTION_HOLD
 #define CASE_SMTD_TOM(macro_key, tap_key, mod)                \
     case macro_key:                                           \
         switch (action) {                                     \
@@ -19,7 +19,7 @@
                 if (tap_count == 0 || tap_count == 1) {       \
                     register_mods(get_mods() | MOD_BIT(mod)); \
                 } else {                                      \
-                    register_code16(tap_key);                 \ //fixme broken
+                    register_code16(tap_key);                 \
                 }                                             \
                 break;                                        \
             case SMTD_ACTION_RELEASE:                         \
