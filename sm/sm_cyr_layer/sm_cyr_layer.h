@@ -7,6 +7,10 @@
 #define SMCYR_SIZE 33 //fixme
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
+#define SMCYR_FIRST_IDX SM_CYR_YY //fixme
+#define SMCYR_LAST_IDX SM_CYR_DOT //fixme
+
+
 
 
 static uint16_t smcyr_to_shorcut_row[SMCYR_SIZE] = {
