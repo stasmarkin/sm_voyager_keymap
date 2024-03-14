@@ -3,36 +3,61 @@
 #include QMK_KEYBOARD_H
 #include <sm_utils.h>
 
-#define SMCYR_SHORTCUT_LAYER 0 //fixme
+#define SMCYR_SHORTCUT_LAYER L_QWE_L //fixme
+#define SMCYR_SIZE 33 //fixme
+#define SMCYR_FIRST_IDX SM_CYR_YY //fixme
+#define SMCYR_LAST_IDX SM_CYR_SOLID //fixme
+#define NOT_INIT 48556
+#define NOT_FOUND 48555
 
-//fixme switch to shortcut layer on mods
 
-#define UC_L_OR_U(uc_l, uc_u) \
-    if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) { \
-        register_unicode(uc_u); \
-    } else if (get_mods() == 0) { \
-        register_unicode(uc_l); \
-    }
+static uint16_t smcyr_to_shorcut[SMCYR_SIZE] = {
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+};
 
-#define CASE_CYR(key, uc_l, uc_u)   \
-        case key:                   \
-            UC_L_OR_U(uc_l, uc_u);  \
+#define CASE_CYR(key, uc_l, uc_u)                                                       \
+        case key:                                                                       \
+            if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) { \
+                register_unicode(uc_u);                                                 \
+            } else if (get_mods() == 0) {                                               \
+                register_unicode(uc_l);                                                 \
+            } else {                                                                    \
+                tap_code16(smcyr_get_shortcut(keycode));                                \
+            }                                                                           \
             break;                  \
 
-//void press_shortcut(keyrecord_t *record) {
-//    uint16_t shortcut_key = keymaps[SMCYR_SHORTCUT_LAYER][record->event.key.row][record->event.key.col];
-//    state->freeze            = true;
-//    keyevent_t  event_press  = MAKE_KEYEVENT(record->event.key.row, state->following_key.col, true);
-//    keyrecord_t record_press = {.event = event_press};
-//    process_record(&record_press);
-//    if (release) {
-//        keyevent_t  event_release  = MAKE_KEYEVENT(state->following_key.row, state->following_key.col, false);
-//        keyrecord_t record_release = {.event = event_release};
-//        SMTD_SIMULTANEOUS_PRESSES_DELAY;
-//        process_record(&record_release);
+uint16_t smcyr_get_shortcut(uint16_t cyr_keycode) {
+    uint8_t idx = cyr_keycode % SMCYR_SIZE;
+    uint16_t result = smcyr_to_shorcut[idx];
+    if (result != NOT_INIT) {
+        return result;
+    }
+
+//    if (cyr_keycode < SMCYR_FIRST_IDX || cyr_keycode > SMCYR_LAST_IDX) {
+//        return NOT_INIT;
 //    }
-//    state->freeze = false;
-//}
+//fixme
+
+    int layers = sizeof(keymaps) / sizeof(keymaps[0]);
+    for(int layer = 0; layer < layers; layer++) {
+        for(int row = 0; row < MATRIX_ROWS; row++) {
+            for(int col = 0; col < MATRIX_COLS; col++) {
+                 if (keymaps[layer][row][col] == cyr_keycode) {
+                      smcyr_to_shorcut[idx] = keymaps[SMCYR_SHORTCUT_LAYER][row][col];
+                      return smcyr_to_shorcut[idx];
+                 }
+            }
+        }
+    }
+
+    smcyr_to_shorcut[idx] = NOT_FOUND;
+    return smcyr_to_shorcut[idx];
+}
 
 
 bool press_smcyr(uint16_t keycode) {
@@ -89,3 +114,6 @@ bool process_smcyr(uint16_t keycode, keyrecord_t *record) {
     if (!record->event.pressed) return true;
     return press_smcyr(keycode);
 }
+
+
+
