@@ -6,152 +6,146 @@
 #include "sm_td.h"
 #include "sm_utils.h"
 
-#define CASE_SMTD_TOM(macro_key, tap_key, mod)                \
-    case macro_key:                                           \
-        switch (action) {                                     \
-            case SMTD_ACTION_TOUCH:                           \
-                break;                                        \
-            case SMTD_ACTION_TAP:                             \
-                tap_code16(tap_key);                          \
-                break;                                        \
-            case SMTD_ACTION_HOLD:                            \
-                if (tap_count == 0 || tap_count == 1) {       \
+#define CASE_SMTD_TOM(macro_key, tap_key, mod, threshold)         \
+        case macro_key: {                                         \
+            switch (action) {                                     \
+                case SMTD_ACTION_TOUCH:                           \
+                    break;                                        \
+                case SMTD_ACTION_TAP:                             \
+                    tap_code16(tap_key);                          \
+                    break;                                        \
+                case SMTD_ACTION_HOLD:                            \
+                    if (tap_count < threshold) {                  \
+                        register_mods(get_mods() | MOD_BIT(mod)); \
+                    } else {                                      \
+                        register_code16(tap_key);                 \
+                    }                                             \
+                    break;                                        \
+                case SMTD_ACTION_RELEASE:                         \
+                    if (tap_count < threshold) {                  \
+                        unregister_mods(MOD_BIT(mod));            \
+                    }                                             \
+                    unregister_code16(tap_key);                   \
+                    break;                                        \
+            }                                                     \
+            break;                                                \
+        }
+
+
+#define CASE_SMTD_TOM_CYR(macro_key, mod)                     \
+        case macro_key: {                                     \
+            switch (action) {                                 \
+                case SMTD_ACTION_TOUCH:                       \
+                    break;                                    \
+                case SMTD_ACTION_TAP:                         \
+                    press_smcyr(macro_key);                   \
+                    break;                                    \
+                case SMTD_ACTION_HOLD:                        \
                     register_mods(get_mods() | MOD_BIT(mod)); \
-                } else {                                      \
-                    register_code16(tap_key);                 \
-                }                                             \
-                break;                                        \
-            case SMTD_ACTION_RELEASE:                         \
-                if (tap_count == 0 || tap_count == 1) {       \
+                    break;                                    \
+                case SMTD_ACTION_RELEASE:                     \
                     unregister_mods(MOD_BIT(mod));            \
-                }                                             \
-                unregister_code16(tap_key);                   \
-                break;                                        \
-        }                                                     \
-        break;
+                    break;                                    \
+            }                                                 \
+            break;                                            \
+        }
+
+
+#define CASE_SMTD_TOL(macro_key, tap_key, layer, threshold) \
+        case macro_key: {                                   \
+            switch (action) {                               \
+                case SMTD_ACTION_TOUCH:                     \
+                    break;                                  \
+                case SMTD_ACTION_TAP:                       \
+                    tap_code(tap_key);                      \
+                    break;                                  \
+                case SMTD_ACTION_HOLD:                      \
+                    if (tap_count < threshold) {            \
+                        LAYER_PUSH(layer);                  \
+                    } else {                                \
+                        register_code(tap_key);             \
+                    }                                       \
+                    break;                                  \
+                case SMTD_ACTION_RELEASE:                   \
+                    if (tap_count < threshold) {            \
+                        LAYER_RESTORE();                    \
+                    }                                       \
+                    unregister_code(tap_key);               \
+                    break;                                  \
+            }                                               \
+            break;                                          \
+        }
 
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
+        CASE_SMTD_TOL(CKC_SPACE, KC_SPACE, L_NUM, 2)
+        CASE_SMTD_TOL(CKC_ESC, KC_ESC, L_NUM, 2)
+        CASE_SMTD_TOL(CKC_ENTER, KC_ENTER, L_FN, 2)
+        CASE_SMTD_TOL(CKC_TAB, KC_TAB, L_FN, 2)
+
+        CASE_SMTD_TOM(CKC_A, KC_A, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_S, KC_S, KC_LEFT_ALT, 2)
+        CASE_SMTD_TOM(CKC_D, KC_D, KC_LEFT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_G, KC_G, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_H, KC_H, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_L, KC_L, KC_RIGHT_ALT, 2)
+        CASE_SMTD_TOM(CKC_KP_DOT, KC_KP_DOT, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_KP_4, KC_KP_4, KC_LEFT_ALT, 2)
+        CASE_SMTD_TOM(CKC_KP_5, KC_KP_5, KC_LEFT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_KP_6, KC_KP_6, KC_LEFT_SHIFT, 2)
+        CASE_SMTD_TOM(CKC_LPRN_L, KC_LPRN, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_LABK, KC_LABK, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM(CKC_LCBR, KC_LCBR, KC_RIGHT_SHIFT, 2)
+        CASE_SMTD_TOM(CKC_LPRN_R, KC_LPRN, KC_RIGHT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_LBRACKET, KC_LBRACKET, KC_RIGHT_ALT, 2)
+        CASE_SMTD_TOM(CKC_DQUO, KC_DQUO, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM(CKC_F4, KC_F4, KC_LEFT_ALT, 2)
+        CASE_SMTD_TOM(CKC_F5, KC_F5, KC_LEFT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_F6, KC_F6, KC_LEFT_SHIFT, 2)
+        CASE_SMTD_TOM(CKC_F11, KC_F11, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_LEFT, KC_LEFT, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM(CKC_DOWN, KC_DOWN, KC_RIGHT_SHIFT, 2)
+        CASE_SMTD_TOM(CKC_UP, KC_UP, KC_RIGHT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_RIGHT, KC_RIGHT, KC_RIGHT_ALT, 2)
+        CASE_SMTD_TOM(CKC_MEDIA_PREV_TRACK, KC_MEDIA_PREV_TRACK, KC_RIGHT_GUI, 2)
+
+        CASE_SMTD_TOM_CYR(SM_CYR_F, KC_LEFT_GUI)
+        CASE_SMTD_TOM_CYR(SM_CYR_YI, KC_LEFT_ALT)
+        CASE_SMTD_TOM_CYR(SM_CYR_V, KC_LEFT_CTRL)
+        CASE_SMTD_TOM_CYR(SM_CYR_A, KC_LEFT_SHIFT)
+        CASE_SMTD_TOM_CYR(SM_CYR_P, KC_LEFT_GUI)
+        CASE_SMTD_TOM_CYR(SM_CYR_R, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_CYR(SM_CYR_O, KC_RIGHT_SHIFT)
+        CASE_SMTD_TOM_CYR(SM_CYR_L, KC_RIGHT_CTRL)
+        CASE_SMTD_TOM_CYR(SM_CYR_D, KC_RIGHT_ALT)
+        CASE_SMTD_TOM_CYR(SM_CYR_DOT, KC_RIGHT_GUI)
+
         case CKC_LANG: {
             if (action == SMTD_ACTION_TOUCH) {
                 if (tap_count == 0) {
-                    layer_move(0);
+                    layer_move(L_QWE_L);
                 }
                 if (tap_count == 1) {
-                    layer_move(2);
+                    layer_move(L_CYR);
                 }
             }
             break;
         }
 
-        case CKC_SPACE: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP:
-                    tap_code(KC_SPACE);
-                    break;
-                case SMTD_ACTION_HOLD:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_MOVE(4);
-                    } else {
-                        register_code(KC_SPACE);
-                    }
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_RESTORE();
-                    }
-                    unregister_code(KC_SPACE);
-                    break;
-            }
-            break;
-        }
-
-        case CKC_ESC: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP:
-                    tap_code(KC_ESC);
-                    break;
-                case SMTD_ACTION_HOLD:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_MOVE(4);
-                    } else {
-                        register_code(KC_ESC);
-                    }
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_RESTORE();
-                    }
-                    unregister_code(KC_ESC);
-                    break;
-            }
-            break;
-        }
-
-        case CKC_ENTER: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP:
-                    tap_code(KC_ENTER);
-                    break;
-                case SMTD_ACTION_HOLD:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_MOVE(5);
-                    } else {
-                        register_code(KC_ENTER);
-                    }
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_RESTORE();
-                    }
-                    unregister_code(KC_ENTER);
-                    break;
-            }
-            break;
-        }
-
-        case CKC_TAB: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP:
-                    tap_code(KC_TAB);
-                    break;
-                case SMTD_ACTION_HOLD:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_MOVE(5);
-                    } else {
-                        register_code(KC_TAB);
-                    }
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    if (tap_count == 0 || tap_count == 1) {
-                        LAYER_RESTORE();
-                    }
-                    unregister_code(KC_TAB);
-                    break;
-            }
-            break;
-        }
         case CKC_F: {
             switch (action) {
                 case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
-                    tap_code(KC_F);
+                    tap_code16(KC_F);
                     break;
                 case SMTD_ACTION_HOLD:
                     if (tap_count == 0 || tap_count == 1) {
                         register_mods(get_mods() | MOD_BIT(KC_LEFT_SHIFT));
-                        LAYER_MOVE(1);
+                        LAYER_PUSH(L_QWE_U);
                     } else {
-                        register_code(KC_F);
+                        register_code16(KC_F);
                     }
                     break;
                 case SMTD_ACTION_RELEASE:
@@ -159,7 +153,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                         unregister_mods(MOD_BIT(KC_LEFT_SHIFT));
                         LAYER_RESTORE();
                     }
-                    unregister_code(KC_F);
+                    unregister_code16(KC_F);
                     break;
             }
             break;
@@ -170,14 +164,14 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                 case SMTD_ACTION_TOUCH:
                     break;
                 case SMTD_ACTION_TAP:
-                    tap_code(KC_J);
+                    tap_code16(KC_J);
                     break;
                 case SMTD_ACTION_HOLD:
                     if (tap_count == 0 || tap_count == 1) {
                         register_mods(get_mods() | MOD_BIT(KC_RIGHT_SHIFT));
-                        LAYER_MOVE(1);
+                        LAYER_PUSH(L_QWE_U);
                     } else {
-                        register_code(KC_J);
+                        register_code16(KC_J);
                     }
                     break;
                 case SMTD_ACTION_RELEASE:
@@ -185,7 +179,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                         unregister_mods(MOD_BIT(KC_RIGHT_SHIFT));
                         LAYER_RESTORE();
                     }
-                    unregister_code(KC_J);
+                    unregister_code16(KC_J);
                     break;
             }
             break;
@@ -207,385 +201,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                     break;
                 case SMTD_ACTION_RELEASE:
                     unregister_mods(MOD_BIT(KC_RIGHT_GUI));
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_A: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_4));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_S: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_B));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_ALT));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_ALT));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_D: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_2));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_CTRL));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_CTRL));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_F: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_0));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_SHIFT));
-                    LAYER_MOVE(3);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_SHIFT));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_G: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_F));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_H: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_4) SS_TAP(X_0));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_J: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_E));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_SHIFT));
-                    LAYER_MOVE(3);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_SHIFT));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_K: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_B));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_CTRL));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_CTRL));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_L: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_3) SS_TAP(X_4));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_ALT));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_ALT));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_SEMICOLON: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP:
-                    if (get_mods() & MOD_MASK_SHIFT) {
-                        SM_PRESS_NO_MODS(KC_COMMA);
-                    } else {
-                        SM_PRESS_NO_MODS(KC_DOT);
-                    }
-                    break;
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_A: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_4));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_S: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_B));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_ALT));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_ALT));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_D: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_2));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_CTRL));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_CTRL));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_F: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_0));
-                    break;
-                }
-                case SMTD_ACTION_HOLD: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_0));
-                    break;
-                }
-                case SMTD_ACTION_RELEASE:
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_G: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_F));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_LEFT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_LEFT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_H: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_2) SS_TAP(X_0));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_GUI));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_J: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_E));
-                    break;
-                }
-                case SMTD_ACTION_HOLD: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_E));
-                    break;
-                }
-                case SMTD_ACTION_RELEASE:
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_K: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_B));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_CTRL));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_CTRL));
-                    LAYER_RESTORE();
-                    break;
-            }
-            break;
-        }
-
-        case CKC_RU_U_L: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    break;
-                case SMTD_ACTION_TAP: {
-                    SM_UNICODE_NO_R(SS_TAP(X_0) SS_TAP(X_4) SS_TAP(X_1) SS_TAP(X_4));
-                    break;
-                }
-                case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RIGHT_ALT));
-                    LAYER_MOVE(0);
-                    break;
-                case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RIGHT_ALT));
-                    LAYER_RESTORE();
                     break;
             }
             break;
@@ -621,32 +236,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
             break;
         }
 
-            CASE_SMTD_TOM(CKC_A, KC_A, KC_LEFT_GUI)
-            CASE_SMTD_TOM(CKC_S, KC_S, KC_LEFT_ALT)
-            CASE_SMTD_TOM(CKC_D, KC_D, KC_LEFT_CTRL)
-            CASE_SMTD_TOM(CKC_G, KC_G, KC_LEFT_GUI)
-            CASE_SMTD_TOM(CKC_H, KC_H, KC_RIGHT_GUI)
-            CASE_SMTD_TOM(CKC_K, KC_K, KC_RIGHT_CTRL)
-            CASE_SMTD_TOM(CKC_L, KC_L, KC_RIGHT_ALT)
-            CASE_SMTD_TOM(CKC_KP_DOT, KC_KP_DOT, KC_LEFT_GUI)
-            CASE_SMTD_TOM(CKC_KP_4, KC_KP_4, KC_LEFT_ALT)
-            CASE_SMTD_TOM(CKC_KP_5, KC_KP_5, KC_LEFT_CTRL)
-            CASE_SMTD_TOM(CKC_KP_6, KC_KP_6, KC_LEFT_SHIFT)
-            CASE_SMTD_TOM(CKC_LPRN_L, KC_LPRN, KC_LEFT_GUI)
-            CASE_SMTD_TOM(CKC_LABK, KC_LABK, KC_RIGHT_GUI)
-            CASE_SMTD_TOM(CKC_LCBR, KC_LCBR, KC_RIGHT_SHIFT)
-            CASE_SMTD_TOM(CKC_LPRN_R, KC_LPRN, KC_RIGHT_CTRL)
-            CASE_SMTD_TOM(CKC_LBRACKET, KC_LBRACKET, KC_RIGHT_ALT)
-            CASE_SMTD_TOM(CKC_DQUO, KC_DQUO, KC_RIGHT_GUI)
-            CASE_SMTD_TOM(CKC_F4, KC_F4, KC_LEFT_ALT)
-            CASE_SMTD_TOM(CKC_F5, KC_F5, KC_LEFT_CTRL)
-            CASE_SMTD_TOM(CKC_F6, KC_F6, KC_LEFT_SHIFT)
-            CASE_SMTD_TOM(CKC_F11, KC_F11, KC_LEFT_GUI)
-            CASE_SMTD_TOM(CKC_LEFT, KC_LEFT, KC_RIGHT_GUI)
-            CASE_SMTD_TOM(CKC_DOWN, KC_DOWN, KC_RIGHT_SHIFT)
-            CASE_SMTD_TOM(CKC_UP, KC_UP, KC_RIGHT_CTRL)
-            CASE_SMTD_TOM(CKC_RIGHT, KC_RIGHT, KC_RIGHT_ALT)
-            CASE_SMTD_TOM(CKC_MEDIA_PREV_TRACK, KC_MEDIA_PREV_TRACK, KC_RIGHT_GUI)
     }
 }
 
@@ -670,28 +259,17 @@ smtd_state smtd_states[] = {
     SMTD(CKC_L),
     SMTD(CKC_SEMICOLON),
 
-    SMTD(CKC_RU_A),
-    SMTD(CKC_RU_S),
-    SMTD(CKC_RU_D),
-    SMTD(CKC_RU_F),
-    SMTD(CKC_RU_G),
+    SMTD(SM_CYR_F),
+    SMTD(SM_CYR_YI),
+    SMTD(SM_CYR_V),
+    SMTD(SM_CYR_A),
+    SMTD(SM_CYR_P),
 
-    SMTD(CKC_RU_H),
-    SMTD(CKC_RU_J),
-    SMTD(CKC_RU_K),
-    SMTD(CKC_RU_L),
-    SMTD(CKC_RU_SEMICOLON),
-
-    SMTD(CKC_RU_U_A),
-    SMTD(CKC_RU_U_S),
-    SMTD(CKC_RU_U_D),
-    SMTD(CKC_RU_U_F),
-    SMTD(CKC_RU_U_G),
-
-    SMTD(CKC_RU_U_H),
-    SMTD(CKC_RU_U_J),
-    SMTD(CKC_RU_U_K),
-    SMTD(CKC_RU_U_L),
+    SMTD(SM_CYR_R),
+    SMTD(SM_CYR_O),
+    SMTD(SM_CYR_L),
+    SMTD(SM_CYR_D),
+    SMTD(SM_CYR_DOT),
 
     SMTD(CKC_KP_DOT),
     SMTD(CKC_KP_4),
@@ -728,16 +306,16 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_K:
         case CKC_L:
         case CKC_SEMICOLON:
-        case CKC_RU_A:
-        case CKC_RU_S:
-        case CKC_RU_D:
-        case CKC_RU_F:
-        case CKC_RU_G:
-        case CKC_RU_H:
-        case CKC_RU_J:
-        case CKC_RU_K:
-        case CKC_RU_L:
-        case CKC_RU_SEMICOLON:
+        case SM_CYR_F:
+        case SM_CYR_YI:
+        case SM_CYR_V:
+        case SM_CYR_A:
+        case SM_CYR_P:
+        case SM_CYR_R:
+        case SM_CYR_O:
+        case SM_CYR_L:
+        case SM_CYR_D:
+        case SM_CYR_DOT:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
     }
 
