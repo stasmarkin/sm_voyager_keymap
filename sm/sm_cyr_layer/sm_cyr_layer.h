@@ -5,13 +5,20 @@
 
 #define SMCYR_SHORTCUT_LAYER L_QWE_L //fixme
 #define SMCYR_SIZE 33 //fixme
-#define SMCYR_FIRST_IDX SM_CYR_YY //fixme
-#define SMCYR_LAST_IDX SM_CYR_SOLID //fixme
-#define NOT_INIT 48556
-#define NOT_FOUND 48555
+#define NOT_INIT MATRIX_ROWS + MATRIX_COLS
+#define NOT_FOUND NOT_INIT + 1
 
 
-static uint16_t smcyr_to_shorcut[SMCYR_SIZE] = {
+static uint16_t smcyr_to_shorcut_row[SMCYR_SIZE] = {
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+    NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
+};
+
+static uint16_t smcyr_to_shorcut_col[SMCYR_SIZE] = {
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
@@ -22,41 +29,60 @@ static uint16_t smcyr_to_shorcut[SMCYR_SIZE] = {
 
 #define CASE_CYR(key, uc_l, uc_u)                                                       \
         case key:                                                                       \
-            if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) { \
+            if (get_oneshot_mods() != 0) {                                              \
+                smcyr_tap_shortcut(keycode);                                            \
+            } else if (get_mods() == MOD_BIT(KC_LSHIFT) ||                              \
+                    get_mods() == MOD_BIT(KC_RSHIFT)) {                                 \
                 register_unicode(uc_u);                                                 \
             } else if (get_mods() == 0) {                                               \
                 register_unicode(uc_l);                                                 \
             } else {                                                                    \
-                tap_code16(smcyr_get_shortcut(keycode));                                \
+                smcyr_tap_shortcut(keycode);                                            \
             }                                                                           \
-            break;                  \
+            return false;                                                               \
 
-uint16_t smcyr_get_shortcut(uint16_t cyr_keycode) {
+void smcyr_tap(uint8_t row, uint8_t col) {
+    uint8_t return_layer = get_highest_layer(layer_state);
+    layer_move(SMCYR_SHORTCUT_LAYER);
+    keyevent_t  event  = MAKE_KEYEVENT(row, col, true);
+    keyrecord_t record = {.event = event};
+    process_record(&record);
+    event.pressed = false;
+    record.event = event;
+    process_record(&record);
+    layer_move(return_layer);
+ }
+
+void smcyr_tap_shortcut(uint16_t cyr_keycode) {
     uint8_t idx = cyr_keycode % SMCYR_SIZE;
-    uint16_t result = smcyr_to_shorcut[idx];
-    if (result != NOT_INIT) {
-        return result;
+    uint16_t row = smcyr_to_shorcut_row[idx];
+    uint16_t col = smcyr_to_shorcut_col[idx];
+
+    if (row != NOT_INIT || col != NOT_INIT) {
+        smcyr_tap(row, col);
+        return;
     }
 
-//    if (cyr_keycode < SMCYR_FIRST_IDX || cyr_keycode > SMCYR_LAST_IDX) {
-//        return NOT_INIT;
-//    }
-//fixme
+    if (cyr_keycode < SMCYR_FIRST_IDX || cyr_keycode > SMCYR_LAST_IDX) {
+        return;
+    }
 
     int layers = sizeof(keymaps) / sizeof(keymaps[0]);
     for(int layer = 0; layer < layers; layer++) {
         for(int row = 0; row < MATRIX_ROWS; row++) {
             for(int col = 0; col < MATRIX_COLS; col++) {
                  if (keymaps[layer][row][col] == cyr_keycode) {
-                      smcyr_to_shorcut[idx] = keymaps[SMCYR_SHORTCUT_LAYER][row][col];
-                      return smcyr_to_shorcut[idx];
+                      smcyr_to_shorcut_row[idx] = row;
+                      smcyr_to_shorcut_col[idx] = col;
+                      smcyr_tap(row, col);
+                      return;
                  }
             }
         }
     }
 
-    smcyr_to_shorcut[idx] = NOT_FOUND;
-    return smcyr_to_shorcut[idx];
+    smcyr_to_shorcut_row[idx] = NOT_FOUND;
+    smcyr_to_shorcut_col[idx] = NOT_FOUND;
 }
 
 
@@ -101,7 +127,7 @@ bool press_smcyr(uint16_t keycode) {
             } else if (get_mods() == 0) {
                 tap_code16(KC_DOT);
             }
-            break;
+            return false;
 
         default:
             return true;
