@@ -56,49 +56,25 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case ST_MACRO_0:
+        case MACRO_EM_DASH:
             if (record->event.pressed) {
                 register_unicode(0x2014);
                 return false;
             }
             break;
-        case ST_MACRO_66:
+        case MACRO_EURO:
             if (record->event.pressed) {
                 register_unicode(0x20AC);
                 return false;
             }
             break;
-        case ST_MACRO_67:
+        case MACRO_RUBLE:
             if (record->event.pressed) {
                 register_unicode(0x20BD);
                 return false;
             }
             break;
-        case ST_MACRO_68:
-            if (record->event.pressed) {
-                register_unicode(0x2190);
-                return false;
-            }
-            break;
-        case ST_MACRO_69:
-            if (record->event.pressed) {
-                register_unicode(0x2193);
-                return false;
-            }
-            break;
-        case ST_MACRO_70:
-            if (record->event.pressed) {
-                register_unicode(0x2191);
-                return false;
-            }
-            break;
-        case ST_MACRO_71:
-            if (record->event.pressed) {
-                register_unicode(0x2192);
-                return false;
-            }
-            break;
-        case ST_MACRO_72:
+        case MACRO_SCREENSHOT:
             if (record->event.pressed) {
                 SEND_STRING(SS_RGUI(SS_TAP(X_F12)));
                 return false;

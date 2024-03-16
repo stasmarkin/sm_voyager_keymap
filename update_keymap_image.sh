@@ -1,0 +1,1 @@
+keymap draw keymap.yaml > img.svg

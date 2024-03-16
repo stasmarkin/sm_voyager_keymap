@@ -1,0 +1,59 @@
+layout:
+  qmk_keyboard: zsa@voyager@split
+layers:
+  EN:
+    - [ " ", Q, W, E, R, T ]
+    - [ "<|", { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
+    - [ { t: "\n1T:L(EN) \n2T:L(RU) \n" }, Z, X, C, V, B ]
+    - [ " ", { t: "/", s: "\\" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: "_" }, Tab ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ Y, U, I, O, P, " " ]
+    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd, t: ".", s: "," }, " " ]
+    - [ N, M, "#", ":", ";", " " ]
+    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+  RU:
+    - [ " ", Й, Ц, У, К, Е ]
+    - [ "<|", { h: Cmd, t: Ф }, { h: Opt, t: Ы }, { h: Ctrl, t: В }, { h: Shift, t: А }, { h: Cmd, t: П } ]
+    - [ { t: "\n1T:L(EN) \n2T:L(RU) \n" }, Я, Ч, С, М, И ]
+    - [ " ", { t: "/", s: "\\" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: "_" }, Tab ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ Н, Г, Ш, Щ, З, Х ]
+    - [ { h: Cmd, t: Р }, { h: Shift, t: О }, { h: Ctrl, t: Л }, { h: Opt, t: Д }, { h: Cmd, t: ".", s: "," }, "Э" ]
+    - [ Т, Ь, Б, Ю, Ж, Ъ ]
+    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+  NUM:
+    - [ " ", "%", 7, 8, 9, ")" ]
+    - [ "<|", { h: Cmd, t: "." }, { h: Opt, t: 4 }, { h: Ctrl, t: 5 }, { h: Shift, t: 6 }, { h: Cmd, t: "(" } ]
+    - [ " ", 0, 1, 2, 3, "-" ]
+    - [ " ", { t: "\n1T:'/' \n2T:':' \n" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: " " }, Tab ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ ">", "}", ")", "]", "'", "$" ]
+    - [ { h: Cmd, t: "<" }, { h: Shift, t: "{" }, { h: Ctrl, t: "(" }, { h: Opt, t: "[" }, { h: Cmd, t: "\"" }, "€" ]
+    - [ "^", "&", "|", "~", "`", "₽" ]
+    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+  FN:
+    - [ " ", "SCNSHOT", F7, F8, F9, F10 ]
+    - [ "<|", { h: Cmd, t: " " }, { h: Opt, t: F4 }, { h: Ctrl, t: F5 }, { h: Shift, t: F6 }, { h: Cmd, t: "F11" } ]
+    - [ " ", "", F1, F2, F3, F12 ]
+    - [ " ", { t: "\n1T:'/' \n2T:':' \n" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: " " }, Tab ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ "BR-", "BR+", "VOL-", "VOL+", "️MEDIA_NXT", "" ]
+    - [ "←", "↓", "↑", "→", "MEDIA_PREV", "" ]
+    - [ "HOME", "PG↓", "PG↑", "END", "MEDIA_PLAY", "" ]
+    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+combos:
+  - { p: [ 7, 8 ], k: "OSM", l: [ "EN", "RU" ] }
+  - { p: [ 8, 9 ], k: "OSM", l: [ "EN", "RU" ] }
+  - { p: [ 9, 10 ], k: "OSM", l: [ "EN", "RU" ] }
