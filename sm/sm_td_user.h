@@ -90,10 +90,10 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_H, KC_H, KC_RIGHT_GUI, 2)
         CASE_SMTD_TOM(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
         CASE_SMTD_TOM(CKC_L, KC_L, KC_RIGHT_ALT, 2)
-        CASE_SMTD_TOM(CKC_KP_DOT, KC_KP_DOT, KC_LEFT_GUI, 2)
-        CASE_SMTD_TOM(CKC_KP_4, KC_KP_4, KC_LEFT_ALT, 2)
-        CASE_SMTD_TOM(CKC_KP_5, KC_KP_5, KC_LEFT_CTRL, 2)
-        CASE_SMTD_TOM(CKC_KP_6, KC_KP_6, KC_LEFT_SHIFT, 2)
+        CASE_SMTD_TOM(CKC_KP_DOT, KC_DOT, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM(CKC_KP_4, KC_4, KC_LEFT_ALT, 2)
+        CASE_SMTD_TOM(CKC_KP_5, KC_5, KC_LEFT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_KP_6, KC_6, KC_LEFT_SHIFT, 2)
         CASE_SMTD_TOM(CKC_LPRN_L, KC_LPRN, KC_LEFT_GUI, 2)
         CASE_SMTD_TOM(CKC_LABK, KC_LABK, KC_RIGHT_GUI, 2)
         CASE_SMTD_TOM(CKC_LCBR, KC_LCBR, KC_RIGHT_SHIFT, 2)
@@ -211,7 +211,8 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                 case SMTD_ACTION_TOUCH:
                     switch (tap_count) {
                         case 0:
-                            tap_code16(KC_KP_SLASH);
+                            tap_code16(KC_SLASH);
+
                             break;
                         case 1:
                             tap_code16(KC_BSPACE);
@@ -219,12 +220,12 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                             break;
                         case 2:
                             tap_code16(KC_BSPACE);
-                            tap_code16(KC_KP_SLASH);
-                            tap_code16(KC_KP_SLASH);
-                            tap_code16(KC_KP_SLASH);
+                            tap_code16(KC_SLASH);
+                            tap_code16(KC_SLASH);
+                            tap_code16(KC_SLASH);
                             break;
                         default:
-                            tap_code16(KC_KP_SLASH);
+                            tap_code16(KC_SLASH);
                             break;
                     }
                     break;

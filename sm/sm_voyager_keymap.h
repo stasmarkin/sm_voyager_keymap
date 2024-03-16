@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_TRANSPARENT,
     KC_BSPACE,      CKC_A,         CKC_S,          CKC_D,          CKC_F,          CKC_G,                                          CKC_H,          CKC_J,          CKC_K,          CKC_L,           CKC_SEMICOLON,   KC_TRANSPARENT,
     CKC_LANG,       KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_HASH,    MACRO_TO_COLON,  MACRO_TO_SEMICOLON, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TAB,                                         KC_TRANSPARENT, KC_MINUS,       KC_AT,          KC_EXLM,        KC_QUES,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_SLASH,    KC_ASTERISK, KC_PLUS,     KC_EQUAL,    KC_TAB,                                         KC_TRANSPARENT, KC_MINUS,       KC_AT,          KC_EXLM,        KC_QUES,        KC_TRANSPARENT,
                                                     CKC_SPACE,  CKC_ENTER,                                 CKC_ESC, CKC_TAB
   ),
   [L_QWE_U] = LAYOUT_voyager(
@@ -113,14 +113,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, SM_CYR_YY,    SM_CYR_CC,    SM_CYR_U,    SM_CYR_K,    SM_CYR_E,                                    SM_CYR_N,    SM_CYR_G,    SM_CYR_SH,    SM_CYR_SCH,    SM_CYR_Z,    SM_CYR_H,
     KC_BSPACE,      SM_CYR_F,     SM_CYR_YI,   SM_CYR_V,     SM_CYR_A,      SM_CYR_P,                                 SM_CYR_R,       SM_CYR_O,       SM_CYR_L,     SM_CYR_D,  SM_CYR_DOT, SM_CYR_EE,
     KC_TRANSPARENT, SM_CYR_YA,    SM_CYR_CH,    SM_CYR_S,    SM_CYR_M,    SM_CYR_I,                                    SM_CYR_T,    SM_CYR_SOFT,    SM_CYR_B,    SM_CYR_YU,    SM_CYR_ZH,    SM_CYR_SOLID,
-    KC_TRANSPARENT, KC_KP_SLASH,    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MINUS,       KC_AT,          KC_EXLM,        KC_QUES,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_SLASH,    KC_ASTERISK, KC_PLUS,     KC_EQUAL,    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MINUS,       KC_AT,          KC_EXLM,        KC_QUES,        KC_TRANSPARENT,
     CKC_SPACE,  CKC_ENTER,                                 CKC_ESC, CKC_TAB
   ),
   [L_NUM] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_PERC,        KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_RPRN,                                        KC_RABK,        KC_RCBR,        KC_RPRN,        KC_RBRACKET,    KC_QUOTE,       KC_DLR,
+    KC_TRANSPARENT, KC_PERC,        KC_7,        KC_8,        KC_9,        KC_RPRN,                                        KC_RABK,        KC_RCBR,        KC_RPRN,        KC_RBRACKET,    KC_QUOTE,       KC_DLR,
     KC_TRANSPARENT, CKC_KP_DOT,     CKC_KP_4,       CKC_KP_5,       CKC_KP_6,       CKC_LPRN_L,                                     CKC_LABK, CKC_LCBR , CKC_LPRN_R,  CKC_LBRACKET, CKC_DQUO,    MACRO_EURO,
-    KC_TRANSPARENT, KC_KP_0,        KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_MINUS,                                    KC_CIRC,        KC_AMPR,        KC_PIPE,        KC_TILD,        KC_GRAVE,       MACRO_RUBLE,
-    KC_TRANSPARENT, MACRO_SLSH_OR_COLON,    KC_KP_ASTERISK, KC_KP_PLUS,     KC_KP_EQUAL,    KC_TRANSPARENT,                                 KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_0,        KC_1,        KC_2,        KC_3,        KC_MINUS,                                    KC_CIRC,        KC_AMPR,        KC_PIPE,        KC_TILD,        KC_GRAVE,       MACRO_RUBLE,
+    KC_TRANSPARENT, MACRO_SLSH_OR_COLON,    KC_ASTERISK, KC_PLUS,     KC_EQUAL,    KC_TRANSPARENT,                                 KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,          KC_TRANSPARENT,
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [L_FN] = LAYOUT_voyager(
