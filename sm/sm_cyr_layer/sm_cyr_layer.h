@@ -3,12 +3,12 @@
 #include QMK_KEYBOARD_H
 #include <sm_utils.h>
 
-#define SMCYR_SHORTCUT_LAYER L_QWE_L //fixme
+#define SMCYR_SHORTCUT_LAYER L_EN //fixme
 #define SMCYR_SIZE 33 //fixme
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
 #define SMCYR_FIRST_IDX SM_CYR_YY //fixme
-#define SMCYR_LAST_IDX SM_CYR_DOT //fixme
+#define SMCYR_LAST_IDX SM_CYR_SOLID //fixme
 
 
 
@@ -124,14 +124,6 @@ bool press_smcyr(uint16_t keycode) {
         CASE_CYR(SM_CYR_YU, 0x044E, 0x042E);
         CASE_CYR(SM_CYR_ZH, 0x0436, 0x0416);
         CASE_CYR(SM_CYR_SOLID, 0x044A, 0x042A);
-
-        case SM_CYR_DOT:
-            if (get_mods() == MOD_BIT(KC_LSHIFT) || get_mods() == MOD_BIT(KC_RSHIFT)) {
-                SM_PRESS_NO_MODS(KC_COMMA);
-            } else if (get_mods() == 0) {
-                tap_code16(KC_DOT);
-            }
-            return false;
 
         default:
             return true;
