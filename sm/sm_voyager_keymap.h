@@ -70,7 +70,6 @@ enum custom_keycodes {
   CKC_RIGHT,
   CKC_VOLU,
 
-  M_EM_DASH,
   M_SCRN,
   M_L_RU,
   M_L_EN,
@@ -89,8 +88,8 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_voyager(
     _______,   _______,      KC_W,      KC_E,      KC_R,      KC_T,             KC_Y,      KC_U,      KC_I,      KC_O,   _______,   _______,
-     M_L_RU,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,   CKC_DOT,   _______,
-     M_L_EN,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   _______,
+     M_L_EN,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,   CKC_DOT,   _______,
+     M_L_RU,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,          _______,   _______,   _______,   _______,   _______,   _______,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
@@ -110,10 +109,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   ),
   [L_FN] = LAYOUT_voyager(
-    _______,   _______,   _______,   _______,   _______,   _______,          _______,   _______,   _______,   _______,   _______,   _______,
     _______,    M_SCRN,     KC_F7,      KC_F8,    KC_F9,    KC_F10,          _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   _______,
     _______,   KC_LGUI,    CKC_F4,     CKC_F5,   CKC_F6,   CKC_F11,         CKC_LEFT,  CKC_DOWN,    CKC_UP, CKC_RIGHT,  CKC_VOLU,   _______,
     _______,   _______,     KC_F1,      KC_F2,    KC_F3,    KC_F12,          KC_HOME, KC_PGDOWN,   KC_PGUP,    KC_END,   KC_VOLD,   _______,
+    _______,   _______,   _______,   _______,   _______,   _______,          _______,   _______,   _______,   _______,   _______,   _______,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
 };

@@ -20,13 +20,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case M_EM_DASH:
-            if (record->event.pressed) {
-                register_unicode(0x2014);
-                return false;
-            }
-            break;
-
         case M_SCRN:
             if (record->event.pressed) {
                 SEND_STRING(SS_RGUI(SS_TAP(X_F12)));
