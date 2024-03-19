@@ -27,20 +27,6 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case M_L_RU:
-            if (record->event.pressed) {
-                layer_move(L_RU);
-                return false;
-            }
-            break;
-
-        case M_L_EN:
-            if (record->event.pressed) {
-                layer_move(L_EN);
-                return false;
-            }
-            break;
-
         case M_QUE:
             if (record->event.pressed) {
                if (get_mods() & MOD_MASK_SHIFT) {

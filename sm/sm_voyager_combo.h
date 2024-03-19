@@ -23,6 +23,12 @@
 
 enum combo_events {
 
+// LANG SWITCH COMBOS
+ZXC,
+XCV,
+ZXC_RU,
+XCV_RU,
+
 // HOME ROW COMBOS
 AS,
 AD,
@@ -101,6 +107,10 @@ PQ_RU,
 
 };
 
+const uint16_t PROGMEM combo_ZXC[] = { KC_Z, KC_X, KC_C, COMBO_END };
+const uint16_t PROGMEM combo_XCV[] = { KC_X, KC_C, KC_V, COMBO_END };
+const uint16_t PROGMEM combo_ZXC_RU[] = { SM_CYR_YA, SM_CYR_CH, SM_CYR_S, COMBO_END };
+const uint16_t PROGMEM combo_XCV_RU[] = { SM_CYR_CH, SM_CYR_S, SM_CYR_M, COMBO_END };
 
 const uint16_t PROGMEM combo_AS[] = { CKC_A, CKC_S, COMBO_END };
 const uint16_t PROGMEM combo_AD[] = { CKC_A, CKC_D, COMBO_END };
@@ -157,12 +167,12 @@ const uint16_t PROGMEM combo_WR_RU[] = { SM_CYR_CC, SM_CYR_K, COMBO_END };
 const uint16_t PROGMEM combo_SE_RU[] = { SM_CYR_YI, SM_CYR_U, COMBO_END };
 const uint16_t PROGMEM combo_SC_RU[] = { SM_CYR_YI, SM_CYR_S, COMBO_END };
 const uint16_t PROGMEM combo_XC_RU[] = { SM_CYR_CH, SM_CYR_S, COMBO_END };
-const uint16_t PROGMEM combo_XD_RU[] = { SM_CYR_CH, SM_CYR_B, COMBO_END };
+const uint16_t PROGMEM combo_XD_RU[] = { SM_CYR_CH, SM_CYR_V, COMBO_END };
 const uint16_t PROGMEM combo_ER_RU[] = { SM_CYR_U, SM_CYR_K, COMBO_END };
 const uint16_t PROGMEM combo_EF_RU[] = { SM_CYR_U, SM_CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_DR_RU[] = { SM_CYR_B, SM_CYR_K, COMBO_END };
-const uint16_t PROGMEM combo_DF_RU[] = { SM_CYR_B, SM_CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_DV_RU[] = { SM_CYR_B, SM_CYR_M, COMBO_END };
+const uint16_t PROGMEM combo_DR_RU[] = { SM_CYR_V, SM_CYR_K, COMBO_END };
+const uint16_t PROGMEM combo_DF_RU[] = { SM_CYR_V, SM_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_DV_RU[] = { SM_CYR_V, SM_CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_CV_RU[] = { SM_CYR_S, SM_CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_UI_RU[] = { SM_CYR_G, SM_CYR_SH, COMBO_END };
 const uint16_t PROGMEM combo_UO_RU[] = { SM_CYR_G, SM_CYR_SCH, COMBO_END };
@@ -170,12 +180,17 @@ const uint16_t PROGMEM combo_JI_RU[] = { SM_CYR_O, SM_CYR_SH, COMBO_END };
 const uint16_t PROGMEM combo_JK_RU[] = { SM_CYR_O, SM_CYR_L, COMBO_END };
 const uint16_t PROGMEM combo_JL_RU[] = { SM_CYR_O, SM_CYR_D, COMBO_END };
 const uint16_t PROGMEM combo_MK_RU[] = { SM_CYR_SOFT, SM_CYR_L, COMBO_END };
-const uint16_t PROGMEM combo_MP_RU[] = { SM_CYR_SOFT, SM_CYR_B, COMBO_END };
+const uint16_t PROGMEM combo_MP_RU[] = { SM_CYR_SOFT, SM_CYR_V, COMBO_END };
 const uint16_t PROGMEM combo_MQ_RU[] = { SM_CYR_SOFT, SM_CYR_YU, COMBO_END };
-const uint16_t PROGMEM combo_PQ_RU[] = { SM_CYR_B, SM_CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_PQ_RU[] = { SM_CYR_V, SM_CYR_YU, COMBO_END };
 
 
 combo_t key_combos[COMBO_COUNT] = {
+    [ZXC] = COMBO_ACTION(combo_ZXC),
+    [XCV] = COMBO_ACTION(combo_XCV),
+    [ZXC_RU] = COMBO_ACTION(combo_ZXC_RU),
+    [XCV_RU] = COMBO_ACTION(combo_XCV_RU),
+
     [AS] = COMBO_ACTION(combo_AS),
     [AD] = COMBO_ACTION(combo_AD),
     [AF] = COMBO_ACTION(combo_AF),
@@ -275,6 +290,20 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO2_TAP(MK, MK_RU, KC_COLN)
         CASE_COMBO2_TAP(MP, MP_RU, KC_LBRC)
         CASE_COMBO2_TAP(MQ, MQ_RU, KC_RBRC)
+
+        case ZXC:
+        case ZXC_RU:
+            if (pressed) {
+                layer_move(L_RU);
+            }
+            return;
+
+        case XCV:
+        case XCV_RU:
+            if (pressed) {
+                layer_move(L_EN);
+            }
+            return;
 
         case PQ:
             if (pressed) {

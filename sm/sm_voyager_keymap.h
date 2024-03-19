@@ -71,8 +71,6 @@ enum custom_keycodes {
   CKC_VOLU,
 
   M_SCRN,
-  M_L_RU,
-  M_L_EN,
   M_QUE,
   CKC_CURR,
 };
@@ -88,8 +86,8 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_voyager(
     _______,   _______,      KC_W,      KC_E,      KC_R,      KC_T,             KC_Y,      KC_U,      KC_I,      KC_O,   _______,   _______,
-     M_L_EN,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,   CKC_DOT,   _______,
-     M_L_RU,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   _______,
+    _______,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,   CKC_DOT,   _______,
+    _______,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,          _______,   _______,   _______,   _______,   _______,   _______,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
