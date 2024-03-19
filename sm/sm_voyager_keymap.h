@@ -25,6 +25,7 @@ enum custom_keycodes {
   SM_CYR_H,
   SM_CYR_R,
   SM_CYR_O,
+  SM_CYR_YO,
   SM_CYR_L,
   SM_CYR_D,
   SM_CYR_EE,

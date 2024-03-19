@@ -115,6 +115,7 @@ bool press_smcyr(uint16_t keycode) {
         CASE_CYR(SM_CYR_H, 0x0445, 0x0425);
         CASE_CYR(SM_CYR_R, 0x0440, 0x0420);
         CASE_CYR(SM_CYR_O, 0x043E, 0x041E);
+        CASE_CYR(SM_CYR_YO, 0x0451, 0x0401);
         CASE_CYR(SM_CYR_L, 0x043B, 0x041B);
         CASE_CYR(SM_CYR_D, 0x0434, 0x0414);
         CASE_CYR(SM_CYR_EE, 0x044D, 0x042D);
