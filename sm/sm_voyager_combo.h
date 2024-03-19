@@ -20,6 +20,11 @@
     case combo2: \
     CASE_COMBO1_TAP(combo1, key)
 
+#define CASE_COMBO3_TAP(combo1, combo2, combo3, key) \
+    case combo3: \
+    case combo2: \
+    CASE_COMBO1_TAP(combo1, key)
+
 
 enum combo_events {
 
@@ -105,6 +110,23 @@ MQ_RU,
 PQ_RU,
 
 
+// SYSTEM COMBOS ON NUM LAYOUT
+AW_NUM,
+ZX_NUM,
+WE_NUM,
+WR_NUM,
+SE_NUM,
+SC_NUM,
+XC_NUM,
+XD_NUM,
+ER_NUM,
+EF_NUM,
+DR_NUM,
+DF_NUM,
+DV_NUM,
+CV_NUM,
+
+
 };
 
 const uint16_t PROGMEM combo_ZXC[] = { KC_Z, KC_X, KC_C, COMBO_END };
@@ -185,6 +207,21 @@ const uint16_t PROGMEM combo_MQ_RU[] = { SM_CYR_SOFT, SM_CYR_YU, COMBO_END };
 const uint16_t PROGMEM combo_PQ_RU[] = { SM_CYR_V, SM_CYR_YU, COMBO_END };
 
 
+const uint16_t PROGMEM combo_AW_NUM[] = { CKC_NDOT, KC_2, COMBO_END };
+const uint16_t PROGMEM combo_ZX_NUM[] = { KC_0, KC_1, COMBO_END };
+const uint16_t PROGMEM combo_WE_NUM[] = { KC_2, KC_8, COMBO_END };
+const uint16_t PROGMEM combo_WR_NUM[] = { KC_2, KC_9, COMBO_END };
+const uint16_t PROGMEM combo_SE_NUM[] = { CKC_4, KC_8, COMBO_END };
+const uint16_t PROGMEM combo_SC_NUM[] = { CKC_4, KC_2, COMBO_END };
+const uint16_t PROGMEM combo_XC_NUM[] = { KC_1, KC_2, COMBO_END };
+const uint16_t PROGMEM combo_XD_NUM[] = { KC_1, CKC_5, COMBO_END };
+const uint16_t PROGMEM combo_ER_NUM[] = { KC_8, KC_9, COMBO_END };
+const uint16_t PROGMEM combo_EF_NUM[] = { KC_8, CKC_6, COMBO_END };
+const uint16_t PROGMEM combo_DR_NUM[] = { CKC_5, KC_9, COMBO_END };
+const uint16_t PROGMEM combo_DF_NUM[] = { CKC_5, CKC_6, COMBO_END };
+const uint16_t PROGMEM combo_DV_NUM[] = { CKC_5, KC_3, COMBO_END };
+const uint16_t PROGMEM combo_CV_NUM[] = { KC_2, KC_3, COMBO_END };
+
 combo_t key_combos[COMBO_COUNT] = {
     [ZXC] = COMBO_ACTION(combo_ZXC),
     [XCV] = COMBO_ACTION(combo_XCV),
@@ -260,6 +297,21 @@ combo_t key_combos[COMBO_COUNT] = {
     [MP_RU] = COMBO_ACTION(combo_MP_RU),
     [MQ_RU] = COMBO_ACTION(combo_MQ_RU),
     [PQ_RU] = COMBO_ACTION(combo_PQ_RU),
+
+    [AW_NUM] = COMBO_ACTION(combo_AW_NUM),
+    [ZX_NUM] = COMBO_ACTION(combo_ZX_NUM),
+    [WE_NUM] = COMBO_ACTION(combo_WE_NUM),
+    [WR_NUM] = COMBO_ACTION(combo_WR_NUM),
+    [SE_NUM] = COMBO_ACTION(combo_SE_NUM),
+    [SC_NUM] = COMBO_ACTION(combo_SC_NUM),
+    [XC_NUM] = COMBO_ACTION(combo_XC_NUM),
+    [XD_NUM] = COMBO_ACTION(combo_XD_NUM),
+    [ER_NUM] = COMBO_ACTION(combo_ER_NUM),
+    [EF_NUM] = COMBO_ACTION(combo_EF_NUM),
+    [DR_NUM] = COMBO_ACTION(combo_DR_NUM),
+    [DF_NUM] = COMBO_ACTION(combo_DF_NUM),
+    [DV_NUM] = COMBO_ACTION(combo_DV_NUM),
+    [CV_NUM] = COMBO_ACTION(combo_CV_NUM),
 };
 
 
@@ -270,18 +322,18 @@ static uint32_t last_combo_pressed = 0;
 void process_combo_event(uint16_t combo_index, bool pressed) {
 
     switch (combo_index) {
-        CASE_COMBO2_TAP(AW, AW_RU, KC_ESC)
-        CASE_COMBO2_TAP(ZX, ZX_RU, KC_UNDS)
-        CASE_COMBO2_TAP(WE, WE_RU, KC_PLUS)
-        CASE_COMBO2_TAP(WR, WR_RU, KC_LPRN)
-        CASE_COMBO2_TAP(SE, SE_RU, KC_ASTR)
-        CASE_COMBO2_TAP(SC, SC_RU, KC_BSLS)
-        CASE_COMBO2_TAP(XC, XC_RU, KC_MINS)
-        CASE_COMBO2_TAP(XD, XD_RU, KC_SLSH)
-        CASE_COMBO2_TAP(ER, ER_RU, KC_RPRN)
-        CASE_COMBO2_TAP(DF, DF_RU, KC_BSPC)
-        CASE_COMBO2_TAP(DV, DV_RU, KC_ENT)
-        CASE_COMBO2_TAP(CV, CV_RU, KC_EQL)
+        CASE_COMBO3_TAP(AW, AW_RU, AW_NUM, KC_ESC)
+        CASE_COMBO3_TAP(ZX, ZX_RU, ZX_NUM, KC_UNDS)
+        CASE_COMBO3_TAP(WE, WE_RU, WE_NUM, KC_PLUS)
+        CASE_COMBO3_TAP(WR, WR_RU, WR_NUM, KC_LPRN)
+        CASE_COMBO3_TAP(SE, SE_RU, SE_NUM, KC_ASTR)
+        CASE_COMBO3_TAP(SC, SC_RU, SC_NUM, KC_BSLS)
+        CASE_COMBO3_TAP(XC, XC_RU, XC_NUM, KC_MINS)
+        CASE_COMBO3_TAP(XD, XD_RU, XD_NUM, KC_SLSH)
+        CASE_COMBO3_TAP(ER, ER_RU, ER_NUM, KC_RPRN)
+        CASE_COMBO3_TAP(DF, DF_RU, DF_NUM, KC_BSPC)
+        CASE_COMBO3_TAP(DV, DV_RU, DV_NUM, KC_ENT)
+        CASE_COMBO3_TAP(CV, CV_RU, CV_NUM, KC_EQL)
         CASE_COMBO2_TAP(UI, UI_RU, KC_LABK)
         CASE_COMBO2_TAP(UO, UO_RU, KC_RABK)
         CASE_COMBO2_TAP(JI, JI_RU, KC_SCLN)
