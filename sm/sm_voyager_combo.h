@@ -90,7 +90,13 @@ JL,
 MK,
 MP,
 MQ,
+IO,
+IL,
+KL,
+KQ,
 PQ,
+LDOT,
+QQUE,
 
 // SYSTEM COMBOS ON RU LAYOUT
 AW_RU,
@@ -115,7 +121,13 @@ JL_RU,
 MK_RU,
 MP_RU,
 MQ_RU,
+IO_RU,
+IL_RU,
+KL_RU,
+KQ_RU,
 PQ_RU,
+LDOT_RU,
+QQUE_RU,
 
 
 // SYSTEM COMBOS ON NUM LAYOUT
@@ -133,15 +145,6 @@ DR_NUM,
 DF_NUM,
 DV_NUM,
 CV_NUM,
-
-// EXTRA CYRILLIC LETTERS
-IO_RU,
-IL_RU,
-KL_RU,
-KQ_RU,
-LDOT_RU,
-LQUE_RU,
-QQUE_RU,
 
 };
 
@@ -195,7 +198,13 @@ const uint16_t PROGMEM combo_JL[] = { CKC_J, CKC_L, COMBO_END };
 const uint16_t PROGMEM combo_MK[] = { KC_M, CKC_K, COMBO_END };
 const uint16_t PROGMEM combo_MP[] = { KC_M, KC_P, COMBO_END };
 const uint16_t PROGMEM combo_MQ[] = { KC_M, KC_Q, COMBO_END };
+const uint16_t PROGMEM combo_IO[] = { KC_I, KC_O, COMBO_END };
+const uint16_t PROGMEM combo_IL[] = { KC_I, CKC_L, COMBO_END };
+const uint16_t PROGMEM combo_KL[] = { CKC_K, CKC_L, COMBO_END };
+const uint16_t PROGMEM combo_KQ[] = { CKC_K, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_PQ[] = { KC_P, KC_Q, COMBO_END };
+const uint16_t PROGMEM combo_LDOT[] = { CKC_L, CKC_DOT, COMBO_END };
+const uint16_t PROGMEM combo_QQUE[] = { KC_Q, M_QUE, COMBO_END };
 
 
 const uint16_t PROGMEM combo_AW_RU[] = { SM_CYR_F, SM_CYR_CC, COMBO_END };
@@ -218,9 +227,15 @@ const uint16_t PROGMEM combo_JI_RU[] = { SM_CYR_O, SM_CYR_SH, COMBO_END };
 const uint16_t PROGMEM combo_JK_RU[] = { SM_CYR_O, SM_CYR_L, COMBO_END };
 const uint16_t PROGMEM combo_JL_RU[] = { SM_CYR_O, SM_CYR_D, COMBO_END };
 const uint16_t PROGMEM combo_MK_RU[] = { SM_CYR_SOFT, SM_CYR_L, COMBO_END };
-const uint16_t PROGMEM combo_MP_RU[] = { SM_CYR_SOFT, SM_CYR_V, COMBO_END };
+const uint16_t PROGMEM combo_MP_RU[] = { SM_CYR_SOFT, SM_CYR_B, COMBO_END };
 const uint16_t PROGMEM combo_MQ_RU[] = { SM_CYR_SOFT, SM_CYR_YU, COMBO_END };
-const uint16_t PROGMEM combo_PQ_RU[] = { SM_CYR_V, SM_CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_IO_RU[] = { SM_CYR_SH, SM_CYR_SCH, COMBO_END };
+const uint16_t PROGMEM combo_IL_RU[] = { SM_CYR_SH, SM_CYR_D, COMBO_END };
+const uint16_t PROGMEM combo_KL_RU[] = { SM_CYR_L, SM_CYR_D, COMBO_END };
+const uint16_t PROGMEM combo_KQ_RU[] = { SM_CYR_L, SM_CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_PQ_RU[] = { SM_CYR_B, SM_CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_LDOT_RU[] = { SM_CYR_D, SM_CYR_ZH, COMBO_END };
+const uint16_t PROGMEM combo_QQUE_RU[] = { SM_CYR_YU, SM_CYR_Z, COMBO_END };
 
 
 const uint16_t PROGMEM combo_AW_NUM[] = { CKC_NDOT, KC_7, COMBO_END };
@@ -238,13 +253,7 @@ const uint16_t PROGMEM combo_DF_NUM[] = { CKC_5, CKC_6, COMBO_END };
 const uint16_t PROGMEM combo_DV_NUM[] = { CKC_5, KC_3, COMBO_END };
 const uint16_t PROGMEM combo_CV_NUM[] = { KC_2, KC_3, COMBO_END };
 
-const uint16_t PROGMEM combo_IO_RU[] = { SM_CYR_SH, SM_CYR_SCH, COMBO_END };
-const uint16_t PROGMEM combo_IL_RU[] = { SM_CYR_SH, SM_CYR_D, COMBO_END };
-const uint16_t PROGMEM combo_KL_RU[] = { SM_CYR_L, SM_CYR_D, COMBO_END };
-const uint16_t PROGMEM combo_KQ_RU[] = { SM_CYR_L, SM_CYR_YU, COMBO_END };
-const uint16_t PROGMEM combo_LDOT_RU[] = { SM_CYR_D, CKC_DOT, COMBO_END };
-const uint16_t PROGMEM combo_LQUE_RU[] = { SM_CYR_D, M_QUE, COMBO_END };
-const uint16_t PROGMEM combo_QQUE_RU[] = { SM_CYR_YU, M_QUE, COMBO_END };
+
 
 
 
@@ -298,7 +307,13 @@ combo_t key_combos[COMBO_COUNT] = {
     [MK] = COMBO_ACTION(combo_MK),
     [MP] = COMBO_ACTION(combo_MP),
     [MQ] = COMBO_ACTION(combo_MQ),
+    [IO] = COMBO_ACTION(combo_IO),
+    [IL] = COMBO_ACTION(combo_IL),
+    [KL] = COMBO_ACTION(combo_KL),
+    [KQ] = COMBO_ACTION(combo_KQ),
     [PQ] = COMBO_ACTION(combo_PQ),
+    [LDOT] = COMBO_ACTION(combo_LDOT),
+    [QQUE] = COMBO_ACTION(combo_QQUE),
 
     [AW_RU] = COMBO_ACTION(combo_AW_RU),
     [ZX_RU] = COMBO_ACTION(combo_ZX_RU),
@@ -322,7 +337,13 @@ combo_t key_combos[COMBO_COUNT] = {
     [MK_RU] = COMBO_ACTION(combo_MK_RU),
     [MP_RU] = COMBO_ACTION(combo_MP_RU),
     [MQ_RU] = COMBO_ACTION(combo_MQ_RU),
+    [IO_RU] = COMBO_ACTION(combo_IO_RU),
+    [IL_RU] = COMBO_ACTION(combo_IL_RU),
+    [KL_RU] = COMBO_ACTION(combo_KL_RU),
+    [KQ_RU] = COMBO_ACTION(combo_KQ_RU),
     [PQ_RU] = COMBO_ACTION(combo_PQ_RU),
+    [LDOT_RU] = COMBO_ACTION(combo_LDOT_RU),
+    [QQUE_RU] = COMBO_ACTION(combo_QQUE_RU),
 
     [AW_NUM] = COMBO_ACTION(combo_AW_NUM),
     [ZX_NUM] = COMBO_ACTION(combo_ZX_NUM),
@@ -338,14 +359,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [DF_NUM] = COMBO_ACTION(combo_DF_NUM),
     [DV_NUM] = COMBO_ACTION(combo_DV_NUM),
     [CV_NUM] = COMBO_ACTION(combo_CV_NUM),
-
-    [IO_RU] = COMBO_ACTION(combo_IO_RU),
-    [IL_RU] = COMBO_ACTION(combo_IL_RU),
-    [KL_RU] = COMBO_ACTION(combo_KL_RU),
-    [KQ_RU] = COMBO_ACTION(combo_KQ_RU),
-    [LDOT_RU] = COMBO_ACTION(combo_LDOT_RU),
-    [LQUE_RU] = COMBO_ACTION(combo_LQUE_RU),
-    [QQUE_RU] = COMBO_ACTION(combo_QQUE_RU),
 };
 
 
@@ -368,22 +381,21 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO3_TAP(DF, DF_RU, DF_NUM, KC_BSPC)
         CASE_COMBO3_TAP(DV, DV_RU, DV_NUM, KC_ENT)
         CASE_COMBO3_TAP(CV, CV_RU, CV_NUM, KC_EQL)
-        CASE_COMBO2_TAP(UI, UI_RU, KC_LABK)
-        CASE_COMBO2_TAP(UO, UO_RU, KC_RABK)
-        CASE_COMBO2_TAP(JI, JI_RU, KC_SCLN)
-        CASE_COMBO2_TAP(JK, JK_RU, KC_LCBR)
-        CASE_COMBO2_TAP(JL, JL_RU, KC_RCBR)
-        CASE_COMBO2_TAP(MK, MK_RU, KC_COLN)
-        CASE_COMBO2_TAP(MP, MP_RU, KC_LBRC)
-        CASE_COMBO2_TAP(MQ, MQ_RU, KC_RBRC)
 
-        CASE_COMBO_CYR(IO_RU, SM_CYR_EE)
-        CASE_COMBO_CYR(IL_RU, SM_CYR_SOLID)
-        CASE_COMBO_CYR(KL_RU, SM_CYR_YO)
-        CASE_COMBO_CYR(KQ_RU, SM_CYR_YY)
-        CASE_COMBO_CYR(LDOT_RU, SM_CYR_Z)
-        CASE_COMBO_CYR(LQUE_RU, SM_CYR_H)
-        CASE_COMBO_CYR(QQUE_RU, SM_CYR_ZH)
+        CASE_COMBO2_TAP(UI, UI_RU, KC_COLN)
+        CASE_COMBO2_TAP(UO, UO_RU, KC_LABK)
+        CASE_COMBO2_TAP(JI, JI_RU, KC_SCLN)
+        CASE_COMBO2_TAP(JK, JK_RU, KC_DOT)
+        CASE_COMBO2_TAP(JL, JL_RU, KC_LCBR)
+        CASE_COMBO2_TAP(MK, MK_RU, KC_COMMA)
+        CASE_COMBO2_TAP(MQ, MQ_RU, KC_LBRC)
+        CASE_COMBO2_TAP(IO, IO_RU, KC_RABK)
+        CASE_COMBO2_TAP(IL, IL_RU, KC_QUES)
+        CASE_COMBO2_TAP(KL, KL_RU, KC_RCBR)
+        CASE_COMBO2_TAP(KQ, KQ_RU, KC_EXLM)
+        CASE_COMBO2_TAP(PQ, PQ_RU, KC_RBRC)
+        CASE_COMBO2_TAP(LDOT, LDOT_RU, KC_DQUO)
+        CASE_COMBO2_TAP(QQUE, QQUE_RU, KC_QUOTE)
 
         case ZXC:
         case ZXC_RU:
@@ -399,13 +411,15 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             return;
 
-        case PQ:
+        case MP:
+        case MP_RU:
             if (pressed) {
                 register_unicode(0x2014);
             }
             return;
 
         case EF:
+        case EF_RU:
             if (pressed) {
                 register_code(KC_LCMD);
                 register_code(KC_Z);
@@ -415,6 +429,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             return;
 
         case DR:
+        case DR_RU:
             if (pressed) {
                 register_code(KC_LCMD);
                 register_code(KC_LSHIFT);

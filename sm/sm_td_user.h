@@ -107,7 +107,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_CIRC, KC_CIRC, KC_LCMD, 2)
         CASE_SMTD_TOM(CKC_AT, KC_AT, KC_RIGHT_SHIFT, 2)
         CASE_SMTD_TOM(CKC_DOLL, KC_DOLLAR, KC_RIGHT_CTRL, 2)
-        CASE_SMTD_TOM(CKC_DQUO, KC_DQUO, KC_RIGHT_GUI, 2)
 
         CASE_SMTD_TOM(CKC_F4, KC_F4, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM(CKC_F5, KC_F5, KC_LEFT_CTRL, 2)
@@ -225,19 +224,15 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         case CKC_DOT: {
             switch (action) {
                 case SMTD_ACTION_TOUCH:
+                    register_mods(get_mods() | MOD_BIT(KC_RCMD));
                     break;
                 case SMTD_ACTION_TAP:
-                    if (get_mods() & MOD_MASK_SHIFT) {
-                        SM_PRESS_NO_MODS(KC_COMMA);
-                    } else {
-                        SM_PRESS_NO_MODS(KC_DOT);
-                    }
+                    unregister_mods(MOD_BIT(KC_RCMD));
                     break;
                 case SMTD_ACTION_HOLD:
-                    register_mods(get_mods() | MOD_BIT(KC_RGUI));
                     break;
                 case SMTD_ACTION_RELEASE:
-                    unregister_mods(MOD_BIT(KC_RGUI));
+                    unregister_mods(MOD_BIT(KC_RCMD));
                     break;
             }
             break;
@@ -280,7 +275,6 @@ smtd_state smtd_states[] = {
     SMTD(CKC_CIRC),
     SMTD(CKC_AT),
     SMTD(CKC_DOLL),
-    SMTD(CKC_DQUO),
 
     SMTD(CKC_F4),
     SMTD(CKC_F5),

@@ -27,16 +27,16 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case M_QUE:
-            if (record->event.pressed) {
-               if (get_mods() & MOD_MASK_SHIFT) {
-                   SM_PRESS_NO_MODS(KC_EXLM);
-               } else {
-                   SM_PRESS_NO_MODS(KC_QUES);
-               }
-               return false;
-            }
-            break;
+//        case M_QUE:
+//            if (record->event.pressed) {
+//               if (get_mods() & MOD_MASK_SHIFT) {
+//                   SM_PRESS_NO_MODS(KC_EXLM);
+//               } else {
+//                   SM_PRESS_NO_MODS(KC_QUES);
+//               }
+//               return false;
+//            }
+//            break;
     };
 
     return true;
