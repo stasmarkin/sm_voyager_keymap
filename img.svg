@@ -320,30 +320,30 @@ path.combo {
 </g>
 </g>
 <g class="combo combopos-2">
-<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
-<text x="168" y="90" class="combo tap">OSM</text>
-</g>
-<g class="combo combopos-3">
 <rect rx="6" ry="6" x="98" y="144" width="28" height="26" class="combo"/>
 <text x="112" y="157" class="combo tap">UNDER</text>
 </g>
-<g class="combo combopos-4">
+<g class="combo combopos-3">
 <rect rx="6" ry="6" x="154" y="21" width="28" height="26" class="combo"/>
 <text x="168" y="34" class="combo tap">+</text>
 </g>
-<g class="combo combopos-5">
+<g class="combo combopos-4">
 <path d="M196,-40 h-50 a6.0,6.0 0 0 0 -6.0,6.0 v55" class="combo"/>
 <path d="M196,-40 h50 a6.0,6.0 0 0 1 6.0,6.0 v60" class="combo"/>
 <rect rx="6" ry="6" x="182" y="-53" width="28" height="26" class="combo"/>
 <text x="196" y="-40" class="combo tap">(</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-5">
 <path d="M168,-12 h-14 a6.0,6.0 0 0 0 -6.0,6.0 v83" class="combo"/>
 <path d="M168,-12 h14 a6.0,6.0 0 0 1 6.0,6.0 v16" class="combo"/>
 <g transform="rotate(-20.0, 168.0, -12.200000000000001)">
 <rect rx="6" ry="6" x="154" y="-25" width="28" height="26" class="combo"/>
 <text x="168" y="-12" class="combo tap">*</text>
 </g>
+</g>
+<g class="combo combopos-6">
+<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
+<text x="168" y="90" class="combo tap">OSM</text>
 </g>
 <g class="combo combopos-7">
 <g transform="rotate(20.0, 168.0, 117.60000000000001)">
@@ -689,30 +689,30 @@ path.combo {
 </g>
 </g>
 <g class="combo combopos-2">
-<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
-<text x="168" y="90" class="combo tap">OSM</text>
-</g>
-<g class="combo combopos-3">
 <rect rx="6" ry="6" x="98" y="144" width="28" height="26" class="combo"/>
 <text x="112" y="157" class="combo tap">UNDER</text>
 </g>
-<g class="combo combopos-4">
+<g class="combo combopos-3">
 <rect rx="6" ry="6" x="154" y="21" width="28" height="26" class="combo"/>
 <text x="168" y="34" class="combo tap">+</text>
 </g>
-<g class="combo combopos-5">
+<g class="combo combopos-4">
 <path d="M196,-40 h-50 a6.0,6.0 0 0 0 -6.0,6.0 v55" class="combo"/>
 <path d="M196,-40 h50 a6.0,6.0 0 0 1 6.0,6.0 v60" class="combo"/>
 <rect rx="6" ry="6" x="182" y="-53" width="28" height="26" class="combo"/>
 <text x="196" y="-40" class="combo tap">(</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-5">
 <path d="M168,-12 h-14 a6.0,6.0 0 0 0 -6.0,6.0 v83" class="combo"/>
 <path d="M168,-12 h14 a6.0,6.0 0 0 1 6.0,6.0 v16" class="combo"/>
 <g transform="rotate(-20.0, 168.0, -12.200000000000001)">
 <rect rx="6" ry="6" x="154" y="-25" width="28" height="26" class="combo"/>
 <text x="168" y="-12" class="combo tap">*</text>
 </g>
+</g>
+<g class="combo combopos-6">
+<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
+<text x="168" y="90" class="combo tap">OSM</text>
 </g>
 <g class="combo combopos-7">
 <g transform="rotate(20.0, 168.0, 117.60000000000001)">
@@ -813,14 +813,10 @@ path.combo {
 <text x="672" y="219" class="combo tap">]</text>
 </g>
 <g class="combo combopos-24">
-<rect rx="6" ry="6" x="686" y="133" width="28" height="26" class="combo"/>
-<text x="700" y="146" class="combo tap">—</text>
-</g>
-<g class="combo combopos-25">
 <rect rx="6" ry="6" x="686" y="21" width="28" height="26" class="combo"/>
 <text x="700" y="34" class="combo tap">Э</text>
 </g>
-<g class="combo combopos-26">
+<g class="combo combopos-25">
 <path d="M700,-12 h-14 a6.0,6.0 0 0 0 -6.0,6.0 v16" class="combo"/>
 <path d="M700,-12 h14 a6.0,6.0 0 0 1 6.0,6.0 v83" class="combo"/>
 <g transform="rotate(20.0, 700.0, -12.200000000000001)">
@@ -828,17 +824,21 @@ path.combo {
 <text x="700" y="-12" class="combo tap">Ъ</text>
 </g>
 </g>
-<g class="combo combopos-27">
+<g class="combo combopos-26">
 <rect rx="6" ry="6" x="686" y="77" width="28" height="26" class="combo"/>
 <text x="700" y="90" class="combo tap">Ё</text>
 </g>
-<g class="combo combopos-28">
+<g class="combo combopos-27">
 <path d="M700,191 h-14 a6.0,6.0 0 0 1 -6.0,-6.0 v-83" class="combo"/>
 <path d="M700,191 h14 a6.0,6.0 0 0 0 6.0,-6.0 v-16" class="combo"/>
 <g transform="rotate(20.0, 700.0, 191.4)">
 <rect rx="6" ry="6" x="686" y="178" width="28" height="26" class="combo"/>
 <text x="700" y="191" class="combo tap">Й</text>
 </g>
+</g>
+<g class="combo combopos-28">
+<rect rx="6" ry="6" x="686" y="133" width="28" height="26" class="combo"/>
+<text x="700" y="146" class="combo tap">—</text>
 </g>
 <g class="combo combopos-29">
 <rect rx="6" ry="6" x="742" y="88" width="28" height="26" class="combo"/>
@@ -1093,30 +1093,30 @@ path.combo {
 </g>
 </g>
 <g class="combo combopos-2">
-<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
-<text x="168" y="90" class="combo tap">OSM</text>
-</g>
-<g class="combo combopos-3">
 <rect rx="6" ry="6" x="98" y="144" width="28" height="26" class="combo"/>
 <text x="112" y="157" class="combo tap">UNDER</text>
 </g>
-<g class="combo combopos-4">
+<g class="combo combopos-3">
 <rect rx="6" ry="6" x="154" y="21" width="28" height="26" class="combo"/>
 <text x="168" y="34" class="combo tap">+</text>
 </g>
-<g class="combo combopos-5">
+<g class="combo combopos-4">
 <path d="M196,-40 h-50 a6.0,6.0 0 0 0 -6.0,6.0 v55" class="combo"/>
 <path d="M196,-40 h50 a6.0,6.0 0 0 1 6.0,6.0 v60" class="combo"/>
 <rect rx="6" ry="6" x="182" y="-53" width="28" height="26" class="combo"/>
 <text x="196" y="-40" class="combo tap">(</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-5">
 <path d="M168,-12 h-14 a6.0,6.0 0 0 0 -6.0,6.0 v83" class="combo"/>
 <path d="M168,-12 h14 a6.0,6.0 0 0 1 6.0,6.0 v16" class="combo"/>
 <g transform="rotate(-20.0, 168.0, -12.200000000000001)">
 <rect rx="6" ry="6" x="154" y="-25" width="28" height="26" class="combo"/>
 <text x="168" y="-12" class="combo tap">*</text>
 </g>
+</g>
+<g class="combo combopos-6">
+<rect rx="6" ry="6" x="154" y="77" width="28" height="26" class="combo"/>
+<text x="168" y="90" class="combo tap">OSM</text>
 </g>
 <g class="combo combopos-7">
 <g transform="rotate(20.0, 168.0, 117.60000000000001)">
