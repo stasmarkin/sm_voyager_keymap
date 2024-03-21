@@ -158,7 +158,6 @@ path.combo {
 </g>
 <g transform="translate(84, 162)" class="key keypos-13">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Z</text>
 </g>
 <g transform="translate(140, 151)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -248,6 +247,7 @@ path.combo {
 </g>
 <g transform="translate(784, 106)" class="key keypos-36">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">Z</text>
 <text x="0" y="24" class="key hold">Cmd</text>
 </g>
 <g transform="translate(840, 106)" class="key keypos-37">
@@ -422,8 +422,8 @@ path.combo {
 <text x="689" y="-46" class="combo tap">}</text>
 </g>
 <g class="combo combopos-21">
-<path d="M644,197 h-16 a6.0,6.0 0 0 1 -6.0,-6.0 v-16" class="combo"/>
-<path d="M644,197 h16 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
+<path d="M644,197 h-14 a6.0,6.0 0 0 1 -6.0,-6.0 v-16" class="combo"/>
+<path d="M644,197 h14 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
 <g transform="rotate(-20.0, 644.0, 197.0)">
 <rect rx="6" ry="6" x="630" y="184" width="28" height="26" class="combo"/>
 <text x="644" y="197" class="combo tap">,</text>
@@ -434,10 +434,10 @@ path.combo {
 <text x="644" y="148" class="combo tap">—</text>
 </g>
 <g class="combo combopos-23">
-<path d="M672,219 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-38" class="combo"/>
-<path d="M672,219 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-44" class="combo"/>
-<rect rx="6" ry="6" x="658" y="206" width="28" height="26" class="combo"/>
-<text x="672" y="219" class="combo tap">]</text>
+<path d="M689,219 h-63 a6.0,6.0 0 0 1 -6.0,-6.0 v-38" class="combo"/>
+<path d="M689,219 h31 a6.0,6.0 0 0 0 6.0,-6.0 v-44" class="combo"/>
+<rect rx="6" ry="6" x="675" y="206" width="28" height="26" class="combo"/>
+<text x="689" y="219" class="combo tap">]</text>
 </g>
 <g class="combo combopos-24">
 <rect rx="6" ry="6" x="686" y="21" width="28" height="26" class="combo"/>
@@ -476,22 +476,18 @@ path.combo {
 <text x="756" y="157" class="combo tap">&#x27;</text>
 </g>
 <g class="combo combopos-31">
-<path d="M123,264 h-33 a6.0,6.0 0 0 1 -6.0,-6.0 v-77" class="combo"/>
-<path d="M123,264 h11 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
-<path d="M123,264 h67 a6.0,6.0 0 0 0 6.0,-6.0 v-100" class="combo"/>
-<g transform="rotate(20.0, 123.19999999999999, 264.2)">
-<rect rx="6" ry="6" x="109" y="251" width="28" height="26" class="combo"/>
-<text x="123" y="264" class="combo tap">L(RU)</text>
-</g>
+<path d="M196,264 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-88" class="combo"/>
+<path d="M196,264 l0,-106" class="combo"/>
+<path d="M196,264 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-83" class="combo"/>
+<rect rx="6" ry="6" x="182" y="251" width="28" height="26" class="combo"/>
+<text x="196" y="264" class="combo tap">L(EN)</text>
 </g>
 <g class="combo combopos-32">
-<path d="M179,247 h-29 a6.0,6.0 0 0 1 -6.0,-6.0 v-72" class="combo"/>
-<path d="M179,247 h9 a6.0,6.0 0 0 0 6.0,-6.0 v-83" class="combo"/>
-<path d="M179,247 h60 a6.0,6.0 0 0 0 6.0,-6.0 v-66" class="combo"/>
-<g transform="rotate(-20.0, 179.2, 247.40000000000003)">
-<rect rx="6" ry="6" x="165" y="234" width="28" height="26" class="combo"/>
-<text x="179" y="247" class="combo tap">L(EN)</text>
-</g>
+<path d="M672,264 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-83" class="combo"/>
+<path d="M672,264 l0,-106" class="combo"/>
+<path d="M672,264 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
+<rect rx="6" ry="6" x="658" y="251" width="28" height="26" class="combo"/>
+<text x="672" y="264" class="combo tap">L(RU)</text>
 </g>
 </g>
 </g>
@@ -825,8 +821,8 @@ path.combo {
 <text x="689" y="-46" class="combo tap">}</text>
 </g>
 <g class="combo combopos-21">
-<path d="M644,197 h-16 a6.0,6.0 0 0 1 -6.0,-6.0 v-16" class="combo"/>
-<path d="M644,197 h16 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
+<path d="M644,197 h-14 a6.0,6.0 0 0 1 -6.0,-6.0 v-16" class="combo"/>
+<path d="M644,197 h14 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
 <g transform="rotate(-20.0, 644.0, 197.0)">
 <rect rx="6" ry="6" x="630" y="184" width="28" height="26" class="combo"/>
 <text x="644" y="197" class="combo tap">,</text>
@@ -837,10 +833,10 @@ path.combo {
 <text x="644" y="148" class="combo tap">—</text>
 </g>
 <g class="combo combopos-23">
-<path d="M672,219 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-38" class="combo"/>
-<path d="M672,219 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-44" class="combo"/>
-<rect rx="6" ry="6" x="658" y="206" width="28" height="26" class="combo"/>
-<text x="672" y="219" class="combo tap">]</text>
+<path d="M689,219 h-63 a6.0,6.0 0 0 1 -6.0,-6.0 v-38" class="combo"/>
+<path d="M689,219 h31 a6.0,6.0 0 0 0 6.0,-6.0 v-44" class="combo"/>
+<rect rx="6" ry="6" x="675" y="206" width="28" height="26" class="combo"/>
+<text x="689" y="219" class="combo tap">]</text>
 </g>
 <g class="combo combopos-24">
 <rect rx="6" ry="6" x="686" y="21" width="28" height="26" class="combo"/>
@@ -879,22 +875,18 @@ path.combo {
 <text x="756" y="157" class="combo tap">&#x27;</text>
 </g>
 <g class="combo combopos-31">
-<path d="M123,264 h-33 a6.0,6.0 0 0 1 -6.0,-6.0 v-77" class="combo"/>
-<path d="M123,264 h11 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
-<path d="M123,264 h67 a6.0,6.0 0 0 0 6.0,-6.0 v-100" class="combo"/>
-<g transform="rotate(20.0, 123.19999999999999, 264.2)">
-<rect rx="6" ry="6" x="109" y="251" width="28" height="26" class="combo"/>
-<text x="123" y="264" class="combo tap">L(RU)</text>
-</g>
+<path d="M196,264 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-88" class="combo"/>
+<path d="M196,264 l0,-106" class="combo"/>
+<path d="M196,264 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-83" class="combo"/>
+<rect rx="6" ry="6" x="182" y="251" width="28" height="26" class="combo"/>
+<text x="196" y="264" class="combo tap">L(EN)</text>
 </g>
 <g class="combo combopos-32">
-<path d="M179,247 h-29 a6.0,6.0 0 0 1 -6.0,-6.0 v-72" class="combo"/>
-<path d="M179,247 h9 a6.0,6.0 0 0 0 6.0,-6.0 v-83" class="combo"/>
-<path d="M179,247 h60 a6.0,6.0 0 0 0 6.0,-6.0 v-66" class="combo"/>
-<g transform="rotate(-20.0, 179.2, 247.40000000000003)">
-<rect rx="6" ry="6" x="165" y="234" width="28" height="26" class="combo"/>
-<text x="179" y="247" class="combo tap">L(EN)</text>
-</g>
+<path d="M672,264 h-50 a6.0,6.0 0 0 1 -6.0,-6.0 v-83" class="combo"/>
+<path d="M672,264 l0,-106" class="combo"/>
+<path d="M672,264 h50 a6.0,6.0 0 0 0 6.0,-6.0 v-88" class="combo"/>
+<rect rx="6" ry="6" x="658" y="251" width="28" height="26" class="combo"/>
+<text x="672" y="264" class="combo tap">L(RU)</text>
 </g>
 </g>
 </g>

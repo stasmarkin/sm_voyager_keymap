@@ -37,10 +37,10 @@
 enum combo_events {
 
 // LANG SWITCH COMBOS
-ZXC,
 XCV,
-ZXC_RU,
+MPQ,
 XCV_RU,
+MPQ_RU,
 
 // HOME ROW COMBOS
 AS,
@@ -148,10 +148,10 @@ CV_NUM,
 
 };
 
-const uint16_t PROGMEM combo_ZXC[] = { KC_Z, KC_X, KC_C, COMBO_END };
 const uint16_t PROGMEM combo_XCV[] = { KC_X, KC_C, KC_V, COMBO_END };
-const uint16_t PROGMEM combo_ZXC_RU[] = { SM_CYR_YA, SM_CYR_CH, SM_CYR_S, COMBO_END };
+const uint16_t PROGMEM combo_MPQ[] = { KC_M, KC_P, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_XCV_RU[] = { SM_CYR_CH, SM_CYR_S, SM_CYR_M, COMBO_END };
+const uint16_t PROGMEM combo_MPQ_RU[] = { SM_CYR_SOFT, SM_CYR_B, SM_CYR_YU, COMBO_END };
 
 const uint16_t PROGMEM combo_AS[] = { CKC_A, CKC_S, COMBO_END };
 const uint16_t PROGMEM combo_AD[] = { CKC_A, CKC_D, COMBO_END };
@@ -177,7 +177,7 @@ const uint16_t PROGMEM combo_CYR_ASDF[] = { SM_CYR_F, SM_CYR_YI, SM_CYR_V, SM_CY
 
 
 const uint16_t PROGMEM combo_AW[] = { CKC_A, KC_W, COMBO_END };
-const uint16_t PROGMEM combo_ZX[] = { KC_Z, KC_X, COMBO_END };
+const uint16_t PROGMEM combo_ZX[] = { M_OLD_Z, KC_X, COMBO_END };
 const uint16_t PROGMEM combo_WE[] = { KC_W, KC_E, COMBO_END };
 const uint16_t PROGMEM combo_WR[] = { KC_W, KC_R, COMBO_END };
 const uint16_t PROGMEM combo_SE[] = { CKC_S, KC_E, COMBO_END };
@@ -203,7 +203,7 @@ const uint16_t PROGMEM combo_IL[] = { KC_I, CKC_L, COMBO_END };
 const uint16_t PROGMEM combo_KL[] = { CKC_K, CKC_L, COMBO_END };
 const uint16_t PROGMEM combo_KQ[] = { CKC_K, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_PQ[] = { KC_P, KC_Q, COMBO_END };
-const uint16_t PROGMEM combo_LDOT[] = { CKC_L, CKC_DOT, COMBO_END };
+const uint16_t PROGMEM combo_LDOT[] = { CKC_L, CKC_Z, COMBO_END };
 const uint16_t PROGMEM combo_QQUE[] = { KC_Q, M_QUE, COMBO_END };
 
 
@@ -258,10 +258,10 @@ const uint16_t PROGMEM combo_CV_NUM[] = { KC_2, KC_3, COMBO_END };
 
 
 combo_t key_combos[COMBO_COUNT] = {
-    [ZXC] = COMBO_ACTION(combo_ZXC),
     [XCV] = COMBO_ACTION(combo_XCV),
-    [ZXC_RU] = COMBO_ACTION(combo_ZXC_RU),
+    [MPQ] = COMBO_ACTION(combo_MPQ),
     [XCV_RU] = COMBO_ACTION(combo_XCV_RU),
+    [MPQ_RU] = COMBO_ACTION(combo_MPQ_RU),
 
     [AS] = COMBO_ACTION(combo_AS),
     [AD] = COMBO_ACTION(combo_AD),
@@ -397,17 +397,17 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO2_TAP(LDOT, LDOT_RU, KC_DQUO)
         CASE_COMBO2_TAP(QQUE, QQUE_RU, KC_QUOTE)
 
-        case ZXC:
-        case ZXC_RU:
-            if (pressed) {
-                layer_move(L_RU);
-            }
-            return;
-
         case XCV:
         case XCV_RU:
             if (pressed) {
                 layer_move(L_EN);
+            }
+            return;
+
+        case MPQ:
+        case MPQ_RU:
+            if (pressed) {
+                layer_move(L_RU);
             }
             return;
 
