@@ -107,9 +107,9 @@ SM_CYR_SOLID,SM_CYR_YA, SM_CYR_CH,  SM_CYR_S,  SM_CYR_M,  SM_CYR_I,         SM_C
 
   ),
   [L_FN] = LAYOUT_voyager(
-    _______,    M_SCRN,     KC_F7,      KC_F8,    KC_F9,    KC_F10,          _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   _______,
+    _______,   _______,     KC_F7,      KC_F8,    KC_F9,    KC_F10,          _______,   KC_MPRV,   KC_MPLY,   KC_MNXT,   _______,   _______,
     _______,   KC_LGUI,    CKC_F4,     CKC_F5,   CKC_F6,   CKC_F11,         CKC_LEFT,  CKC_DOWN,    CKC_UP, CKC_RIGHT,  CKC_VOLU,   _______,
-    _______,   _______,     KC_F1,      KC_F2,    KC_F3,    KC_F12,          KC_HOME, KC_PGDOWN,   KC_PGUP,    KC_END,   KC_VOLD,   _______,
+    _______,    M_SCRN,     KC_F1,      KC_F2,    KC_F3,    KC_F12,          KC_HOME, KC_PGDOWN,   KC_PGUP,    KC_END,   KC_VOLD,   _______,
     _______,   _______,   _______,   _______,   _______,   _______,          _______,   _______,   _______,   _______,   _______,   _______,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
