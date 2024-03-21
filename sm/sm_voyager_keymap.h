@@ -36,6 +36,7 @@ enum custom_keycodes {
   SM_CYR_ZH,
   SM_CYR_SOLID,
 
+  CKC_DF_COMBO,
   CKC_SPACE,
   CKC_ENTER,
   CKC_ESC,

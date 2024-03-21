@@ -2,6 +2,7 @@
 #include QMK_KEYBOARD_H
 #include "sm_voyager_keymap.h"
 #include "sm_cyr_layer/sm_cyr_layer.h"
+#include "sm_td.h"
 #include <timer.h>
 
 #ifndef COMBO_TAP_TERM
@@ -378,7 +379,6 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO3_TAP(XC, XC_RU, XC_NUM, KC_MINS)
         CASE_COMBO3_TAP(XD, XD_RU, XD_NUM, KC_SLSH)
         CASE_COMBO3_TAP(ER, ER_RU, ER_NUM, KC_RPRN)
-        CASE_COMBO3_TAP(DF, DF_RU, DF_NUM, KC_BSPC)
         CASE_COMBO3_TAP(DV, DV_RU, DV_NUM, KC_ENT)
         CASE_COMBO3_TAP(CV, CV_RU, CV_NUM, KC_EQL)
 
@@ -396,6 +396,14 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO2_TAP(PQ, PQ_RU, KC_RBRC)
         CASE_COMBO2_TAP(LDOT, LDOT_RU, KC_DQUO)
         CASE_COMBO2_TAP(QQUE, QQUE_RU, KC_QUOTE)
+
+        case DF:
+        case DF_NUM:
+        case DF_RU: {
+            keyrecord_t record = {.event = MAKE_KEYEVENT(0, 0, pressed)};
+            process_smtd(CKC_DF_COMBO, &record);
+            return;
+        }
 
         case XCV:
         case XCV_RU:

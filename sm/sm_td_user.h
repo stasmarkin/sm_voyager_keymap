@@ -122,6 +122,31 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_VOLU, KC_VOLU, KC_RIGHT_GUI, 2)
 
 
+        case CKC_DF_COMBO: {
+            switch (action) {
+                case SMTD_ACTION_TOUCH:
+                    break;
+                case SMTD_ACTION_TAP:
+                    tap_code16(KC_BSPC);
+                    break;
+                case SMTD_ACTION_HOLD:
+                    if (tap_count < 2) {
+                        register_mods(get_mods() | MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_LCTRL));
+                    } else {
+                        register_code16(KC_BSPC);
+                    }
+                    break;
+                case SMTD_ACTION_RELEASE:
+                    if (tap_count < 2) {
+                        unregister_mods(MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_LCTRL));
+                    }
+                    unregister_code16(KC_BSPC);
+                    break;
+            }
+            break;
+        }
+
+
         case CKC_NDOT: {
             switch (action) {
                 case SMTD_ACTION_TOUCH:
@@ -196,6 +221,7 @@ smtd_state smtd_states[] = {
     SMTD(CKC_ESC),
     SMTD(CKC_ENTER),
     SMTD(CKC_TAB),
+    SMTD(CKC_DF_COMBO),
 
     SMTD(CKC_A),
     SMTD(CKC_S),
@@ -266,6 +292,11 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
             break;
 
         case CKC_NDOT:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;
+            break;
+
+        case CKC_DF_COMBO:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;
             break;
