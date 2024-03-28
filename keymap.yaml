@@ -36,9 +36,9 @@ combos:
   - { p: [ 39, 41 ], k: "]", l: [ "EN", "RU" ], a: "bottom", offset: 0.6, slide: 0.3, arc_scale: 0.95 }
 
   - { p: [ 28, 29 ], k: "<", l: [ "EN", "RU" ] }
-  - { p: [ 28, 35 ], k: "?", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 28, 35 ], k: "!", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
   - { p: [ 34, 35 ], k: "{", l: [ "EN", "RU" ] }
-  - { p: [ 34, 41 ], k: "!", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20  }
+  - { p: [ 34, 41 ], k: "?", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20  }
 #  - { p: [ 40, 35 ], k: "", l: [ ] } #HARD
   - { p: [ 40, 41 ], k: "[", l: [ "EN", "RU" ] }
 
