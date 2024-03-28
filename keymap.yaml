@@ -8,7 +8,7 @@ combos:
   - { p: [ 13, 14 ], k: "UNDER", l: [ "EN", "RU", "NUM" ] }
 
   - { p: [ 2, 3 ], k: "+", l: [ "EN", "RU", "NUM" ] }
-  - { p: [ 2, 4 ], k: "(", l: [ "EN", "RU", "NUM" ], a: "top", offset: 0.9 }
+  - { p: [ 2, 4 ], k: ")", l: [ "EN", "RU", "NUM" ], a: "top", offset: 0.9 }
   - { p: [ 8, 3 ], k: "*", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: -20 }
   - { p: [ 8, 9 ], k: "OSM", l: [ "EN", "RU", "NUM" ] }
 #  - { p: [ 8, 10 ], k: "", l: [ ] } #OSM
@@ -17,7 +17,7 @@ combos:
   - { p: [ 14, 15 ], k: "-", l: [ "EN", "RU", "NUM" ] }
 #  - { p: [ 14, 16 ], k: "", l: [ ] }
 
-  - { p: [ 3, 4 ], k: ")", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 3, 4 ], k: "(", l: [ "EN", "RU", "NUM" ] }
   - { p: [ 3, 10 ], k: "Undo", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
   - { p: [ 9, 4 ], k: "Redo", l: [ "EN", "RU", "NUM" ], rotation: -20 } #HARD
   - { p: [ 9, 10 ], k: "<|", l: [ "EN", "RU", "NUM" ] }
