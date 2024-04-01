@@ -2,7 +2,7 @@
 #include "sm_voyager_keymap.h"
 #include "sm_voyager_combo.h"
 #include "sm_voyager_rgb.h"
-#include "sm_cyr_layer/sm_cyr_layer.h"
+#include "sm_layers.h"
 #include "sm_utils.h"
 #include "sm_td.h"
 #include "sm_td_user.h"
@@ -12,7 +12,7 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_smtd(keycode, record)) return false;
-    if (!process_smcyr(keycode, record)) return false;
+    if (!process_smlayers(keycode, record)) return false;
     if (!process_smunicode(keycode, record)) return false;
 
     return true;

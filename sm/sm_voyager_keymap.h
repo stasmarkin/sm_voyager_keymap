@@ -1,6 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
-#include "sm_cyr_layer/sm_cyr_keycodes.h"
+#include "sm_layers_keycodes.h"
 
 enum custom_keycodes {
 
@@ -44,7 +44,7 @@ enum custom_keycodes {
   M_OLD_Z,
   CKC_CURR,
 
-  SM_CYR_KEYCODES(),
+  SM_LAYERS_KEYCODES(),
 };
 
 enum layers {

@@ -1,9 +1,9 @@
 #pragma once
 
-#define SMCYR_SHORTCUT_LAYER L_EN //fixme
-#define SMCYR_SIZE 33 //fixme
+#define SM_LAYERS_SHORTCUT_LAYER L_EN //fixme
+#define SM_LAYERS_SIZE 33 //fixme
 
-#define SM_CYR_KEYCODES()                                                                           \
+#define SM_LAYERS_KEYCODES()                                                                           \
    SM_CYR_BEGIN,                                                                                    \
    SM_CYR_YY, SM_CYR_CC, SM_CYR_U, SM_CYR_K, SM_CYR_E, SM_CYR_F, SM_CYR_YI, SM_CYR_V, SM_CYR_A,     \
    SM_CYR_P, SM_CYR_YA, SM_CYR_CH, SM_CYR_S, SM_CYR_M, SM_CYR_I, SM_CYR_N, SM_CYR_G, SM_CYR_SH,     \

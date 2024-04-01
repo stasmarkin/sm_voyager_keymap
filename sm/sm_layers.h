@@ -1,12 +1,12 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "sm_cyr_layer/sm_cyr_keycodes.h"
+#include "sm_layers_keycodes.h"
 
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
 
-static uint16_t smcyr_to_shorcut_row[SMCYR_SIZE] = {
+static uint16_t smcyr_to_shorcut_row[SM_LAYERS_SIZE] = {
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
@@ -15,7 +15,7 @@ static uint16_t smcyr_to_shorcut_row[SMCYR_SIZE] = {
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
 };
 
-static uint16_t smcyr_to_shorcut_col[SMCYR_SIZE] = {
+static uint16_t smcyr_to_shorcut_col[SM_LAYERS_SIZE] = {
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
@@ -40,7 +40,7 @@ static uint16_t smcyr_to_shorcut_col[SMCYR_SIZE] = {
 
 void smcyr_tap(uint8_t row, uint8_t col) {
     uint8_t return_layer = get_highest_layer(layer_state);
-    layer_move(SMCYR_SHORTCUT_LAYER);
+    layer_move(SM_LAYERS_SHORTCUT_LAYER);
     keyevent_t  event  = MAKE_KEYEVENT(row, col, true);
     keyrecord_t record = {.event = event};
     process_record(&record);
@@ -51,7 +51,7 @@ void smcyr_tap(uint8_t row, uint8_t col) {
  }
 
 void smcyr_tap_shortcut(uint16_t cyr_keycode) {
-    uint8_t idx = cyr_keycode % SMCYR_SIZE;
+    uint8_t idx = cyr_keycode % SM_LAYERS_SIZE;
     uint16_t row = smcyr_to_shorcut_row[idx];
     uint16_t col = smcyr_to_shorcut_col[idx];
 
@@ -126,7 +126,7 @@ bool press_smcyr(uint16_t keycode) {
     return false;
 }
 
-bool process_smcyr(uint16_t keycode, keyrecord_t *record) {
+bool process_smlayers(uint16_t keycode, keyrecord_t *record) {
     if (!record->event.pressed) return true;
     return press_smcyr(keycode);
 }
