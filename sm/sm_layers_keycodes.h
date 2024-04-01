@@ -1,6 +1,9 @@
 #pragma once
 
-#define SM_LAYERS_SHORTCUT_LAYER L_EN //fixme
+#ifndef SM_LAYERS_SHORTCUT_LAYER
+#    define SM_LAYERS_SHORTCUT_LAYER 0
+#endif
+
 #define SM_LAYERS_SIZE 33 //fixme
 
 #define SM_LAYERS_KEYCODES()                                                                           \
