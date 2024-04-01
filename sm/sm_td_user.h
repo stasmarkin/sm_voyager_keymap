@@ -38,7 +38,7 @@
                 case SMTD_ACTION_TOUCH:                       \
                     break;                                    \
                 case SMTD_ACTION_TAP:                         \
-                    press_smcyr(macro_key);                   \
+                    process_smlayers_tap(macro_key);                   \
                     break;                                    \
                 case SMTD_ACTION_HOLD:                        \
                     register_mods(get_mods() | MOD_BIT(mod)); \

@@ -9,13 +9,6 @@
 #define COMBO_TAP_TERM TAPPING_TERM
 #endif
 
-#define CASE_COMBO_CYR(combo1, key) \
-    case combo1: \
-        if (pressed) { \
-            press_smcyr(key); \
-        } \
-        return;
-
 #define CASE_COMBO1_TAP(combo1, key) \
     case combo1: \
         if (pressed) { \
