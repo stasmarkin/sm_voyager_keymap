@@ -2,9 +2,11 @@
 
 #include QMK_KEYBOARD_H
 
-#include "sm_voyager_keymap.h"
+#include "sm_voyager_keymaps.h"
 #include "sm_td.h"
 #include "sm_utils.h"
+#include "sm_cyr_layer/sm_cyr_layer.h"
+
 
 #define CASE_SMTD_TOM(macro_key, tap_key, mod, threshold)         \
         case macro_key: {                                         \
