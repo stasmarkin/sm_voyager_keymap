@@ -32,13 +32,13 @@
         }
 
 
-#define CASE_SMTD_TOM_CYR(macro_key, mod)                     \
+#define CASE_SMTD_TOM_SM_LAYERS(macro_key, mod)                     \
         case macro_key: {                                     \
             switch (action) {                                 \
                 case SMTD_ACTION_TOUCH:                       \
                     break;                                    \
                 case SMTD_ACTION_TAP:                         \
-                    process_smlayers_tap(macro_key);                   \
+                    process_sm_layers_tap(macro_key);                   \
                     break;                                    \
                 case SMTD_ACTION_HOLD:                        \
                     register_mods(get_mods() | MOD_BIT(mod)); \
@@ -94,15 +94,15 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_L, KC_L, KC_RIGHT_ALT, 2)
         CASE_SMTD_TOM(CKC_Z, KC_Z, KC_RCMD, 2)
 
-        CASE_SMTD_TOM_CYR(SM_CYR_F, KC_LEFT_GUI)
-        CASE_SMTD_TOM_CYR(SM_CYR_YI, KC_LEFT_ALT)
-        CASE_SMTD_TOM_CYR(SM_CYR_V, KC_LEFT_CTRL)
-        CASE_SMTD_TOM_CYR(SM_CYR_A, KC_LEFT_SHIFT)
-        CASE_SMTD_TOM_CYR(SM_CYR_P, KC_LEFT_GUI)
-        CASE_SMTD_TOM_CYR(SM_CYR_R, KC_RIGHT_GUI)
-        CASE_SMTD_TOM_CYR(SM_CYR_O, KC_RIGHT_SHIFT)
-        CASE_SMTD_TOM_CYR(SM_CYR_L, KC_RIGHT_CTRL)
-        CASE_SMTD_TOM_CYR(SM_CYR_D, KC_RIGHT_ALT)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_F, KC_LEFT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_YI, KC_LEFT_ALT)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_V, KC_LEFT_CTRL)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_A, KC_LEFT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_P, KC_LEFT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_R, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_O, KC_RIGHT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_L, KC_RIGHT_CTRL)
+        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_D, KC_RIGHT_ALT)
 
         CASE_SMTD_TOM(CKC_4, KC_4, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM(CKC_5, KC_5, KC_LEFT_CTRL, 2)

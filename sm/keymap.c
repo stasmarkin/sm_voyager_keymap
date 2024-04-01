@@ -12,7 +12,7 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_smtd(keycode, record)) return false;
-    if (!process_smlayers(keycode, record)) return false;
+    if (!process_sm_layers(keycode, record)) return false;
     if (!process_smunicode(keycode, record)) return false;
 
     return true;
