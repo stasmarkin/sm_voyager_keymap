@@ -36,6 +36,10 @@ MPQ,
 XCV_RU,
 MPQ_RU,
 
+// CAPSWORD
+FJ,
+CYR_FJ,
+
 // HOME ROW COMBOS
 AS,
 AD,
@@ -147,6 +151,9 @@ const uint16_t PROGMEM combo_MPQ[] = { KC_M, KC_P, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_XCV_RU[] = { CYR_CH, CYR_SS, CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_MPQ_RU[] = { CYR_SFT, CYR_B, CYR_YU, COMBO_END };
 
+const uint16_t PROGMEM combo_FJ[] = { CKC_F, CKC_J, COMBO_END };
+const uint16_t PROGMEM combo_CYR_FJ[] = { CYR_A, CYR_O, COMBO_END };
+
 const uint16_t PROGMEM combo_AS[] = { CKC_A, CKC_S, COMBO_END };
 const uint16_t PROGMEM combo_AD[] = { CKC_A, CKC_D, COMBO_END };
 const uint16_t PROGMEM combo_AF[] = { CKC_A, CKC_F, COMBO_END };
@@ -256,6 +263,9 @@ combo_t key_combos[COMBO_COUNT] = {
     [MPQ] = COMBO_ACTION(combo_MPQ),
     [XCV_RU] = COMBO_ACTION(combo_XCV_RU),
     [MPQ_RU] = COMBO_ACTION(combo_MPQ_RU),
+
+    [FJ] = COMBO_ACTION(combo_FJ),
+    [CYR_FJ] = COMBO_ACTION(combo_CYR_FJ),
 
     [AS] = COMBO_ACTION(combo_AS),
     [AD] = COMBO_ACTION(combo_AD),
@@ -412,6 +422,13 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             return;
 
+        case FJ:
+        case CYR_FJ:
+            if (pressed) {
+                caps_word_toggle();
+            }
+            return;
+
         case MP:
         case MP_RU:
             if (pressed) {
@@ -433,10 +450,10 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case DR_RU:
             if (pressed) {
                 register_code(KC_LCMD);
-                register_code(KC_LSHIFT);
+                register_code(KC_LSFT);
                 register_code(KC_Z);
                 unregister_code(KC_Z);
-                unregister_code(KC_LSHIFT);
+                unregister_code(KC_LSFT);
                 unregister_code(KC_LCMD);
             }
             return;

@@ -9,7 +9,7 @@ void keyboard_post_init_user(void) {
   rgb_matrix_enable();
 }
 
-const uint8_t PROGMEM ledmap[][DRIVER_LED_TOTAL][3] = {
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [L_EN] = {
               {0,0,0},       {0,0,0}, {169,255,255}, {169,255,255}, {169,255,255}, {169,255,255},
           {150,0,150}, {169,255,255}, {169,255,255}, {169,255,255}, {169,255,255}, {169,255,255},
@@ -78,7 +78,7 @@ void set_layer_color(int layer) {
       return;
   }
 
-  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+  for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
     HSV hsv = {
       .h = pgm_read_byte(&ledmap[layer][i][0]),
       .s = pgm_read_byte(&ledmap[layer][i][1]),
@@ -94,7 +94,8 @@ void set_layer_color(int layer) {
   }
 }
 
-void rgb_matrix_indicators_user(void) {
-  if (keyboard_config.disable_layer_led) { return; }
+bool rgb_matrix_indicators_user(void) {
+  if (keyboard_config.disable_layer_led) { return false; }
   set_layer_color(biton32(layer_state));
+  return true;
 }

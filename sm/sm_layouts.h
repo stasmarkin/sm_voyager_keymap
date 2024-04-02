@@ -47,13 +47,17 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
 
 #define CASE_UC_LU(key, uc_l, uc_u)                         \
         case key: {                                         \
-            uint8_t mods = get_mods() | get_oneshot_mods(); \
+            uint8_t mods = get_mods()                       \
+                | get_oneshot_mods()                        \
+                | get_weak_mods();                          \
             if (mods == 0) {                                \
-                register_unicode(uc_l);                     \
+                register_unicode(                           \
+                    is_caps_word_on() ? uc_u : uc_l);       \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
                 sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
-                register_unicode(uc_u);                     \
+                register_unicode(                           \
+                    is_caps_word_on() ? uc_l : uc_u);       \
             }                                               \
             return false;                                   \
         }
@@ -61,7 +65,9 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
 
 #define CASE_UC_L(key, uc_l, kc_u)                          \
         case key: {                                         \
-            uint8_t mods = get_mods() | get_oneshot_mods(); \
+            uint8_t mods = get_mods()                       \
+                | get_oneshot_mods()                        \
+                | get_weak_mods();                          \
             if (mods == 0) {                                \
                 register_unicode(uc_l);                     \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
@@ -77,7 +83,9 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
 
 #define CASE_UC_U(key, kc_l, uc_u)                          \
         case key: {                                         \
-            uint8_t mods = get_mods() | get_oneshot_mods(); \
+            uint8_t mods = get_mods()                       \
+                | get_oneshot_mods()                        \
+                | get_weak_mods();                          \
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
@@ -91,7 +99,9 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
 
 #define CASE_BASIC(key, kc_l, kc_u)                         \
         case key: {                                         \
-            uint8_t mods = get_mods() | get_oneshot_mods(); \
+            uint8_t mods = get_mods()                       \
+                | get_oneshot_mods()                        \
+                | get_weak_mods();                          \
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
