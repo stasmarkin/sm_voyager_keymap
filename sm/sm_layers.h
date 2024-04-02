@@ -10,19 +10,19 @@ static uint16_t sm_layers_keycode_to_shorcut_row[SM_LAYERS_SIZE] = { NOT_INIT };
 static uint16_t sm_layers_keycode_to_shorcut_col[SM_LAYERS_SIZE] = { NOT_INIT };
 
 
-#define CASE_LOWER_UPPER_UNICODE(key, uc_l, uc_u)                                                       \
-        case key:                                                                       \
-            if (get_oneshot_mods() != 0) {                                              \
-                sm_layers_keycode_to_shorcut_tap(keycode);                               \
-            } else if (get_mods() == MOD_BIT(KC_LSHIFT) ||                              \
-                    get_mods() == MOD_BIT(KC_RSHIFT)) {                                 \
-                register_unicode(uc_u);                                                 \
-            } else if (get_mods() == 0) {                                               \
-                register_unicode(uc_l);                                                 \
-            } else {                                                                    \
-                sm_layers_keycode_to_shorcut_tap(keycode);                               \
-            }                                                                           \
-            return false;                                                               \
+#define CASE_LOWER_UPPER_UNICODE(key, uc_l, uc_u)           \
+        case key:                                           \
+            if (get_oneshot_mods() != 0) {                  \
+                sm_layers_keycode_to_shorcut_tap(keycode);  \
+            } else if (get_mods() == MOD_BIT(KC_LSHIFT) ||  \
+                    get_mods() == MOD_BIT(KC_RSHIFT)) {     \
+                register_unicode(uc_u);                     \
+            } else if (get_mods() == 0) {                   \
+                register_unicode(uc_l);                     \
+            } else {                                        \
+                sm_layers_keycode_to_shorcut_tap(keycode);  \
+            }                                               \
+            return false;                                   \
 
 void sm_layers_make_shortcut_tap(uint8_t row, uint8_t col) {
     uint8_t return_layer = get_highest_layer(layer_state);
