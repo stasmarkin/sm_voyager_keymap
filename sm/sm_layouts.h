@@ -51,7 +51,7 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
             if (mods == 0) {                                \
                 register_unicode(uc_l);                     \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layouts_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
                 register_unicode(uc_u);                     \
             }                                               \
@@ -65,7 +65,7 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
             if (mods == 0) {                                \
                 register_unicode(uc_l);                     \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layouts_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
                 unregister_mods(mods);                      \
                 tap_code16(kc_u);                           \
@@ -81,7 +81,7 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layouts_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
                 register_unicode(uc_u);                     \
             }                                               \
@@ -95,7 +95,7 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layouts_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
                 unregister_mods(mods);                      \
                 tap_code16(kc_u);                           \
@@ -222,7 +222,7 @@ bool process_sm_layouts_tap(uint16_t keycode) {
             return true;
     }
 
-    return false;
+    return true;
 }
 
 bool process_sm_layouts(uint16_t keycode, keyrecord_t *record) {
