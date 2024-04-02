@@ -1,16 +1,27 @@
 #pragma once
 
 #ifndef SM_LAYERS_SHORTCUT_LAYER
-#    define SM_LAYERS_SHORTCUT_LAYER 0
+#define SM_LAYERS_SHORTCUT_LAYER 0
 #endif
 
-#define SM_LAYERS_SIZE 33 //fixme
+#ifndef SM_LAYERS_CYR_ENABLED
+#define SM_LAYERS_CYR_ENABLED 0
+#define SM_LAYERS_CYR_SIZE 0
+#define SM_LAYERS_CYR_KEYCODES
+#else
+#define SM_LAYERS_CYR_SIZE 33
+#define SM_LAYERS_CYR_KEYCODES                                           \
+   CYR_YY, CYR_CC, CYR_U, CYR_K, CYR_E, CYR_F, CYR_YI, CYR_V, CYR_A,     \
+   CYR_P, CYR_YA, CYR_CH, CYR_S, CYR_M, CYR_I, CYR_N, CYR_G, CYR_SH,     \
+   CYR_SCH, CYR_Z, CYR_H, CYR_R, CYR_O, CYR_YO, CYR_L, CYR_D, CYR_EE,    \
+   CYR_T, CYR_SFT, CYR_B, CYR_YU, CYR_ZH, CYR_SLD
+#endif
 
-#define SM_LAYERS_KEYCODES()                                                                           \
-   SM_LAYERS_BEGIN,                                                                                    \
-   SM_CYR_YY, SM_CYR_CC, SM_CYR_U, SM_CYR_K, SM_CYR_E, SM_CYR_F, SM_CYR_YI, SM_CYR_V, SM_CYR_A,     \
-   SM_CYR_P, SM_CYR_YA, SM_CYR_CH, SM_CYR_S, SM_CYR_M, SM_CYR_I, SM_CYR_N, SM_CYR_G, SM_CYR_SH,     \
-   SM_CYR_SCH, SM_CYR_Z, SM_CYR_H, SM_CYR_R, SM_CYR_O, SM_CYR_YO, SM_CYR_L, SM_CYR_D, SM_CYR_EE,    \
-   SM_CYR_T, SM_CYR_SOFT, SM_CYR_B, SM_CYR_YU, SM_CYR_ZH, SM_CYR_SOLID,                             \
-   SM_LAYERS_END                                                                                       \
+
+#define SM_LAYERS_SIZE (0 + SM_LAYERS_CYR_SIZE)
+
+#define SM_LAYERS_KEYCODES   \
+   SM_LAYERS_BEGIN,          \
+   SM_LAYERS_CYR_KEYCODES,   \
+   SM_LAYERS_END             \
 

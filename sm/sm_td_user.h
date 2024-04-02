@@ -94,15 +94,15 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_L, KC_L, KC_RIGHT_ALT, 2)
         CASE_SMTD_TOM(CKC_Z, KC_Z, KC_RCMD, 2)
 
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_F, KC_LEFT_GUI)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_YI, KC_LEFT_ALT)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_V, KC_LEFT_CTRL)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_A, KC_LEFT_SHIFT)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_P, KC_LEFT_GUI)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_R, KC_RIGHT_GUI)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_O, KC_RIGHT_SHIFT)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_L, KC_RIGHT_CTRL)
-        CASE_SMTD_TOM_SM_LAYERS(SM_CYR_D, KC_RIGHT_ALT)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_F, KC_LEFT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_YI, KC_LEFT_ALT)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_V, KC_LEFT_CTRL)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_A, KC_LEFT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_P, KC_LEFT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_R, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_O, KC_RIGHT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_L, KC_RIGHT_CTRL)
+        CASE_SMTD_TOM_SM_LAYERS(CYR_D, KC_RIGHT_ALT)
 
         CASE_SMTD_TOM(CKC_4, KC_4, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM(CKC_5, KC_5, KC_LEFT_CTRL, 2)
@@ -234,15 +234,15 @@ smtd_state smtd_states[] = {
     SMTD(CKC_L),
     SMTD(CKC_Z),
 
-    SMTD(SM_CYR_F),
-    SMTD(SM_CYR_YI),
-    SMTD(SM_CYR_V),
-    SMTD(SM_CYR_A),
-    SMTD(SM_CYR_P),
-    SMTD(SM_CYR_R),
-    SMTD(SM_CYR_O),
-    SMTD(SM_CYR_L),
-    SMTD(SM_CYR_D),
+    SMTD(CYR_F),
+    SMTD(CYR_YI),
+    SMTD(CYR_V),
+    SMTD(CYR_A),
+    SMTD(CYR_P),
+    SMTD(CYR_R),
+    SMTD(CYR_O),
+    SMTD(CYR_L),
+    SMTD(CYR_D),
 
     SMTD(CKC_NDOT),
     SMTD(CKC_4),
@@ -279,15 +279,15 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_K:
         case CKC_L:
         case CKC_Z:
-        case SM_CYR_F:
-        case SM_CYR_YI:
-        case SM_CYR_V:
-        case SM_CYR_A:
-        case SM_CYR_P:
-        case SM_CYR_R:
-        case SM_CYR_O:
-        case SM_CYR_L:
-        case SM_CYR_D:
+        case CYR_F:
+        case CYR_YI:
+        case CYR_V:
+        case CYR_A:
+        case CYR_P:
+        case CYR_R:
+        case CYR_O:
+        case CYR_L:
+        case CYR_D:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             break;
 
