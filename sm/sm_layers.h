@@ -6,21 +6,21 @@
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
 
-static uint16_t sm_layers_keycode_to_shorcut_row[SM_LAYERS_SIZE] = { NOT_INIT };
-static uint16_t sm_layers_keycode_to_shorcut_col[SM_LAYERS_SIZE] = { NOT_INIT };
+static uint16_t sm_layers_keycode_to_shortcut_row[SM_LAYERS_SIZE] = { NOT_INIT };
+static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = { NOT_INIT };
 
 
 #define CASE_LOWER_UPPER_UNICODE(key, uc_l, uc_u)           \
         case key:                                           \
             if (get_oneshot_mods() != 0) {                  \
-                sm_layers_keycode_to_shorcut_tap(keycode);  \
+                sm_layers_keycode_to_shortcut_tap(keycode);  \
             } else if (get_mods() == MOD_BIT(KC_LSHIFT) ||  \
                     get_mods() == MOD_BIT(KC_RSHIFT)) {     \
                 register_unicode(uc_u);                     \
             } else if (get_mods() == 0) {                   \
                 register_unicode(uc_l);                     \
             } else {                                        \
-                sm_layers_keycode_to_shorcut_tap(keycode);  \
+                sm_layers_keycode_to_shortcut_tap(keycode);  \
             }                                               \
             return false;                                   \
 
@@ -36,10 +36,10 @@ void sm_layers_make_shortcut_tap(uint8_t row, uint8_t col) {
     layer_move(return_layer);
  }
 
-void sm_layers_keycode_to_shorcut_tap(uint16_t sm_layers_keycode) {
+void sm_layers_keycode_to_shortcut_tap(uint16_t sm_layers_keycode) {
     uint8_t idx = sm_layers_keycode % SM_LAYERS_SIZE;
-    uint16_t row = sm_layers_keycode_to_shorcut_row[idx];
-    uint16_t col = sm_layers_keycode_to_shorcut_col[idx];
+    uint16_t row = sm_layers_keycode_to_shortcut_row[idx];
+    uint16_t col = sm_layers_keycode_to_shortcut_col[idx];
 
     if (row != NOT_INIT || col != NOT_INIT) {
         sm_layers_make_shortcut_tap(row, col);
@@ -55,8 +55,8 @@ void sm_layers_keycode_to_shorcut_tap(uint16_t sm_layers_keycode) {
         for(int row = 0; row < MATRIX_ROWS; row++) {
             for(int col = 0; col < MATRIX_COLS; col++) {
                  if (keymaps[layer][row][col] == sm_layers_keycode) {
-                      sm_layers_keycode_to_shorcut_row[idx] = row;
-                      sm_layers_keycode_to_shorcut_col[idx] = col;
+                      sm_layers_keycode_to_shortcut_row[idx] = row;
+                      sm_layers_keycode_to_shortcut_col[idx] = col;
                       sm_layers_make_shortcut_tap(row, col);
                       return;
                  }
@@ -64,8 +64,8 @@ void sm_layers_keycode_to_shorcut_tap(uint16_t sm_layers_keycode) {
         }
     }
 
-    sm_layers_keycode_to_shorcut_row[idx] = NOT_FOUND;
-    sm_layers_keycode_to_shorcut_col[idx] = NOT_FOUND;
+    sm_layers_keycode_to_shortcut_row[idx] = NOT_FOUND;
+    sm_layers_keycode_to_shortcut_col[idx] = NOT_FOUND;
 }
 
 
