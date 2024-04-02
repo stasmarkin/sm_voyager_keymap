@@ -67,7 +67,9 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             } else if (mods & ~MOD_MASK_SHIFT) {            \
                 sm_layers_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
+                unregister_mods(mods);                      \
                 tap_code16(kc_u);                           \
+                register_mods(mods);                        \
             }                                               \
             return false;                                   \
         }
@@ -95,7 +97,9 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             } else if (mods & ~MOD_MASK_SHIFT) {            \
                 sm_layers_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
-                register_unicode(kc_u);                     \
+                unregister_mods(mods);                      \
+                tap_code16(kc_u);                           \
+                register_mods(mods);                        \
             }                                               \
             return false;                                   \
         }
