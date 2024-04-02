@@ -44,6 +44,11 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
     #endif
 };
 
+#ifdef CAPS_WORD_ENABLE
+#define SM_L_CW_CHECK is_caps_word_on()
+#else
+#define SM_L_CW_CHECK false
+#endif
 
 #define CASE_UC_LU(key, uc_l, uc_u)                         \
         case key: {                                         \
@@ -52,12 +57,12 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
                 | get_weak_mods();                          \
             if (mods == 0) {                                \
                 register_unicode(                           \
-                    is_caps_word_on() ? uc_u : uc_l);       \
+                    SM_L_CW_CHECK ? uc_u : uc_l);           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
                 sm_layouts_keycode_to_shortcut_tap(keycode);\
             } else {                                        \
                 register_unicode(                           \
-                    is_caps_word_on() ? uc_l : uc_u);       \
+                    SM_L_CW_CHECK ? uc_l : uc_u);           \
             }                                               \
             return false;                                   \
         }
