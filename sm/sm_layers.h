@@ -89,7 +89,7 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
         }
 
 
-#define CASE_BASIC(key, kc_l, kc_u)                      \
+#define CASE_BASIC(key, kc_l, kc_u)                         \
         case key: {                                         \
             uint8_t mods = get_mods() | get_oneshot_mods(); \
             if (mods == 0) {                                \
