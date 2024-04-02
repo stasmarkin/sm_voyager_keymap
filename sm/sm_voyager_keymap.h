@@ -68,8 +68,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_RU] = LAYOUT_voyager(
     IIIIIII,   IIIIIII,    CYR_CC,     CYR_U,     CYR_K,     CYR_E,            CYR_N,     CYR_G,    CYR_SH,   CYR_SCH,   IIIIIII,   IIIIIII,
-     CYR_YY,     CYR_F,    CYR_YI,     CYR_V,     CYR_A,     CYR_P,            CYR_R,     CYR_O,     CYR_L,     CYR_D,    CYR_ZH,     CYR_Z,
-    CYR_SLD,    CYR_YA,    CYR_CH,     CYR_S,     CYR_M,     CYR_I,            CYR_T,   CYR_SFT,     CYR_B,    CYR_YU,    CYR_EE,     CYR_H,
+     CYR_YY,     CYR_F,    CYR_YI,     CYR_V,     CYR_A,     CYR_P,            CYR_R,     CYR_O,     CYR_L,     CYR_D,    CYR_ZH,    CYR_ZZ,
+    CYR_SLD,    CYR_YA,    CYR_CH,    CYR_SS,     CYR_M,     CYR_I,            CYR_T,   CYR_SFT,     CYR_B,    CYR_YU,    CYR_YE,     CYR_H,
     IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,          IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
