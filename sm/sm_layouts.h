@@ -1,44 +1,44 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "sm_layers_keycodes.h"
+#include "sm_layouts_keycodes.h"
 
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
 
-static uint16_t sm_layers_keycode_to_shortcut_row[SM_LAYERS_SIZE] = {
-    #ifdef SM_LAYERS_CYR_ENABLED
+static uint16_t sm_layouts_keycode_to_shortcut_row[SM_LAYOUTS_SIZE] = {
+    #ifdef SM_LAYOUTS_CYR_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT,
     #endif
 
-    #ifdef SM_LAYERS_CYR_MAC_SYMBOLS_ENABLED
+    #ifdef SM_LAYOUTS_CYR_MAC_SYMBOLS_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT,
     #endif
 
-    #ifdef SM_LAYERS_CYR_WIN_SYMBOLS_ENABLED
+    #ifdef SM_LAYOUTS_CYR_WIN_SYMBOLS_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT,
     #endif
 };
 
-static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
-    #ifdef SM_LAYERS_CYR_ENABLED
+static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
+    #ifdef SM_LAYOUTS_CYR_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT, NOT_INIT,
     #endif
 
-    #ifdef SM_LAYERS_CYR_MAC_SYMBOLS_ENABLED
+    #ifdef SM_LAYOUTS_CYR_MAC_SYMBOLS_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT,
     #endif
 
-    #ifdef SM_LAYERS_CYR_WIN_SYMBOLS_ENABLED
+    #ifdef SM_LAYOUTS_CYR_WIN_SYMBOLS_ENABLED
     NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT, NOT_INIT,
     NOT_INIT, NOT_INIT,
     #endif
@@ -51,7 +51,7 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             if (mods == 0) {                                \
                 register_unicode(uc_l);                     \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layers_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
                 register_unicode(uc_u);                     \
             }                                               \
@@ -65,7 +65,7 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             if (mods == 0) {                                \
                 register_unicode(uc_l);                     \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layers_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
                 unregister_mods(mods);                      \
                 tap_code16(kc_u);                           \
@@ -81,7 +81,7 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layers_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
                 register_unicode(uc_u);                     \
             }                                               \
@@ -95,7 +95,7 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
             if (mods == 0) {                                \
                 tap_code16(kc_l);                           \
             } else if (mods & ~MOD_MASK_SHIFT) {            \
-                sm_layers_keycode_to_shortcut_tap(keycode); \
+                sm_layouts_keycode_to_shortcut_tap(keycode); \
             } else {                                        \
                 unregister_mods(mods);                      \
                 tap_code16(kc_u);                           \
@@ -105,9 +105,9 @@ static uint16_t sm_layers_keycode_to_shortcut_col[SM_LAYERS_SIZE] = {
         }
 
 
-void sm_layers_make_shortcut_tap(uint8_t row, uint8_t col) {
+void sm_layouts_make_shortcut_tap(uint8_t row, uint8_t col) {
     uint8_t return_layer = get_highest_layer(layer_state);
-    layer_move(SM_LAYERS_SHORTCUT_LAYER);
+    layer_move(SM_LAYOUTS_SHORTCUT_LAYER);
     keyevent_t  event  = MAKE_KEYEVENT(row, col, true);
     keyrecord_t record = {.event = event};
     process_record(&record);
@@ -117,17 +117,17 @@ void sm_layers_make_shortcut_tap(uint8_t row, uint8_t col) {
     layer_move(return_layer);
  }
 
-void sm_layers_keycode_to_shortcut_tap(uint16_t sm_layers_keycode) {
-    uint8_t idx = sm_layers_keycode % SM_LAYERS_SIZE;
-    uint16_t row = sm_layers_keycode_to_shortcut_row[idx];
-    uint16_t col = sm_layers_keycode_to_shortcut_col[idx];
+void sm_layouts_keycode_to_shortcut_tap(uint16_t sm_layouts_keycode) {
+    uint8_t idx = sm_layouts_keycode % SM_LAYOUTS_SIZE;
+    uint16_t row = sm_layouts_keycode_to_shortcut_row[idx];
+    uint16_t col = sm_layouts_keycode_to_shortcut_col[idx];
 
     if (row != NOT_INIT || col != NOT_INIT) {
-        sm_layers_make_shortcut_tap(row, col);
+        sm_layouts_make_shortcut_tap(row, col);
         return;
     }
 
-    if (sm_layers_keycode <= SM_LAYERS_BEGIN || sm_layers_keycode >= SM_LAYERS_END) {
+    if (sm_layouts_keycode <= SM_LAYOUTS_BEGIN || sm_layouts_keycode >= SM_LAYOUTS_END) {
         return;
     }
 
@@ -135,24 +135,24 @@ void sm_layers_keycode_to_shortcut_tap(uint16_t sm_layers_keycode) {
     for(int layer = 0; layer < layers; layer++) {
         for(int row = 0; row < MATRIX_ROWS; row++) {
             for(int col = 0; col < MATRIX_COLS; col++) {
-                 if (keymaps[layer][row][col] == sm_layers_keycode) {
-                      sm_layers_keycode_to_shortcut_row[idx] = row;
-                      sm_layers_keycode_to_shortcut_col[idx] = col;
-                      sm_layers_make_shortcut_tap(row, col);
+                 if (keymaps[layer][row][col] == sm_layouts_keycode) {
+                      sm_layouts_keycode_to_shortcut_row[idx] = row;
+                      sm_layouts_keycode_to_shortcut_col[idx] = col;
+                      sm_layouts_make_shortcut_tap(row, col);
                       return;
                  }
             }
         }
     }
 
-    sm_layers_keycode_to_shortcut_row[idx] = NOT_FOUND;
-    sm_layers_keycode_to_shortcut_col[idx] = NOT_FOUND;
+    sm_layouts_keycode_to_shortcut_row[idx] = NOT_FOUND;
+    sm_layouts_keycode_to_shortcut_col[idx] = NOT_FOUND;
 }
 
 
-bool process_sm_layers_tap(uint16_t keycode) {
+bool process_sm_layouts_tap(uint16_t keycode) {
     switch (keycode) {
-        #ifdef SM_LAYERS_CYR_ENABLED
+        #ifdef SM_LAYOUTS_CYR_ENABLED
         CASE_UC_LU(CYR_YY, 0x0439, 0x0419);
         CASE_UC_LU(CYR_CC, 0x0446, 0x0426);
         CASE_UC_LU(CYR_U, 0x0443, 0x0423);
@@ -188,7 +188,7 @@ bool process_sm_layers_tap(uint16_t keycode) {
         CASE_UC_LU(CYR_SLD, 0x044A, 0x042A);
         #endif
 
-        #ifdef SM_LAYERS_CYR_WIN_SYMBOLS_ENABLED
+        #ifdef SM_LAYOUTS_CYR_WIN_SYMBOLS_ENABLED
         CASE_BASIC(CYR_W1, KC_1, KC_EXLM);
         CASE_BASIC(CYR_W2, KC_2, KC_DQUO);
         CASE_UC_U(CYR_W3, KC_3, 0x2116);
@@ -203,7 +203,7 @@ bool process_sm_layers_tap(uint16_t keycode) {
         CASE_BASIC(CYR_WSLASH, KC_BSLS, KC_SLSH);
         #endif
 
-        #ifdef SM_LAYERS_CYR_MAC_SYMBOLS_ENABLED
+        #ifdef SM_LAYOUTS_CYR_MAC_SYMBOLS_ENABLED
         CASE_BASIC(CYR_M1, KC_1, KC_EXLM);
         CASE_BASIC(CYR_M2, KC_2, KC_DQUO);
         CASE_UC_U(CYR_M3, KC_3, 0x2116);
@@ -225,9 +225,9 @@ bool process_sm_layers_tap(uint16_t keycode) {
     return false;
 }
 
-bool process_sm_layers(uint16_t keycode, keyrecord_t *record) {
+bool process_sm_layouts(uint16_t keycode, keyrecord_t *record) {
     if (!record->event.pressed) return true;
-    return process_sm_layers_tap(keycode);
+    return process_sm_layouts_tap(keycode);
 }
 
 

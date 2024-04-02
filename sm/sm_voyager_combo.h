@@ -1,7 +1,7 @@
 #pragma once
 #include QMK_KEYBOARD_H
 #include "sm_voyager_keymap.h"
-#include "sm_layers.h"
+#include "sm_layouts.h"
 #include "sm_td.h"
 #include <timer.h>
 
