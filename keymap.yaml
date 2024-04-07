@@ -1,59 +1,111 @@
 layout:
   qmk_keyboard: zsa@voyager@split
-layers:
-  EN:
-    - [ " ", Q, W, E, R, T ]
-    - [ "<|", { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
-    - [ { t: "\n1T:L(EN) \n2T:L(RU) \n" }, Z, X, C, V, B ]
-    - [ " ", { t: "/", s: "\\" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: "_" }, Tab ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ Y, U, I, O, P, " " ]
-    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd, t: ".", s: "," }, " " ]
-    - [ N, M, "#", ":", ";", " " ]
-    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
-  RU:
-    - [ " ", Й, Ц, У, К, Е ]
-    - [ "<|", { h: Cmd, t: Ф }, { h: Opt, t: Ы }, { h: Ctrl, t: В }, { h: Shift, t: А }, { h: Cmd, t: П } ]
-    - [ { t: "\n1T:L(EN) \n2T:L(RU) \n" }, Я, Ч, С, М, И ]
-    - [ " ", { t: "/", s: "\\" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: "_" }, Tab ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ Н, Г, Ш, Щ, З, Х ]
-    - [ { h: Cmd, t: Р }, { h: Shift, t: О }, { h: Ctrl, t: Л }, { h: Opt, t: Д }, { h: Cmd, t: ".", s: "," }, "Э" ]
-    - [ Т, Ь, Б, Ю, Ж, Ъ ]
-    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
-  NUM:
-    - [ " ", "%", 7, 8, 9, ")" ]
-    - [ "<|", { h: Cmd, t: "." }, { h: Opt, t: 4 }, { h: Ctrl, t: 5 }, { h: Shift, t: 6 }, { h: Cmd, t: "(" } ]
-    - [ " ", 0, 1, 2, 3, "-" ]
-    - [ " ", { t: "\n1T:'/' \n2T:':' \n" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: " " }, Tab ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ ">", "}", ")", "]", "'", "$" ]
-    - [ { h: Cmd, t: "<" }, { h: Shift, t: "{" }, { h: Ctrl, t: "(" }, { h: Opt, t: "[" }, { h: Cmd, t: "\"" }, "€" ]
-    - [ "^", "&", "|", "~", "`", "₽" ]
-    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
-  FN:
-    - [ " ", "SCNSHOT", F7, F8, F9, F10 ]
-    - [ "<|", { h: Cmd, t: " " }, { h: Opt, t: F4 }, { h: Ctrl, t: F5 }, { h: Shift, t: F6 }, { h: Cmd, t: "F11" } ]
-    - [ " ", "", F1, F2, F3, F12 ]
-    - [ " ", { t: "\n1T:'/' \n2T:':' \n" }, { t: "*", s: " " }, { t: "+", s: " " }, { t: "=", s: " " }, Tab ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ "BR-", "BR+", "VOL-", "VOL+", "️MEDIA_NXT", "" ]
-    - [ "←", "↓", "↑", "→", "MEDIA_PREV", "" ]
-    - [ "HOME", "PG↓", "PG↑", "END", "MEDIA_PLAY", "" ]
-    - [ " ", { t: "-" , s: "—" }, { t: "@" , s: "#" }, { t: "!" , s: ":" }, { t: "?" , s: ";" }, " " ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
 
 combos:
-  - { p: [ 7, 8 ], k: "OSM", l: [ "EN", "RU" ] }
-  - { p: [ 8, 9 ], k: "OSM", l: [ "EN", "RU" ] }
-  - { p: [ 9, 10 ], k: "OSM", l: [ "EN", "RU" ] }
+  - { p: [ 7, 2 ], k: "Esc", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.9, rotation: -20 } #HARD
+  - { p: [ 7, 8 ], k: "OSM", l: [ "EN", "RU", "NUM" ], rotation: -20 }
+#  - { p: [ 13, 8 ], k: "", l: [ ] } #HARD
+  - { p: [ 13, 14 ], k: "UNDER", l: [ "EN", "RU", "NUM" ] }
+
+  - { p: [ 2, 3 ], k: "+", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 2, 4 ], k: ")", l: [ "EN", "RU", "NUM" ], a: "top", offset: 0.9 }
+  - { p: [ 8, 3 ], k: "*", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: -20 }
+  - { p: [ 8, 9 ], k: "OSM", l: [ "EN", "RU", "NUM" ] }
+#  - { p: [ 8, 10 ], k: "", l: [ ] } #OSM
+  - { p: [ 8, 15 ], k: "\\", l: [ "EN", "RU", "NUM" ], rotation: 20 } #HARD
+  - { p: [ 14, 9 ], k: "/", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: -20 }
+  - { p: [ 14, 15 ], k: "-", l: [ "EN", "RU", "NUM" ] }
+#  - { p: [ 14, 16 ], k: "", l: [ ] }
+
+  - { p: [ 3, 4 ], k: "(", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 3, 10 ], k: "Undo", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 9, 4 ], k: "Redo", l: [ "EN", "RU", "NUM" ], rotation: -20 } #HARD
+  - { p: [ 9, 10 ], k: "<|", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 9, 16 ], k: "Enter", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: 20 }
+  - { p: [ 15, 16 ], k: "=", l: [ "EN", "RU", "NUM" ] }
+
+
+  - { p: [ 27, 28 ], k: ":", l: [ "EN", "RU" ] }
+  - { p: [ 27, 29 ], k: ">", l: [ "EN", "RU" ], a: "top", arc_scale: 1, offset: 1.3, slide: -0.3 }
+#  - { p: [ 27, 34 ], k: "", l: [ ] } #HARD
+  - { p: [ 33, 28 ], k: ";", l: [ "EN", "RU" ], a: "top", arc_scale: 0.6, offset: 0.2, rotation: -20  }
+  - { p: [ 33, 34 ], k: ".", l: [ "EN", "RU" ] }
+  - { p: [ 33, 35 ], k: "}", l: [ "EN", "RU" ], a: "top", arc_scale: 0.9, offset: 2.0, slide: 0.3 }
+  - { p: [ 39, 34 ], k: ",", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: -20 }
+  - { p: [ 39, 40 ], k: "—", l: [ "EN", "RU" ] }
+  - { p: [ 39, 41 ], k: "]", l: [ "EN", "RU" ], a: "bottom", offset: 0.6, slide: 0.3, arc_scale: 0.95 }
+
+  - { p: [ 28, 29 ], k: "<", l: [ "EN", "RU" ] }
+  - { p: [ 28, 35 ], k: "!", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 34, 35 ], k: "{", l: [ "EN", "RU" ] }
+  - { p: [ 34, 41 ], k: "?", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20  }
+#  - { p: [ 40, 35 ], k: "", l: [ ] } #HARD
+  - { p: [ 40, 41 ], k: "[", l: [ "EN", "RU" ] }
+
+#  - { p: [ 29, 36 ], k: "", l: [ ] }
+  - { p: [ 35, 36 ], k: "\"", l: [ "EN", "RU" ] }
+#  - { p: [ 35, 42 ], k: "", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20 } #HARD
+  - { p: [ 41, 42 ], k: "'", l: [ "EN", "RU" ] }
+
+
+  - { p: [ 14, 15, 16 ], k: "L(EN)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
+  - { p: [ 39, 40, 41 ], k: "L(RU)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
+
+layers:
+  EN:
+    - [ "", "", W, E, R, T ]
+    - [ { t: "" }, { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
+    - [ { t: "" }, "" , X, C, V, B ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Tab } ]
+
+    - [ Y, U, I, O, "", "" ]
+    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd, t: "Z" }, "" ]
+    - [ N, M, P, Q, "", "" ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: "" }, { h: FN,   t: "" } ]
+
+
+  RU:
+    - [ "", "", Ц, У, К, Е ]
+    - [ { t: "Й" }, { h: Cmd, t: Ф }, { h: Opt, t: Ы }, { h: Ctrl, t: В }, { h: Shift, t: А }, { h: Cmd, t: П } ]
+    - [ { t: "Ъ" }, Я, Ч, С, М, И ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ Н, Г, Ш, Щ, "", "" ]
+    - [ { h: Cmd, t: Р }, { h: Shift, t: О }, { h: Ctrl, t: Л }, { h: Opt, t: Д }, { h: Cmd, t: "Ж" }, "Э" ]
+    - [ Т, Ь, Б, Ю, "З", "Х" ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+
+  NUM:
+    - [ "", "", 7, 8, 9, "%" ]
+    - [ "", { h: Cmd, t: ".", s: ":" }, { h: Opt, t: 4 }, { h: Ctrl, t: 5 }, { h: Shift, t: 6 }, { h: Cmd, t: "^" } ]
+    - [ "", 0, 1, 2, 3, "" ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ "", "#", { t: "₽" , s: "€" }, "`", "", "" ]
+    - [ { h: Cmd, t: "" }, { h: Shift, t: "@" }, { h: Ctrl, t: "$" }, { h: Opt, t: "" }, { h: Cmd }, "" ]
+    - [ "", "&", "|", "~", "", "" ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+
+  FN:
+    - [ "", "SCNSHOT", F7, F8, F9, F10 ]
+    - [ "", { h: Cmd, t: "" }, { h: Opt, t: F4 }, { h: Ctrl, t: F5 }, { h: Shift, t: F6 }, { h: Cmd, t: "F11" } ]
+    - [ "", "", F1, F2, F3, F12 ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+
+    - [ "", "M_PREV", "M_PLAY", "️M_NXT", "", "" ]
+    - [ { h: Cmd, t: "←" }, { h: Shift, t: "↓" }, { h: Ctrl, t: "↑" }, { h: Opt, t: "→" }, { h: Cmd, t: "VOL+" }, "" ]
+    - [ "HOME", "PG↓", "PG↑", "END", "VOL-", "" ]
+    - [ "", "", "", "", "", "" ]
+    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
+
+
+
