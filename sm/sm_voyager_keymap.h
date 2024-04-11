@@ -47,12 +47,16 @@ enum custom_keycodes {
   M_OLD_Z,
   CKC_CURR,
 
+  M_EMPTY1,
+  M_EMPTY2,
+
   SM_LAYOUTS_KEYCODES,
 };
 
 enum layers {
   L_EN = 0,
   L_RU,
+  L_GAMING,
   L_NUM,
   L_FN,
 };
@@ -72,6 +76,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CYR_SLD,    CYR_YA,    CYR_CH,    CYR_SS,     CYR_M,     CYR_I,            CYR_T,   CYR_SFT,     CYR_B,    CYR_YU,    CYR_YE,     CYR_H,
     IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,    KC_TAB,   IIIIIII,          IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
+  ),
+  [L_GAMING] = LAYOUT_voyager(
+    IIIIIII,   IIIIIII,      KC_Q,      KC_W,      KC_E,      KC_R,          IIIIIII,  M_EMPTY1,  M_EMPTY2,   IIIIIII,   IIIIIII,   IIIIIII,
+    KC_LCMD,   KC_LSFT,      KC_A,      KC_S,      KC_D,      KC_F,          IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,
+    KC_LOPT,   KC_LCTL,      KC_Z,      KC_X,      KC_C,      KC_V,          IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,
+    IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,    KC_ESC,   IIIIIII,          IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,   IIIIIII,
+                                               KC_SPACE,  KC_ENTER,          CKC_ESC,   CKC_TAB
   ),
   [L_NUM] = LAYOUT_voyager(
     IIIIIII,   IIIIIII,      KC_7,      KC_8,      KC_9,   KC_PERC,          IIIIIII,   KC_HASH,  CKC_CURR,  KC_GRAVE,   IIIIIII,   IIIIIII,

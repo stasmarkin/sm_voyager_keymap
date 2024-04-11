@@ -35,6 +35,8 @@ XCV,
 MPQ,
 XCV_RU,
 MPQ_RU,
+ERUI,
+ERUI_GAMING,
 
 // CAPSWORD
 FJ,
@@ -150,6 +152,8 @@ const uint16_t PROGMEM combo_XCV[] = { KC_X, KC_C, KC_V, COMBO_END };
 const uint16_t PROGMEM combo_MPQ[] = { KC_M, KC_P, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_XCV_RU[] = { CYR_CH, CYR_SS, CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_MPQ_RU[] = { CYR_SFT, CYR_B, CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_ERUI[] = { KC_E, KC_R, KC_U, KC_I, COMBO_END };
+const uint16_t PROGMEM combo_ERUI_GAMING[] = { KC_W, KC_E, M_EMPTY1, M_EMPTY2, COMBO_END };
 
 const uint16_t PROGMEM combo_FJ[] = { CKC_F, CKC_J, COMBO_END };
 const uint16_t PROGMEM combo_CYR_FJ[] = { CYR_A, CYR_O, COMBO_END };
@@ -263,6 +267,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [MPQ] = COMBO_ACTION(combo_MPQ),
     [XCV_RU] = COMBO_ACTION(combo_XCV_RU),
     [MPQ_RU] = COMBO_ACTION(combo_MPQ_RU),
+    [ERUI] = COMBO_ACTION(combo_ERUI),
+    [ERUI_GAMING] = COMBO_ACTION(combo_ERUI_GAMING),
 
     [FJ] = COMBO_ACTION(combo_FJ),
     [CYR_FJ] = COMBO_ACTION(combo_CYR_FJ),
@@ -410,6 +416,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
         case XCV:
         case XCV_RU:
+        case ERUI_GAMING:
             if (pressed) {
                 layer_move(L_EN);
             }
@@ -419,6 +426,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         case MPQ_RU:
             if (pressed) {
                 layer_move(L_RU);
+            }
+            return;
+
+        case ERUI:
+            if (pressed) {
+                layer_move(L_GAMING);
             }
             return;
 
