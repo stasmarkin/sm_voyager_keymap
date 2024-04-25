@@ -416,18 +416,54 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 
         case XCV:
         case XCV_RU:
-        case ERUI_GAMING:
-            if (pressed) {
-                layer_move(L_EN);
+        case ERUI_GAMING: {
+            if (!pressed) return;
+
+            uint8_t current_mods = get_mods();
+            if (current_mods & MOD_MASK_SHIFT) {
+                unregister_mods(current_mods);
+                register_mods(MOD_BIT(KC_LCTL));
+                register_code(KC_SPACE);
+                unregister_code(KC_SPACE);
+                unregister_mods(MOD_BIT(KC_LCTL));
+
+                wait_ms(25);
+                register_code(KC_T);
+                unregister_code(KC_T);
+                register_code(KC_SPACE);
+                unregister_code(KC_SPACE);
+
+                register_mods(current_mods);
             }
+
+            layer_move(L_EN);
             return;
+        }
 
         case MPQ:
-        case MPQ_RU:
-            if (pressed) {
-                layer_move(L_RU);
-            }
+        case MPQ_RU: {
+            if (!pressed) return;
+
+             uint8_t current_mods = get_mods();
+             if (current_mods & MOD_MASK_SHIFT) {
+                 unregister_mods(current_mods);
+                 register_mods(MOD_BIT(KC_LCTL));
+                 register_code(KC_SPACE);
+                 unregister_code(KC_SPACE);
+                 unregister_mods(MOD_BIT(KC_LCTL));
+
+                 wait_ms(25);
+                 register_code(KC_T);
+                 unregister_code(KC_T);
+                 register_code(KC_SPACE);
+                 unregister_code(KC_SPACE);
+
+                 register_mods(current_mods);
+             }
+
+            layer_move(L_RU);
             return;
+        }
 
         case ERUI:
             if (pressed) {
