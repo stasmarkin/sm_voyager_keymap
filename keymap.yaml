@@ -43,6 +43,7 @@ combos:
   - { p: [ 40, 41 ], k: "[", l: [ "EN", "RU" ] }
 
 #  - { p: [ 29, 36 ], k: "", l: [ ] }
+  - { p: [ 29, 36 ], k: "`", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
   - { p: [ 35, 36 ], k: "\"", l: [ "EN", "RU" ] }
 #  - { p: [ 35, 42 ], k: "", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20 } #HARD
   - { p: [ 41, 42 ], k: "'", l: [ "EN", "RU" ] }
@@ -56,21 +57,21 @@ layers:
     - [ "", "", W, E, R, T ]
     - [ { t: "" }, { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
     - [ { t: "" }, "" , X, C, V, B ]
-    - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Tab } ]
+    - [ "", "", "", "", "", "Tab" ]
+    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
 
     - [ Y, U, I, O, "", "" ]
     - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd, t: "Z" }, "" ]
     - [ N, M, P, Q, "", "" ]
     - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: "" }, { h: FN,   t: "" } ]
+    - [ { h: NUM,   t: "Esc" }, { h: FN,   t: "Tab" } ]
 
 
   RU:
     - [ "", "", Ц, У, К, Е ]
     - [ { t: "Й" }, { h: Cmd, t: Ф }, { h: Opt, t: Ы }, { h: Ctrl, t: В }, { h: Shift, t: А }, { h: Cmd, t: П } ]
     - [ { t: "Ъ" }, Я, Ч, С, М, И ]
-    - [ "", "", "", "", "", "" ]
+    - [ "", "", "", "", "", "Tab" ]
     - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
 
     - [ Н, Г, Ш, Щ, "", "" ]
@@ -84,10 +85,10 @@ layers:
     - [ "", "", 7, 8, 9, "%" ]
     - [ "", { h: Cmd, t: ".", s: ":" }, { h: Opt, t: 4 }, { h: Ctrl, t: 5 }, { h: Shift, t: 6 }, { h: Cmd, t: "^" } ]
     - [ "", 0, 1, 2, 3, "" ]
-    - [ "", "", "", "", "", "" ]
+    - [ "", "", "", "", "", "Tab" ]
     - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
 
-    - [ "", "#", { t: "₽" , s: "€" }, "`", "", "" ]
+    - [ "", "#", { t: "₽" , s: "€" }, "", "", "" ]
     - [ { h: Cmd, t: "" }, { h: Shift, t: "@" }, { h: Ctrl, t: "$" }, { h: Opt, t: "" }, { h: Cmd }, "" ]
     - [ "", "&", "|", "~", "", "" ]
     - [ "", "", "", "", "", "" ]
@@ -95,10 +96,10 @@ layers:
 
 
   FN:
-    - [ "", "SCNSHOT", F7, F8, F9, F10 ]
+    - [ "", "", F7, F8, F9, F10 ]
     - [ "", { h: Cmd, t: "" }, { h: Opt, t: F4 }, { h: Ctrl, t: F5 }, { h: Shift, t: F6 }, { h: Cmd, t: "F11" } ]
-    - [ "", "", F1, F2, F3, F12 ]
-    - [ "", "", "", "", "", "" ]
+    - [ "", "SCNSHOT", F1, F2, F3, F12 ]
+    - [ "", "", "", "", "", "Tab" ]
     - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
 
     - [ "", "M_PREV", "M_PLAY", "️M_NXT", "", "" ]

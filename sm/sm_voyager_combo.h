@@ -95,6 +95,7 @@ IL,
 KL,
 KQ,
 PQ,
+OZ,
 LDOT,
 QQUE,
 
@@ -126,6 +127,7 @@ IL_RU,
 KL_RU,
 KQ_RU,
 PQ_RU,
+OZ_RU,
 LDOT_RU,
 QQUE_RU,
 
@@ -208,6 +210,7 @@ const uint16_t PROGMEM combo_IL[] = { KC_I, CKC_L, COMBO_END };
 const uint16_t PROGMEM combo_KL[] = { CKC_K, CKC_L, COMBO_END };
 const uint16_t PROGMEM combo_KQ[] = { CKC_K, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_PQ[] = { KC_P, KC_Q, COMBO_END };
+const uint16_t PROGMEM combo_OZ[] = { KC_O, CKC_Z, COMBO_END };
 const uint16_t PROGMEM combo_LDOT[] = { CKC_L, CKC_Z, COMBO_END };
 const uint16_t PROGMEM combo_QQUE[] = { KC_Q, M_QUE, COMBO_END };
 
@@ -239,6 +242,7 @@ const uint16_t PROGMEM combo_IL_RU[] = { CYR_SH, CYR_D, COMBO_END };
 const uint16_t PROGMEM combo_KL_RU[] = { CYR_L, CYR_D, COMBO_END };
 const uint16_t PROGMEM combo_KQ_RU[] = { CYR_L, CYR_YU, COMBO_END };
 const uint16_t PROGMEM combo_PQ_RU[] = { CYR_B, CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_OZ_RU[] = { CYR_SCH, CYR_ZH, COMBO_END };
 const uint16_t PROGMEM combo_LDOT_RU[] = { CYR_D, CYR_ZH, COMBO_END };
 const uint16_t PROGMEM combo_QQUE_RU[] = { CYR_YU, CYR_ZZ, COMBO_END };
 
@@ -322,6 +326,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [KL] = COMBO_ACTION(combo_KL),
     [KQ] = COMBO_ACTION(combo_KQ),
     [PQ] = COMBO_ACTION(combo_PQ),
+    [OZ] = COMBO_ACTION(combo_OZ),
     [LDOT] = COMBO_ACTION(combo_LDOT),
     [QQUE] = COMBO_ACTION(combo_QQUE),
 
@@ -352,6 +357,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [KL_RU] = COMBO_ACTION(combo_KL_RU),
     [KQ_RU] = COMBO_ACTION(combo_KQ_RU),
     [PQ_RU] = COMBO_ACTION(combo_PQ_RU),
+    [OZ_RU] = COMBO_ACTION(combo_OZ_RU),
     [LDOT_RU] = COMBO_ACTION(combo_LDOT_RU),
     [QQUE_RU] = COMBO_ACTION(combo_QQUE_RU),
 
@@ -403,6 +409,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO2_TAP(KL, KL_RU, KC_RCBR)
         CASE_COMBO2_TAP(KQ, KQ_RU, KC_QUES)
         CASE_COMBO2_TAP(PQ, PQ_RU, KC_RBRC)
+        CASE_COMBO2_TAP(OZ, OZ_RU, KC_GRAVE)
         CASE_COMBO2_TAP(LDOT, LDOT_RU, KC_DQUO)
         CASE_COMBO2_TAP(QQUE, QQUE_RU, KC_QUOTE)
 
