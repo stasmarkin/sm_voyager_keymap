@@ -27,6 +27,20 @@ bool process_smunicode(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
+        case M_EURO:
+            if (record->event.pressed) {
+                register_unicode(0x20AC);
+                return false;
+            }
+            break;
+
+        case M_RUB:
+            if (record->event.pressed) {
+                register_unicode(0x20BD);
+                return false;
+            }
+            break;
+
 //        case M_QUE:
 //            if (record->event.pressed) {
 //               if (get_mods() & MOD_MASK_SHIFT) {

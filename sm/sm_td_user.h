@@ -138,7 +138,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM(CKC_6, KC_6, KC_LEFT_SHIFT, 2)
         CASE_SMTD_TOM(CKC_CIRC, KC_CIRC, KC_LCMD, 2)
         CASE_SMTD_TOM(CKC_AT, KC_AT, KC_RIGHT_SHIFT, 2)
-        CASE_SMTD_TOM(CKC_DOLL, KC_DOLLAR, KC_RIGHT_CTRL, 2)
+        CASE_SMTD_TOM(CKC_HASH, KC_HASH, KC_RIGHT_CTRL, 2)
 
         CASE_SMTD_TOM(CKC_F4, KC_F4, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM(CKC_F5, KC_F5, KC_LEFT_CTRL, 2)
@@ -216,32 +216,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
             }
             break;
         }
-
-        case CKC_CURR: {
-            switch (action) {
-                case SMTD_ACTION_TOUCH:
-                    switch (tap_count) {
-                        case 0:
-                            register_unicode(0x20BD);
-                            break;
-                        default:
-                            tap_code16(KC_BSPC);
-                            if (tap_count % 2 == 0) {
-                                register_unicode(0x20BD);
-                            } else {
-                                register_unicode(0x20AC);
-                            }
-                            break;
-                    }
-                    break;
-                case SMTD_ACTION_TAP:
-                case SMTD_ACTION_HOLD:
-                case SMTD_ACTION_RELEASE:
-                    break;
-            }
-            break;
-        }
-
     }
 }
 
@@ -279,7 +253,7 @@ smtd_state smtd_states[] = {
     SMTD(CKC_6),
     SMTD(CKC_CIRC),
     SMTD(CKC_AT),
-    SMTD(CKC_DOLL),
+    SMTD(CKC_HASH),
 
     SMTD(CKC_F4),
     SMTD(CKC_F5),
@@ -290,9 +264,6 @@ smtd_state smtd_states[] = {
     SMTD(CKC_UP),
     SMTD(CKC_RIGHT),
     SMTD(CKC_VOLU),
-
-    SMTD(CKC_CURR),
-
 };
 size_t smtd_states_size = sizeof(smtd_states) / sizeof(smtd_states[0]);
 

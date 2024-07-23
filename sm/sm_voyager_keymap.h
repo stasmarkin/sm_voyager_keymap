@@ -31,7 +31,7 @@ enum custom_keycodes {
   CKC_6,
   CKC_CIRC,
   CKC_AT,
-  CKC_DOLL,
+  CKC_HASH,
 
   CKC_F4,
   CKC_F5,
@@ -46,7 +46,8 @@ enum custom_keycodes {
   M_SCRN,
   M_QUE,
   M_OLD_Z,
-  CKC_CURR,
+  M_EURO,
+  M_RUB,
 
   M_EMPTY1,
   M_EMPTY2,
@@ -86,8 +87,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_SPACE,  KC_ENTER,          CKC_ESC,   CKC_TAB
   ),
   [L_NUM] = LAYOUT_voyager(
-      ___  ,     ___  ,      KC_7,      KC_8,      KC_9,   KC_PERC,          IIIIIII,   KC_HASH,  CKC_CURR,   IIIIIII,     ___  ,     ___  ,
-    IIIIIII,  CKC_NDOT,     CKC_4,     CKC_5,     CKC_6,  CKC_CIRC,          KC_RCMD,    CKC_AT,  CKC_DOLL,   KC_ROPT,   KC_RCMD,   IIIIIII,
+      ___  ,     ___  ,      KC_7,      KC_8,      KC_9,   KC_PERC,          IIIIIII,    KC_DLR,    M_EURO,     M_RUB,     ___  ,     ___  ,
+    IIIIIII,  CKC_NDOT,     CKC_4,     CKC_5,     CKC_6,  CKC_CIRC,          KC_RCMD,    CKC_AT,  CKC_HASH,   KC_ROPT,   KC_RCMD,   IIIIIII,
     IIIIIII,      KC_0,      KC_1,      KC_2,      KC_3,   IIIIIII,          IIIIIII,   KC_AMPR,   KC_PIPE,   KC_TILD,   IIIIIII,   IIIIIII,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
