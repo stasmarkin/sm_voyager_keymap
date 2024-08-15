@@ -32,7 +32,6 @@
         }
 
 
-
 #define CASE_SMTD_TOM_W_CAPS(macro_key, tap_key, mod, threshold)         \
         case macro_key: {                                         \
             switch (action) {                                     \
@@ -57,8 +56,6 @@
             }                                                     \
             break;                                                \
         }
-
-
 
 
 #define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, mod)                     \
@@ -218,54 +215,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         }
     }
 }
-
-smtd_state smtd_states[] = {
-    SMTD(CKC_SPACE),
-    SMTD(CKC_ESC),
-    SMTD(CKC_ENTER),
-    SMTD(CKC_TAB),
-    SMTD(CKC_DF_COMBO),
-
-    SMTD(CKC_A),
-    SMTD(CKC_S),
-    SMTD(CKC_D),
-    SMTD(CKC_F),
-    SMTD(CKC_G),
-    SMTD(CKC_H),
-    SMTD(CKC_J),
-    SMTD(CKC_K),
-    SMTD(CKC_L),
-    SMTD(CKC_Z),
-
-    SMTD(CYR_F),
-    SMTD(CYR_YI),
-    SMTD(CYR_V),
-    SMTD(CYR_A),
-    SMTD(CYR_P),
-    SMTD(CYR_R),
-    SMTD(CYR_O),
-    SMTD(CYR_L),
-    SMTD(CYR_D),
-
-    SMTD(CKC_NDOT),
-    SMTD(CKC_4),
-    SMTD(CKC_5),
-    SMTD(CKC_6),
-    SMTD(CKC_CIRC),
-    SMTD(CKC_AT),
-    SMTD(CKC_HASH),
-
-    SMTD(CKC_F4),
-    SMTD(CKC_F5),
-    SMTD(CKC_F6),
-    SMTD(CKC_F11),
-    SMTD(CKC_LEFT),
-    SMTD(CKC_DOWN),
-    SMTD(CKC_UP),
-    SMTD(CKC_RIGHT),
-    SMTD(CKC_VOLU),
-};
-size_t smtd_states_size = sizeof(smtd_states) / sizeof(smtd_states[0]);
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     switch (keycode) {
