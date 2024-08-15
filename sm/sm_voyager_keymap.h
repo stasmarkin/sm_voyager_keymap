@@ -1,5 +1,4 @@
 #pragma once
-
 #include QMK_KEYBOARD_H
 #include "sm_layouts_keycodes.h"
 
@@ -9,69 +8,67 @@
 
 enum custom_keycodes {
 
-    M_SCRN = ML_SAFE_RANGE,
-    M_QUE,
-    M_EURO,
-    M_RUB,
+  CKC_DF_COMBO = ML_SAFE_RANGE,
+  CKC_SPACE,
+  CKC_ENTER,
+  CKC_ESC,
+  CKC_TAB,
 
-    M_EMPTY1,
-    M_EMPTY2,
+  CKC_A,
+  CKC_S,
+  CKC_D,
+  CKC_F,
+  CKC_G,
+  CKC_H,
+  CKC_J,
+  CKC_K,
+  CKC_L,
+  CKC_Z,
 
-    SMTD_KEYCODES_BEGIN,
+  CKC_NDOT,
+  CKC_4,
+  CKC_5,
+  CKC_6,
+  CKC_CIRC,
+  CKC_AT,
+  CKC_HASH,
 
-    CKC_DF_COMBO,
-    CKC_SPACE,
-    CKC_ENTER,
-    CKC_ESC,
-    CKC_TAB,
+  CKC_F4,
+  CKC_F5,
+  CKC_F6,
+  CKC_F11,
+  CKC_LEFT,
+  CKC_DOWN,
+  CKC_UP,
+  CKC_RIGHT,
+  CKC_VOLU,
 
-    CKC_A,
-    CKC_S,
-    CKC_D,
-    CKC_F,
-    CKC_G,
-    CKC_H,
-    CKC_J,
-    CKC_K,
-    CKC_L,
+  M_SCRN,
+  M_QUE,
+  M_OLD_Z,
+  M_EURO,
+  M_RUB,
 
-    CKC_NDOT,
-    CKC_4,
-    CKC_5,
-    CKC_6,
-    CKC_CIRC,
-    CKC_AT,
-    CKC_HASH,
+  M_EMPTY1,
+  M_EMPTY2,
 
-    CKC_F4,
-    CKC_F5,
-    CKC_F6,
-    CKC_F11,
-    CKC_LEFT,
-    CKC_DOWN,
-    CKC_UP,
-    CKC_RIGHT,
-    CKC_VOLU,
-
-    SMTD_KEYCODES_END,
-
-    SM_LAYOUTS_KEYCODES,
+  SM_LAYOUTS_KEYCODES,
 };
 
 enum layers {
-    L_EN = 0,
-    L_RU,
-    L_GAMING,
-    L_NUM,
-    L_FN,
+  L_EN = 0,
+  L_RU,
+  L_GAMING,
+  L_NUM,
+  L_FN,
 };
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_voyager(
       ___  ,     ___  ,      KC_W,      KC_E,      KC_R,      KC_T,             KC_Y,      KC_U,      KC_I,      KC_O,     ___  ,     ___  ,
-    IIIIIII,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,   KC_RCMD,   IIIIIII,
-    IIIIIII,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   IIIIIII,
+    IIIIIII,     CKC_A,     CKC_S,     CKC_D,     CKC_F,     CKC_G,            CKC_H,     CKC_J,     CKC_K,     CKC_L,     CKC_Z,   IIIIIII,
+    IIIIIII,   M_OLD_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   IIIIIII,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
   ),
