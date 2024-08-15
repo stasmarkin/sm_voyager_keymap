@@ -118,7 +118,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM_W_CAPS(CKC_J, KC_J, KC_RSFT, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_L, KC_L, KC_RIGHT_ALT, 2)
-        CASE_SMTD_TOM_W_CAPS(CKC_Z, KC_Z, KC_RCMD, 2)
 
         CASE_SMTD_TOM_SM_LAYOUTS(CYR_F, KC_LEFT_GUI)
         CASE_SMTD_TOM_SM_LAYOUTS(CYR_YI, KC_LEFT_ALT)
@@ -227,7 +226,6 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_J:
         case CKC_K:
         case CKC_L:
-        case CKC_Z:
         case CYR_F:
         case CYR_YI:
         case CYR_V:
