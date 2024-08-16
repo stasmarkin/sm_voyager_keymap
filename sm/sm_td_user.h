@@ -36,23 +36,26 @@
 #define CASE_SMTD_TOM_W_CAPS(macro_key, tap_key, mod, threshold)         \
         case macro_key: {                                         \
             switch (action) {                                     \
-                case SMTD_ACTION_TOUCH:                           \
+                case SMTD_ACTION_TOUCH:                                  \
+                    register_mods(get_mods() | MOD_BIT(mod)); \
                     break;                                        \
-                case SMTD_ACTION_TAP:                             \
+                case SMTD_ACTION_TAP:                                    \
+                    unregister_mods(MOD_BIT(mod)); \
                     tap_code16(is_caps_word_on() ? LSFT(tap_key) : tap_key);     \
                     break;                                        \
                 case SMTD_ACTION_HOLD:                            \
                     if (tap_count < threshold) {                  \
-                        register_mods(get_mods() | MOD_BIT(mod)); \
                     } else {                                      \
+                        unregister_mods(MOD_BIT(mod));            \
                         tap_code16(is_caps_word_on() ? LSFT(tap_key) : tap_key); \
                     }                                             \
                     break;                                        \
                 case SMTD_ACTION_RELEASE:                         \
                     if (tap_count < threshold) {                  \
                         unregister_mods(MOD_BIT(mod));            \
-                    }                                             \
-                    unregister_code16(is_caps_word_on() ? LSFT(tap_key) : tap_key);  \
+                    } else {                                            \
+                    unregister_code16(is_caps_word_on() ? LSFT(tap_key) : tap_key); \
+                    }                                                     \
                     break;                                        \
             }                                                     \
             break;                                                \
@@ -112,12 +115,12 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOL(CKC_ENTER, KC_ENTER, L_FN, 2)
         CASE_SMTD_TOL(CKC_TAB, KC_TAB, L_FN, 2)
 
-        CASE_SMTD_TOM_W_CAPS(CKC_S, KC_S, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_A, KC_A, KC_LEFT_GUI, 2)
+        CASE_SMTD_TOM_W_CAPS(CKC_S, KC_S, KC_LEFT_ALT, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_D, KC_D, KC_LEFT_CTRL, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_F, KC_F, KC_LSFT, 2)
-        CASE_SMTD_TOM_W_CAPS(CKC_G, KC_G, KC_LEFT_GUI, 2)
-        CASE_SMTD_TOM_W_CAPS(CKC_H, KC_H, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM_W_CAPS(CKC_G, KC_G, KC_RIGHT_GUI, 2)
+        CASE_SMTD_TOM_W_CAPS(CKC_H, KC_H, KC_LEFT_GUI, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_J, KC_J, KC_RSFT, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
         CASE_SMTD_TOM_W_CAPS(CKC_L, KC_L, KC_RIGHT_ALT, 2)
