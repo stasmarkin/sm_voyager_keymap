@@ -6,13 +6,13 @@
 #include "sm_td.h"
 #include "sm_utils.h"
 
-#define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, mod)              \
+#define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, uc_key, mod)      \
         case macro_key: {                                     \
             switch (action) {                                 \
                 case SMTD_ACTION_TOUCH:                       \
                     break;                                    \
                 case SMTD_ACTION_TAP:                         \
-                    process_sm_layouts_tap(macro_key);        \
+                    process_sm_layouts_tap(uc_key);           \
                     break;                                    \
                 case SMTD_ACTION_HOLD:                        \
                     register_mods(get_mods() | MOD_BIT(mod)); \
@@ -41,16 +41,16 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MTE(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
         SMTD_MTE(CKC_L, KC_L, KC_RIGHT_ALT, 2)
 
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_F, KC_LEFT_GUI)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_YI, KC_LEFT_ALT)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_V, KC_LEFT_CTRL)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_A, KC_LEFT_SHIFT)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_P, KC_RIGHT_GUI)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_R, KC_RIGHT_GUI)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_O, KC_RIGHT_SHIFT)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_L, KC_RIGHT_CTRL)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_D, KC_RIGHT_ALT)
-        CASE_SMTD_TOM_SM_LAYOUTS(CYR_ZH, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_F, CYR_F, KC_LEFT_GUI)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_YI, CYR_YI, KC_LEFT_ALT)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_V, CYR_V, KC_LEFT_CTRL)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_A, CYR_A, KC_LEFT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_P, CYR_P, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_R, CYR_R, KC_RIGHT_GUI)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_O, CYR_O, KC_RIGHT_SHIFT)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_L, CYR_L, KC_RIGHT_CTRL)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_D, CYR_D, KC_RIGHT_ALT)
+        CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_ZH, CYR_ZH, KC_RIGHT_GUI)
 
         SMTD_MTE(CKC_4, KC_4, KC_LEFT_ALT, 2, false)
         SMTD_MTE(CKC_5, KC_5, KC_LEFT_CTRL, 2, false)
@@ -148,23 +148,20 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_J:
         case CKC_K:
         case CKC_L:
-        case CYR_F:
-        case CYR_YI:
-        case CYR_V:
-        case CYR_A:
-        case CYR_P:
-        case CYR_R:
-        case CYR_O:
-        case CYR_L:
-        case CYR_D:
+        case CKC_CYR_F:
+        case CKC_CYR_YI:
+        case CKC_CYR_V:
+        case CKC_CYR_A:
+        case CKC_CYR_P:
+        case CKC_CYR_R:
+        case CKC_CYR_O:
+        case CKC_CYR_L:
+        case CKC_CYR_D:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             break;
 
         case CKC_NDOT:
-            if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;
-            break;
-
+        case CKC_CYR_ZH:
         case CKC_DF_COMBO:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;

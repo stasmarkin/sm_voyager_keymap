@@ -33,6 +33,17 @@ enum custom_keycodes {
     CKC_K,
     CKC_L,
 
+    CKC_CYR_F,
+    CKC_CYR_YI,
+    CKC_CYR_V,
+    CKC_CYR_A,
+    CKC_CYR_P,
+    CKC_CYR_R,
+    CKC_CYR_O,
+    CKC_CYR_L,
+    CKC_CYR_D,
+    CKC_CYR_ZH,
+
     CKC_NDOT,
     CKC_4,
     CKC_5,
@@ -66,6 +77,7 @@ enum layers {
     L_GAMING,
     L_NUM,
     L_FN,
+    L_RU_FAKE,
 };
 
 //@formatter:off
@@ -79,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [L_RU] = LAYOUT_voyager(
       ___  ,     ___  ,    CYR_CC,     CYR_U,     CYR_K,     CYR_E,            CYR_N,     CYR_G,    CYR_SH,   CYR_SCH,     ___  ,     ___  ,
-     CYR_YY,     CYR_F,    CYR_YI,     CYR_V,     CYR_A,     CYR_P,            CYR_R,     CYR_O,     CYR_L,     CYR_D,    CYR_ZH,    CYR_YE,
+     CYR_YY, CKC_CYR_F,CKC_CYR_YI, CKC_CYR_V, CKC_CYR_A, CKC_CYR_P,        CKC_CYR_R, CKC_CYR_O, CKC_CYR_L, CKC_CYR_D,CKC_CYR_ZH,    CYR_YE,
     CYR_SLD,    CYR_YA,    CYR_CH,    CYR_SS,     CYR_M,     CYR_I,            CYR_T,   CYR_SFT,     CYR_B,    CYR_YU,    CYR_ZZ,     CYR_H,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
@@ -105,6 +117,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     IIIIIII,    M_SCRN,     KC_F1,      KC_F2,    KC_F3,    KC_F12,          KC_HOME,   KC_PGDN,   KC_PGUP,    KC_END,   KC_VOLD,   IIIIIII,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               CKC_SPACE, CKC_ENTER,          CKC_ESC,   CKC_TAB
+  ),
+
+  // Fake layer to store CYR_F, CYR_YI and others positions. There are CKC_CYR_* in L_RU, and they are not handled properly by sm_layouts
+  [L_RU_FAKE] = LAYOUT_voyager(
+      ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    ___   ,            ___  ,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
+      ___  ,     CYR_F,    CYR_YI,     CYR_V,     CYR_A,     CYR_P,            CYR_R,     CYR_O,     CYR_L,     CYR_D,    CYR_ZH,     ___  ,
+      ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    ___   ,            ___  ,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
+      ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    ___   ,            ___  ,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
+                                                  ___  ,    ___   ,            ___  ,     ___
   ),
 };
 //@formatter:on

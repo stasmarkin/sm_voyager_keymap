@@ -158,7 +158,7 @@ const uint16_t PROGMEM combo_ERUI[] = { KC_E, KC_R, KC_U, KC_I, COMBO_END };
 const uint16_t PROGMEM combo_ERUI_GAMING[] = { KC_W, KC_E, M_EMPTY1, M_EMPTY2, COMBO_END };
 
 const uint16_t PROGMEM combo_FJ[] = { CKC_F, CKC_J, COMBO_END };
-const uint16_t PROGMEM combo_CYR_FJ[] = { CYR_A, CYR_O, COMBO_END };
+const uint16_t PROGMEM combo_CYR_FJ[] = { CKC_CYR_A, CKC_CYR_O, COMBO_END };
 
 const uint16_t PROGMEM combo_AS[] = { CKC_A, CKC_S, COMBO_END };
 const uint16_t PROGMEM combo_AD[] = { CKC_A, CKC_D, COMBO_END };
@@ -171,16 +171,16 @@ const uint16_t PROGMEM combo_ADF[] = { CKC_A, CKC_D, CKC_F, COMBO_END };
 const uint16_t PROGMEM combo_SDF[] = { CKC_S, CKC_D, CKC_F, COMBO_END };
 const uint16_t PROGMEM combo_ASDF[] = { CKC_A, CKC_S, CKC_D, CKC_F, COMBO_END };
 
-const uint16_t PROGMEM combo_CYR_AS[] = { CYR_F, CYR_YI, COMBO_END };
-const uint16_t PROGMEM combo_CYR_AD[] = { CYR_F, CYR_V, COMBO_END };
-const uint16_t PROGMEM combo_CYR_AF[] = { CYR_F, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_CYR_SD[] = { CYR_YI, CYR_V, COMBO_END };
-const uint16_t PROGMEM combo_CYR_SF[] = { CYR_YI, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_CYR_ASD[] = { CYR_F, CYR_YI, CYR_V, COMBO_END };
-const uint16_t PROGMEM combo_CYR_ASF[] = { CYR_F, CYR_YI, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_CYR_ADF[] = { CYR_F, CYR_V, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_CYR_SDF[] = { CYR_YI, CYR_V, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_CYR_ASDF[] = { CYR_F, CYR_YI, CYR_V, CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_AS[] = { CKC_CYR_F, CKC_CYR_YI, COMBO_END };
+const uint16_t PROGMEM combo_CYR_AD[] = { CKC_CYR_F, CKC_CYR_V, COMBO_END };
+const uint16_t PROGMEM combo_CYR_AF[] = { CKC_CYR_F, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_SD[] = { CKC_CYR_YI, CKC_CYR_V, COMBO_END };
+const uint16_t PROGMEM combo_CYR_SF[] = { CKC_CYR_YI, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_ASD[] = { CKC_CYR_F, CKC_CYR_YI, CKC_CYR_V, COMBO_END };
+const uint16_t PROGMEM combo_CYR_ASF[] = { CKC_CYR_F, CKC_CYR_YI, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_ADF[] = { CKC_CYR_F, CKC_CYR_V, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_SDF[] = { CKC_CYR_YI, CKC_CYR_V, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_CYR_ASDF[] = { CKC_CYR_F, CKC_CYR_YI, CKC_CYR_V, CKC_CYR_A, COMBO_END };
 
 
 const uint16_t PROGMEM combo_AW[] = { CKC_A, KC_W, COMBO_END };
@@ -215,35 +215,35 @@ const uint16_t PROGMEM combo_LDOT[] = { CKC_L, KC_RCMD, COMBO_END };
 const uint16_t PROGMEM combo_QQUE[] = { KC_Q, M_QUE, COMBO_END };
 
 
-const uint16_t PROGMEM combo_AW_RU[] = { CYR_F, CYR_CC, COMBO_END };
+const uint16_t PROGMEM combo_AW_RU[] = { CKC_CYR_F, CYR_CC, COMBO_END };
 const uint16_t PROGMEM combo_ZX_RU[] = { CYR_YA, CYR_CH, COMBO_END };
 const uint16_t PROGMEM combo_WE_RU[] = { CYR_CC, CYR_U, COMBO_END };
 const uint16_t PROGMEM combo_WR_RU[] = { CYR_CC, CYR_K, COMBO_END };
-const uint16_t PROGMEM combo_SE_RU[] = { CYR_YI, CYR_U, COMBO_END };
-const uint16_t PROGMEM combo_SC_RU[] = { CYR_YI, CYR_SS, COMBO_END };
+const uint16_t PROGMEM combo_SE_RU[] = { CKC_CYR_YI, CYR_U, COMBO_END };
+const uint16_t PROGMEM combo_SC_RU[] = { CKC_CYR_YI, CYR_SS, COMBO_END };
 const uint16_t PROGMEM combo_XC_RU[] = { CYR_CH, CYR_SS, COMBO_END };
-const uint16_t PROGMEM combo_XD_RU[] = { CYR_CH, CYR_V, COMBO_END };
+const uint16_t PROGMEM combo_XD_RU[] = { CYR_CH, CKC_CYR_V, COMBO_END };
 const uint16_t PROGMEM combo_ER_RU[] = { CYR_U, CYR_K, COMBO_END };
-const uint16_t PROGMEM combo_EF_RU[] = { CYR_U, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_DR_RU[] = { CYR_V, CYR_K, COMBO_END };
-const uint16_t PROGMEM combo_DF_RU[] = { CYR_V, CYR_A, COMBO_END };
-const uint16_t PROGMEM combo_DV_RU[] = { CYR_V, CYR_M, COMBO_END };
+const uint16_t PROGMEM combo_EF_RU[] = { CYR_U, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_DR_RU[] = { CKC_CYR_V, CYR_K, COMBO_END };
+const uint16_t PROGMEM combo_DF_RU[] = { CKC_CYR_V, CKC_CYR_A, COMBO_END };
+const uint16_t PROGMEM combo_DV_RU[] = { CKC_CYR_V, CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_CV_RU[] = { CYR_SS, CYR_M, COMBO_END };
 const uint16_t PROGMEM combo_UI_RU[] = { CYR_G, CYR_SH, COMBO_END };
 const uint16_t PROGMEM combo_UO_RU[] = { CYR_G, CYR_SCH, COMBO_END };
-const uint16_t PROGMEM combo_JI_RU[] = { CYR_O, CYR_SH, COMBO_END };
-const uint16_t PROGMEM combo_JK_RU[] = { CYR_O, CYR_L, COMBO_END };
-const uint16_t PROGMEM combo_JL_RU[] = { CYR_O, CYR_D, COMBO_END };
-const uint16_t PROGMEM combo_MK_RU[] = { CYR_SFT, CYR_L, COMBO_END };
+const uint16_t PROGMEM combo_JI_RU[] = { CKC_CYR_O, CYR_SH, COMBO_END };
+const uint16_t PROGMEM combo_JK_RU[] = { CKC_CYR_O, CKC_CYR_L, COMBO_END };
+const uint16_t PROGMEM combo_JL_RU[] = { CKC_CYR_O, CKC_CYR_D, COMBO_END };
+const uint16_t PROGMEM combo_MK_RU[] = { CYR_SFT, CKC_CYR_L, COMBO_END };
 const uint16_t PROGMEM combo_MP_RU[] = { CYR_SFT, CYR_B, COMBO_END };
 const uint16_t PROGMEM combo_MQ_RU[] = { CYR_SFT, CYR_YU, COMBO_END };
 const uint16_t PROGMEM combo_IO_RU[] = { CYR_SH, CYR_SCH, COMBO_END };
-const uint16_t PROGMEM combo_IL_RU[] = { CYR_SH, CYR_D, COMBO_END };
-const uint16_t PROGMEM combo_KL_RU[] = { CYR_L, CYR_D, COMBO_END };
-const uint16_t PROGMEM combo_KQ_RU[] = { CYR_L, CYR_YU, COMBO_END };
+const uint16_t PROGMEM combo_IL_RU[] = { CYR_SH, CKC_CYR_D, COMBO_END };
+const uint16_t PROGMEM combo_KL_RU[] = { CKC_CYR_L, CKC_CYR_D, COMBO_END };
+const uint16_t PROGMEM combo_KQ_RU[] = { CKC_CYR_L, CYR_YU, COMBO_END };
 const uint16_t PROGMEM combo_PQ_RU[] = { CYR_B, CYR_YU, COMBO_END };
-const uint16_t PROGMEM combo_OZ_RU[] = { CYR_SCH, CYR_ZH, COMBO_END };
-const uint16_t PROGMEM combo_LDOT_RU[] = { CYR_D, CYR_ZH, COMBO_END };
+const uint16_t PROGMEM combo_OZ_RU[] = { CYR_SCH, CKC_CYR_ZH, COMBO_END };
+const uint16_t PROGMEM combo_LDOT_RU[] = { CKC_CYR_D, CKC_CYR_ZH, COMBO_END };
 const uint16_t PROGMEM combo_QQUE_RU[] = { CYR_YU, CYR_ZZ, COMBO_END };
 
 
