@@ -2,10 +2,6 @@
 
 #include QMK_KEYBOARD_H
 
-#define RETURN_LAYER_NOT_SET 15
-
-static uint8_t return_layer     = RETURN_LAYER_NOT_SET;
-static uint8_t return_layer_cnt = 0;
 
 #define SM_UNICODE_NO_R(string)                           \
     const uint8_t mods = get_mods();                      \
@@ -28,19 +24,3 @@ static uint8_t return_layer_cnt = 0;
 void press_no_mods(uint16_t keycode) {
     SM_PRESS_NO_MODS(keycode);
 }
-
-#define LAYER_PUSH(layer)                              \
-    return_layer_cnt++;                                \
-    if (return_layer == RETURN_LAYER_NOT_SET) {        \
-        return_layer = get_highest_layer(layer_state); \
-    }                                                  \
-    layer_move(layer);
-
-#define LAYER_RESTORE()                          \
-    if (return_layer_cnt > 0) {                  \
-        return_layer_cnt--;                      \
-        if (return_layer_cnt == 0) {             \
-            layer_move(return_layer);            \
-            return_layer = RETURN_LAYER_NOT_SET; \
-        }                                        \
-    }
