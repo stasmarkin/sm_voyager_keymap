@@ -15,7 +15,7 @@
                     process_sm_layouts_tap(uc_key);           \
                     break;                                    \
                 case SMTD_ACTION_HOLD:                        \
-                    register_mods(get_mods() | MOD_BIT(mod)); \
+                    register_mods(MOD_BIT(mod));              \
                     break;                                    \
                 case SMTD_ACTION_RELEASE:                     \
                     unregister_mods(MOD_BIT(mod));            \
@@ -52,22 +52,22 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_D, CYR_D, KC_RIGHT_ALT)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_ZH, CYR_ZH, KC_RIGHT_GUI)
 
-        SMTD_MTE(CKC_4, KC_4, KC_LEFT_ALT, 2, false)
-        SMTD_MTE(CKC_5, KC_5, KC_LEFT_CTRL, 2, false)
-        SMTD_MTE(CKC_6, KC_6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MTE(CKC_CIRC, KC_CIRC, KC_LCMD, 2, false)
-        SMTD_MTE(CKC_AT, KC_AT, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MTE(CKC_HASH, KC_HASH, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(CKC_4, KC_4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(CKC_5, KC_5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(CKC_6, KC_6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(CKC_CIRC, KC_CIRC, KC_LCMD, 2, false)
+        SMTD_MT(CKC_AT, KC_AT, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(CKC_HASH, KC_HASH, KC_RIGHT_CTRL, 2, false)
 
-        SMTD_MTE(CKC_F4, KC_F4, KC_LEFT_ALT, 2, false)
-        SMTD_MTE(CKC_F5, KC_F5, KC_LEFT_CTRL, 2, false)
-        SMTD_MTE(CKC_F6, KC_F6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MTE(CKC_F11, KC_F11, KC_LEFT_GUI, 2, false)
-        SMTD_MTE(CKC_LEFT, KC_LEFT, KC_RIGHT_GUI, 2, false)
-        SMTD_MTE(CKC_DOWN, KC_DOWN, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MTE(CKC_UP, KC_UP, KC_RIGHT_CTRL, 2, false)
-        SMTD_MTE(CKC_RIGHT, KC_RIGHT, KC_RIGHT_ALT, 2, false)
-        SMTD_MTE(CKC_VOLU, KC_VOLU, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(CKC_F4, KC_F4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(CKC_F5, KC_F5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(CKC_F6, KC_F6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(CKC_F11, KC_F11, KC_LEFT_GUI, 2, false)
+        SMTD_MT(CKC_LEFT, KC_LEFT, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(CKC_DOWN, KC_DOWN, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(CKC_UP, KC_UP, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(CKC_RIGHT, KC_RIGHT, KC_RIGHT_ALT, 2, false)
+        SMTD_MT(CKC_VOLU, KC_VOLU, KC_RIGHT_GUI, 2, false)
 
         case CKC_DF_COMBO: {
             switch (action) {
@@ -78,7 +78,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                     break;
                 case SMTD_ACTION_HOLD:
                     if (tap_count < 2) {
-                        register_mods(get_mods() | MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
+                        register_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
                     } else {
                         register_code16(KC_BSPC);
                     }
@@ -120,7 +120,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
                     break;
                 case SMTD_ACTION_HOLD:
                     if (tap_count < 2) {
-                        register_mods(get_mods() | MOD_BIT(KC_LCMD));
+                        register_mods(MOD_BIT(KC_LCMD));
                     } else {
                         register_code16(KC_DOT);
                     }
@@ -170,3 +170,93 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
 
     return get_smtd_timeout_default(timeout);
 }
+
+#ifdef SMTD_DEBUG_ENABLED
+char* keycode_to_string_user(uint16_t keycode) {
+    switch (keycode) {
+    case M_SCRN: return "M_SCRN";
+    case M_QUE: return "M_QUE";
+    case M_EURO: return "M_EURO";
+    case M_RUB: return "M_RUB";
+    case SMTD_KEYCODES_BEGIN: return "SMTD_KEYCODES_BEGIN";
+    case CKC_DF_COMBO: return "CKC_DF_COMBO";
+    case CKC_SPACE: return "CKC_SPACE";
+    case CKC_ENTER: return "CKC_ENTER";
+    case CKC_ESC: return "CKC_ESC";
+    case CKC_TAB: return "CKC_TAB";
+    case CKC_A: return "CKC_A";
+    case CKC_S: return "CKC_S";
+    case CKC_D: return "CKC_D";
+    case CKC_F: return "CKC_F";
+    case CKC_G: return "CKC_G";
+    case CKC_H: return "CKC_H";
+    case CKC_J: return "CKC_J";
+    case CKC_K: return "CKC_K";
+    case CKC_L: return "CKC_L";
+    case CKC_CYR_F: return "CKC_CYR_F";
+    case CKC_CYR_YI: return "CKC_CYR_YI";
+    case CKC_CYR_V: return "CKC_CYR_V";
+    case CKC_CYR_A: return "CKC_CYR_A";
+    case CKC_CYR_P: return "CKC_CYR_P";
+    case CKC_CYR_R: return "CKC_CYR_R";
+    case CKC_CYR_O: return "CKC_CYR_O";
+    case CKC_CYR_L: return "CKC_CYR_L";
+    case CKC_CYR_D: return "CKC_CYR_D";
+    case CKC_CYR_ZH: return "CKC_CYR_ZH";
+    case CKC_NDOT: return "CKC_NDOT";
+    case CKC_4: return "CKC_4";
+    case CKC_5: return "CKC_5";
+    case CKC_6: return "CKC_6";
+    case CKC_CIRC: return "CKC_CIRC";
+    case CKC_AT: return "CKC_AT";
+    case CKC_HASH: return "CKC_HASH";
+    case CKC_F4: return "CKC_F4";
+    case CKC_F5: return "CKC_F5";
+    case CKC_F6: return "CKC_F6";
+    case CKC_F11: return "CKC_F11";
+    case CKC_LEFT: return "CKC_LEFT";
+    case CKC_DOWN: return "CKC_DOWN";
+    case CKC_UP: return "CKC_UP";
+    case CKC_RIGHT: return "CKC_RIGHT";
+    case CKC_VOLU: return "CKC_VOLU";
+    case SMTD_KEYCODES_END: return "SMTD_KEYCODES_END";
+    case M_EMPTY1: return "M_EMPTY1";
+    case M_EMPTY2: return "M_EMPTY2";
+    case CYR_YY: return "CYR_YY";
+    case CYR_CC: return "CYR_CC";
+    case CYR_U: return "CYR_U";
+    case CYR_K: return "CYR_K";
+    case CYR_E: return "CYR_E";
+    case CYR_F: return "CYR_F";
+    case CYR_YI: return "CYR_YI";
+    case CYR_V: return "CYR_V";
+    case CYR_A: return "CYR_A";
+    case CYR_P: return "CYR_P";
+    case CYR_YA: return "CYR_YA";
+    case CYR_CH: return "CYR_CH";
+    case CYR_SS: return "CYR_SS";
+    case CYR_M: return "CYR_M";
+    case CYR_I: return "CYR_I";
+    case CYR_N: return "CYR_N";
+    case CYR_G: return "CYR_G";
+    case CYR_SH: return "CYR_SH";
+    case CYR_SCH: return "CYR_SCH";
+    case CYR_ZZ: return "CYR_ZZ";
+    case CYR_H: return "CYR_H";
+    case CYR_R: return "CYR_R";
+    case CYR_O: return "CYR_O";
+    case CYR_YO: return "CYR_YO";
+    case CYR_L: return "CYR_L";
+    case CYR_D: return "CYR_D";
+    case CYR_YE: return "CYR_YE";
+    case CYR_T: return "CYR_T";
+    case CYR_SFT: return "CYR_SFT";
+    case CYR_B: return "CYR_B";
+    case CYR_YU: return "CYR_YU";
+    case CYR_ZH: return "CYR_ZH";
+    case CYR_SLD: return "CYR_SLD";
+    }
+
+    return NULL;
+}
+#endif
