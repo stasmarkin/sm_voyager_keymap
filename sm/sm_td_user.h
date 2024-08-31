@@ -26,7 +26,37 @@
 
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
-        SMTD_LT(CKC_SPACE, KC_SPACE, L_NUM, 2)
+        case CKC_SPACE: {
+            switch (action) {
+                case SMTD_ACTION_TOUCH:
+                    break;
+                case SMTD_ACTION_TAP:
+                    if (is_caps_word_on()) {
+                        switch (tap_count) {
+                            case 0:
+                                tap_code16(KC_UNDS);
+                                return;
+                            default:
+                                caps_word_off();
+                                tap_code16(KC_BSPC);
+                                tap_code16(KC_SPACE);
+                                return;
+                        }
+                    }
+
+                    tap_code16(KC_SPACE);
+                    break;
+                case SMTD_ACTION_HOLD:
+                    if (tap_count < 2) { LAYER_PUSH(L_NUM); }
+                    else { SMTD_REGISTER_16(true, KC_SPACE); }
+                    break;
+                case SMTD_ACTION_RELEASE:
+                    if (tap_count < 2) { LAYER_RESTORE(); }
+                    SMTD_UNREGISTER_16(true, KC_SPACE);
+                    break;
+            }
+            break;
+        }
         SMTD_LT(CKC_ESC, KC_ESC, L_NUM, 2)
         SMTD_LT(CKC_ENTER, KC_ENTER, L_FN, 2)
         SMTD_LT(CKC_TAB, KC_TAB, L_FN, 2)
