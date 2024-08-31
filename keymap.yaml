@@ -56,12 +56,12 @@ layers:
   EN:
     - [ "", "", W, E, R, T ]
     - [ { t: "" }, { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
-    - [ { t: "" }, "" , X, C, V, B ]
+    - [ { t: "" }, Z , X, C, V, B ]
     - [ "", "", "", "", "", "Tab" ]
     - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
 
     - [ Y, U, I, O, "", "" ]
-    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd, t: "Z" }, "" ]
+    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd }, "" ]
     - [ N, M, P, Q, "", "" ]
     - [ "", "", "", "", "", "" ]
     - [ { h: NUM,   t: "Esc" }, { h: FN,   t: "Tab" } ]
