@@ -169,32 +169,47 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     switch (keycode) {
-        case CKC_A:
-        case CKC_S:
-        case CKC_D:
         case CKC_F:
         case CKC_G:
         case CKC_H:
         case CKC_J:
-        case CKC_K:
-        case CKC_L:
-        case CKC_CYR_F:
-        case CKC_CYR_YI:
-        case CKC_CYR_V:
         case CKC_CYR_A:
         case CKC_CYR_P:
         case CKC_CYR_R:
         case CKC_CYR_O:
-        case CKC_CYR_L:
-        case CKC_CYR_D:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 30;
             break;
 
+        case CKC_D:
+        case CKC_K:
+        case CKC_CYR_V:
+        case CKC_CYR_L:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            break;
+
+        case CKC_L:
+        case CKC_S:
+        case CKC_CYR_YI:
+        case CKC_CYR_D:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            break;
+
+        case CKC_A:
+        case CKC_CYR_F:
         case CKC_NDOT:
         case CKC_CYR_ZH:
         case CKC_DF_COMBO:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            break;
+
+        case CKC_SPACE:
+            if (timeout == SMTD_TIMEOUT_SEQUENCE) return 200;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 70;
             break;
     }
 
