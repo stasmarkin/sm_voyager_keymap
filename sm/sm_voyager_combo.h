@@ -2,8 +2,8 @@
 #include QMK_KEYBOARD_H
 #include "sm_voyager_keymap.h"
 #include "sm_layouts.h"
-#include "sm_td.h"
 #include <timer.h>
+#include "sm_td.h"
 
 #ifndef COMBO_TAP_TERM
 #define COMBO_TAP_TERM TAPPING_TERM
@@ -98,6 +98,7 @@ PQ,
 OZ,
 LDOT,
 QQUE,
+DK,
 
 // SYSTEM COMBOS ON RU LAYOUT
 AW_RU,
@@ -130,6 +131,7 @@ PQ_RU,
 OZ_RU,
 LDOT_RU,
 QQUE_RU,
+DK_RU,
 
 
 // SYSTEM COMBOS ON NUM LAYOUT
@@ -213,6 +215,7 @@ const uint16_t PROGMEM combo_PQ[] = { KC_P, KC_Q, COMBO_END };
 const uint16_t PROGMEM combo_OZ[] = { KC_O, KC_RCMD, COMBO_END };
 const uint16_t PROGMEM combo_LDOT[] = { CKC_L, KC_RCMD, COMBO_END };
 const uint16_t PROGMEM combo_QQUE[] = { KC_Q, M_QUE, COMBO_END };
+const uint16_t PROGMEM combo_DK[] = { CKC_D, CKC_K, COMBO_END };
 
 
 const uint16_t PROGMEM combo_AW_RU[] = { CKC_CYR_F, CYR_CC, COMBO_END };
@@ -245,6 +248,7 @@ const uint16_t PROGMEM combo_PQ_RU[] = { CYR_B, CYR_YU, COMBO_END };
 const uint16_t PROGMEM combo_OZ_RU[] = { CYR_SCH, CKC_CYR_ZH, COMBO_END };
 const uint16_t PROGMEM combo_LDOT_RU[] = { CKC_CYR_D, CKC_CYR_ZH, COMBO_END };
 const uint16_t PROGMEM combo_QQUE_RU[] = { CYR_YU, CYR_ZZ, COMBO_END };
+const uint16_t PROGMEM combo_DK_RU[] = { CKC_CYR_V, CKC_CYR_L, COMBO_END };
 
 
 const uint16_t PROGMEM combo_AW_NUM[] = { CKC_NDOT, KC_7, COMBO_END };
@@ -267,6 +271,7 @@ const uint16_t PROGMEM combo_CV_NUM[] = { KC_2, KC_3, COMBO_END };
 
 
 combo_t key_combos[COMBO_COUNT] = {
+    //fixme перейти на COMBO(combo, keycode) и вынести всю обработку в юзер-процессор
     [XCV] = COMBO_ACTION(combo_XCV),
     [MPQ] = COMBO_ACTION(combo_MPQ),
     [XCV_RU] = COMBO_ACTION(combo_XCV_RU),
@@ -329,6 +334,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [OZ] = COMBO_ACTION(combo_OZ),
     [LDOT] = COMBO_ACTION(combo_LDOT),
     [QQUE] = COMBO_ACTION(combo_QQUE),
+    [DK] = COMBO_ACTION(combo_DK),
 
     [AW_RU] = COMBO_ACTION(combo_AW_RU),
     [ZX_RU] = COMBO_ACTION(combo_ZX_RU),
@@ -360,6 +366,7 @@ combo_t key_combos[COMBO_COUNT] = {
     [OZ_RU] = COMBO_ACTION(combo_OZ_RU),
     [LDOT_RU] = COMBO_ACTION(combo_LDOT_RU),
     [QQUE_RU] = COMBO_ACTION(combo_QQUE_RU),
+    [DK_RU] = COMBO_ACTION(combo_DK_RU),
 
     [AW_NUM] = COMBO_ACTION(combo_AW_NUM),
     [ZX_NUM] = COMBO_ACTION(combo_ZX_NUM),
@@ -413,11 +420,26 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         CASE_COMBO2_TAP(LDOT, LDOT_RU, KC_DQUO)
         CASE_COMBO2_TAP(QQUE, QQUE_RU, KC_QUOTE)
 
+        case DK:
+        case DK_RU: {
+            if (pressed) {
+                register_code(KC_LCMD);
+                register_code(KC_LSFT);
+                register_code(KC_SPACE);
+                unregister_code(KC_SPACE);
+                unregister_code(KC_LSFT);
+                unregister_code(KC_LCMD);
+            }
+            return;
+        }
+
+
         case DF:
         case DF_NUM:
         case DF_RU: {
             keyrecord_t record = {.event = MAKE_KEYEVENT(0, 0, pressed)};
-            process_smtd(CKC_DF_COMBO, &record);
+            //fixme describe that combos are processed in process_smtd
+            smtd_process_desired(CKC_DF_COMBO, &record, CKC_DF_COMBO);
             return;
         }
 
@@ -531,6 +553,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             send_keyboard_report();
         } else {
             del_mods(MOD_BIT(KC_LEFT_GUI) | MOD_BIT(KC_LEFT_ALT));
+            //fixme timer_elapsed32() -- qmk
             if (((int32_t) TIMER_DIFF_32(timer_read32(), last_combo_pressed)) < COMBO_TAP_TERM) {
                 set_oneshot_mods(MOD_BIT(KC_LEFT_GUI) | MOD_BIT(KC_LEFT_ALT));
             } else {

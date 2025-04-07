@@ -67,6 +67,7 @@ enum custom_keycodes {
 
     M_EMPTY1,
     M_EMPTY2,
+    KC_MPQ,
 
     SM_LAYOUTS_KEYCODES,
 };

@@ -1,11 +1,12 @@
 #include QMK_KEYBOARD_H
+
 #include "sm_voyager_keymap.h"
 #include "sm_voyager_combo.h"
 #include "sm_voyager_rgb.h"
 #include "sm_layouts.h"
 #include "sm_utils.h"
-#include "sm_td.h"
 #include "sm_td_user.h"
+#include "sm_td.h"
 
 
 bool process_smunicode(uint16_t keycode, keyrecord_t *record);
