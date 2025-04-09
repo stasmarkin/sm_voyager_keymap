@@ -26,7 +26,7 @@
 
 smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
-        case CKC_SPACE: {
+        case KC_SPACE: {
             switch (action) {
                 case SMTD_ACTION_TOUCH:
                     return SMTD_RESOLUTION_UNCERTAIN;
@@ -58,19 +58,19 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
             break;
         }
 
-        SMTD_LT_ON_MKEY(CKC_ESC, KC_ESC, L_NUM, 2)
-        SMTD_LT_ON_MKEY(CKC_ENTER, KC_ENTER, L_FN, 2)
-        SMTD_LT_ON_MKEY(CKC_TAB, KC_TAB, L_FN, 2)
+        SMTD_LT(KC_ESC, L_NUM, 2)
+        SMTD_LT(KC_ENTER, L_FN, 2)
+        SMTD_LT(KC_TAB, L_FN, 2)
 
-        SMTD_MT_ON_MKEY(CKC_A, KC_A, KC_LEFT_GUI, 2)
-        SMTD_MT_ON_MKEY(CKC_S, KC_S, KC_LEFT_ALT, 2)
-        SMTD_MT_ON_MKEY(CKC_D, KC_D, KC_LEFT_CTRL, 2)
-        SMTD_MT_ON_MKEY(CKC_F, KC_F, KC_LSFT, 2)
-        SMTD_MT_ON_MKEY(CKC_G, KC_G, KC_RIGHT_GUI, 2)
-        SMTD_MT_ON_MKEY(CKC_H, KC_H, KC_RIGHT_GUI, 2)
-        SMTD_MT_ON_MKEY(CKC_J, KC_J, KC_RSFT, 2)
-        SMTD_MT_ON_MKEY(CKC_K, KC_K, KC_RIGHT_CTRL, 2)
-        SMTD_MT_ON_MKEY(CKC_L, KC_L, KC_RIGHT_ALT, 2)
+        SMTD_MT(KC_A, KC_LEFT_GUI, 2)
+        SMTD_MT(KC_S, KC_LEFT_ALT, 2)
+        SMTD_MT(KC_D, KC_LEFT_CTRL, 2)
+        SMTD_MT(KC_F, KC_LSFT, 2)
+        SMTD_MT(KC_G, KC_RIGHT_GUI, 2)
+        SMTD_MT(KC_H, KC_RIGHT_GUI, 2)
+        SMTD_MT(KC_J, KC_RSFT, 2)
+        SMTD_MT(KC_K, KC_RIGHT_CTRL, 2)
+        SMTD_MT(KC_L, KC_RIGHT_ALT, 2)
 
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_F, CYR_F, KC_LEFT_GUI)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_YI, CYR_YI, KC_LEFT_ALT)
@@ -83,22 +83,22 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_D, CYR_D, KC_RIGHT_ALT)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_ZH, CYR_ZH, KC_RIGHT_GUI)
 
-        SMTD_MT_ON_MKEY(CKC_4, KC_4, KC_LEFT_ALT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_5, KC_5, KC_LEFT_CTRL, 2, false)
-        SMTD_MT_ON_MKEY(CKC_6, KC_6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_CIRC, KC_CIRC, KC_LCMD, 2, false)
-        SMTD_MT_ON_MKEY(CKC_AT, KC_AT, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_HASH, KC_HASH, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(KC_4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(KC_5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(KC_6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(KC_CIRC, KC_LCMD, 2, false)
+        SMTD_MT(KC_AT, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(KC_HASH, KC_RIGHT_CTRL, 2, false)
 
-        SMTD_MT_ON_MKEY(CKC_F4, KC_F4, KC_LEFT_ALT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_F5, KC_F5, KC_LEFT_CTRL, 2, false)
-        SMTD_MT_ON_MKEY(CKC_F6, KC_F6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_F11, KC_F11, KC_LEFT_GUI, 2, false)
-        SMTD_MT_ON_MKEY(CKC_LEFT, KC_LEFT, KC_RIGHT_GUI, 2, false)
-        SMTD_MT_ON_MKEY(CKC_DOWN, KC_DOWN, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_UP, KC_UP, KC_RIGHT_CTRL, 2, false)
-        SMTD_MT_ON_MKEY(CKC_RIGHT, KC_RIGHT, KC_RIGHT_ALT, 2, false)
-        SMTD_MT_ON_MKEY(CKC_VOLU, KC_VOLU, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(KC_F4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(KC_F5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(KC_F6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(KC_F11, KC_LEFT_GUI, 2, false)
+        SMTD_MT(KC_LEFT, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(KC_DOWN, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(KC_UP, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(KC_RIGHT, KC_RIGHT_ALT, 2, false)
+        SMTD_MT(KC_VOLU, KC_RIGHT_GUI, 2, false)
 
         case CKC_DF_COMBO: {
             switch (action) {
@@ -125,7 +125,7 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         }
 
 
-        case CKC_NDOT: {
+        case KC_DOT: {
             switch (action) {
                 case SMTD_ACTION_TOUCH:
                     return SMTD_RESOLUTION_UNCERTAIN;
@@ -172,10 +172,10 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
 
 uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
     switch (keycode) {
-        case CKC_F:
-        case CKC_G:
-        case CKC_H:
-        case CKC_J:
+        case KC_F:
+        case KC_G:
+        case KC_H:
+        case KC_J:
         case CKC_CYR_A:
         case CKC_CYR_P:
         case CKC_CYR_R:
@@ -184,25 +184,25 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
             if (timeout == SMTD_TIMEOUT_RELEASE) return 30;
             break;
 
-        case CKC_D:
-        case CKC_K:
+        case KC_D:
+        case KC_K:
         case CKC_CYR_V:
         case CKC_CYR_L:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
             break;
 
-        case CKC_L:
-        case CKC_S:
+        case KC_L:
+        case KC_S:
         case CKC_CYR_YI:
         case CKC_CYR_D:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
             break;
 
-        case CKC_A:
+        case KC_A:
+        case KC_DOT:
         case CKC_CYR_F:
-        case CKC_NDOT:
         case CKC_CYR_ZH:
         case CKC_DF_COMBO:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
@@ -210,7 +210,7 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
             if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
             break;
 
-        case CKC_SPACE:
+        case KC_SPACE:
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 200;
             if (timeout == SMTD_TIMEOUT_RELEASE) return 70;
             break;
@@ -226,21 +226,20 @@ char* smtd_keycode_to_str_user(uint16_t keycode) {
     case M_QUE: return "M_QUE";
     case M_EURO: return "M_EURO";
     case M_RUB: return "M_RUB";
-    case SMTD_KEYCODES_BEGIN: return "SMTD_KEYCODES_BEGIN";
     case CKC_DF_COMBO: return "CKC_DF_COMBO";
-    case CKC_SPACE: return "CKC_SPACE";
-    case CKC_ENTER: return "CKC_ENTER";
-    case CKC_ESC: return "CKC_ESC";
-    case CKC_TAB: return "CKC_TAB";
-    case CKC_A: return "CKC_A";
-    case CKC_S: return "CKC_S";
-    case CKC_D: return "CKC_D";
-    case CKC_F: return "CKC_F";
-    case CKC_G: return "CKC_G";
-    case CKC_H: return "CKC_H";
-    case CKC_J: return "CKC_J";
-    case CKC_K: return "CKC_K";
-    case CKC_L: return "CKC_L";
+    case KC_SPACE: return "KC_SPACE";
+    case KC_ENTER: return "KC_ENTER";
+    case KC_ESC: return "KC_ESC";
+    case KC_TAB: return "KC_TAB";
+    case KC_A: return "KC_A";
+    case KC_S: return "KC_S";
+    case KC_D: return "KC_D";
+    case KC_F: return "KC_F";
+    case KC_G: return "KC_G";
+    case KC_H: return "KC_H";
+    case KC_J: return "KC_J";
+    case KC_K: return "KC_K";
+    case KC_L: return "KC_L";
     case CKC_CYR_F: return "CKC_CYR_F";
     case CKC_CYR_YI: return "CKC_CYR_YI";
     case CKC_CYR_V: return "CKC_CYR_V";
@@ -251,23 +250,22 @@ char* smtd_keycode_to_str_user(uint16_t keycode) {
     case CKC_CYR_L: return "CKC_CYR_L";
     case CKC_CYR_D: return "CKC_CYR_D";
     case CKC_CYR_ZH: return "CKC_CYR_ZH";
-    case CKC_NDOT: return "CKC_NDOT";
-    case CKC_4: return "CKC_4";
-    case CKC_5: return "CKC_5";
-    case CKC_6: return "CKC_6";
-    case CKC_CIRC: return "CKC_CIRC";
-    case CKC_AT: return "CKC_AT";
-    case CKC_HASH: return "CKC_HASH";
-    case CKC_F4: return "CKC_F4";
-    case CKC_F5: return "CKC_F5";
-    case CKC_F6: return "CKC_F6";
-    case CKC_F11: return "CKC_F11";
-    case CKC_LEFT: return "CKC_LEFT";
-    case CKC_DOWN: return "CKC_DOWN";
-    case CKC_UP: return "CKC_UP";
-    case CKC_RIGHT: return "CKC_RIGHT";
-    case CKC_VOLU: return "CKC_VOLU";
-    case SMTD_KEYCODES_END: return "SMTD_KEYCODES_END";
+    case KC_DOT: return "KC_DOT";
+    case KC_4: return "KC_4";
+    case KC_5: return "KC_5";
+    case KC_6: return "KC_6";
+    case KC_CIRC: return "KC_CIRC";
+    case KC_AT: return "KC_AT";
+    case KC_HASH: return "KC_HASH";
+    case KC_F4: return "KC_F4";
+    case KC_F5: return "KC_F5";
+    case KC_F6: return "KC_F6";
+    case KC_F11: return "KC_F11";
+    case KC_LEFT: return "KC_LEFT";
+    case KC_DOWN: return "KC_DOWN";
+    case KC_UP: return "KC_UP";
+    case KC_RIGHT: return "KC_RIGHT";
+    case KC_VOLU: return "KC_VOLU";
     case M_EMPTY1: return "M_EMPTY1";
     case M_EMPTY2: return "M_EMPTY2";
     case CYR_YY: return "CYR_YY";
@@ -305,6 +303,14 @@ char* smtd_keycode_to_str_user(uint16_t keycode) {
     case CYR_SLD: return "CYR_SLD";
     case KC_MPQ: return "KC_MPQ";
     }
+
+    //fixme
+    // 2025-04-07 10:57:50 3297:1977:1: [ 405] >> S[0](@5.0#KC_SPACE->KC_SPACE){S_SEQ/xx} timeout_sequence
+    // 2025-04-07 10:57:50 3297:1977:1: [ 777]   S[0](@5.0#KC_SPACE->KC_SPACE){S_SEQ/xx} stage -> S_NON
+    // "<<" does not appear
+
+    // fixme
+    // cyrillic layer hotkeys stuck (sometimes doesnt press, sometimes not release)
 
     return "KC_???";
 }
