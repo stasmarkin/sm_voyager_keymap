@@ -915,7 +915,10 @@ void smtd_execute_action(smtd_state *state, smtd_action action) {
                smtd_state_to_str(state),
                smtd_action_to_str(action));
 
+    smtd_bypass = true;
     smtd_resolution new_resolution = on_smtd_action(state->desired_keycode, action, state->sequence_len);
+    smtd_bypass = false;
+
     SMTD_SIMULTANEOUS_PRESSES_DELAY
     if (new_resolution > state->resolution) {
         state->resolution = new_resolution;
