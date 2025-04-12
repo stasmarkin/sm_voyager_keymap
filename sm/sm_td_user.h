@@ -181,7 +181,8 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_CYR_R:
         case CKC_CYR_O:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 30;
+            if (timeout == SMTD_TIMEOUT_TOUCH_RELEASE) return 30;
+            if (timeout == SMTD_TIMEOUT_HOLD_RELEASE) return 30;
             break;
 
         case KC_D:
@@ -189,7 +190,8 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_CYR_V:
         case CKC_CYR_L:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_TOUCH_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_HOLD_RELEASE) return 20;
             break;
 
         case KC_L:
@@ -197,7 +199,8 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_CYR_YI:
         case CKC_CYR_D:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_TOUCH_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_HOLD_RELEASE) return 20;
             break;
 
         case KC_A:
@@ -207,12 +210,14 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case CKC_DF_COMBO:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 250;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_TOUCH_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_HOLD_RELEASE) return 20;
             break;
 
         case KC_SPACE:
             if (timeout == SMTD_TIMEOUT_SEQUENCE) return 200;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 70;
+            if (timeout == SMTD_TIMEOUT_TOUCH_RELEASE) return 70;
+            if (timeout == SMTD_TIMEOUT_HOLD_RELEASE) return 70;
             break;
     }
 
