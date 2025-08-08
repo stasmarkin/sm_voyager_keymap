@@ -2,6 +2,10 @@
 
 #include QMK_KEYBOARD_H
 #include "sm_layouts_keycodes.h"
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+
 
 #define NOT_INIT MATRIX_ROWS + MATRIX_COLS
 #define NOT_FOUND NOT_INIT + 1
@@ -122,14 +126,23 @@ static uint16_t sm_layouts_keycode_to_shortcut_col[SM_LAYOUTS_SIZE] = {
 
 void sm_layouts_make_shortcut_tap(uint8_t row, uint8_t col) {
     uint8_t return_layer = get_highest_layer(layer_state);
+    #ifdef CONSOLE_ENABLE
+    printf("==== key pressing %d/%d , layer moving %d->%d ====\n", row, col, return_layer, SM_LAYOUTS_SHORTCUT_LAYER);
+    #endif
     layer_move(SM_LAYOUTS_SHORTCUT_LAYER);
     keyevent_t  event  = MAKE_KEYEVENT(row, col, true);
     keyrecord_t record = {.event = event};
     process_record(&record);
     event.pressed = false;
     record.event = event;
+    #ifdef CONSOLE_ENABLE
+    printf("==== key pressed, releasing %d/%d ====\n", row, col);
+    #endif
     process_record(&record);
     layer_move(return_layer);
+    #ifdef CONSOLE_ENABLE
+    printf("==== key released %d/%d, moved back %d->%d ====\n", row, col, SM_LAYOUTS_SHORTCUT_LAYER, return_layer);
+    #endif
  }
 
 void sm_layouts_keycode_to_shortcut_tap(uint16_t sm_layouts_keycode) {
@@ -138,6 +151,9 @@ void sm_layouts_keycode_to_shortcut_tap(uint16_t sm_layouts_keycode) {
     uint16_t col = sm_layouts_keycode_to_shortcut_col[idx];
 
     if (row != NOT_INIT || col != NOT_INIT) {
+        #ifdef CONSOLE_ENABLE
+        printf("==== key press by cache: %d -> %d/%d ====\n", sm_layouts_keycode, row, col);
+        #endif
         sm_layouts_make_shortcut_tap(row, col);
         return;
     }
@@ -153,12 +169,19 @@ void sm_layouts_keycode_to_shortcut_tap(uint16_t sm_layouts_keycode) {
                  if (keymaps[layer][row][col] == sm_layouts_keycode) {
                       sm_layouts_keycode_to_shortcut_row[idx] = row;
                       sm_layouts_keycode_to_shortcut_col[idx] = col;
+                      #ifdef CONSOLE_ENABLE
+                      printf("==== key press init: %d -> %d/%d ====\n", sm_layouts_keycode, row, col);
+                      #endif
                       sm_layouts_make_shortcut_tap(row, col);
                       return;
                  }
             }
         }
     }
+
+    #ifdef CONSOLE_ENABLE
+    printf("==== key missing: %d ====\n", sm_layouts_keycode);
+    #endif
 
     sm_layouts_keycode_to_shortcut_row[idx] = NOT_FOUND;
     sm_layouts_keycode_to_shortcut_col[idx] = NOT_FOUND;
