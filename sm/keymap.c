@@ -6,7 +6,7 @@
 #include "sm_layouts.h"
 #include "sm_utils.h"
 #include "sm_td_user.h"
-#include "sm_td.h"
+#include "modules/sm_td/sm_td.h"
 
 
 bool process_smunicode(uint16_t keycode, keyrecord_t *record);

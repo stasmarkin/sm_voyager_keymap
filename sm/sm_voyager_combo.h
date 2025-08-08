@@ -3,7 +3,7 @@
 #include "sm_voyager_keymap.h"
 #include "sm_layouts.h"
 #include <timer.h>
-#include "sm_td.h"
+#include "modules/sm_td/sm_td.h"
 
 #ifndef COMBO_TAP_TERM
 #define COMBO_TAP_TERM TAPPING_TERM

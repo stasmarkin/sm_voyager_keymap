@@ -4,7 +4,7 @@
 
 #include "sm_voyager_keymap.h"
 #include "sm_utils.h"
-#include "sm_td.h"
+#include "modules/sm_td/sm_td.h"
 
 #define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, uc_key, mod)      \
         case macro_key: {                                     \
@@ -62,15 +62,15 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_LT(KC_ENTER, L_FN, 2)
         SMTD_LT(KC_TAB, L_FN, 2)
 
-        SMTD_MTE(KC_A, KC_LEFT_GUI, 2)
-        SMTD_MTE(KC_S, KC_LEFT_ALT, 2)
-        SMTD_MTE(KC_D, KC_LEFT_CTRL, 2)
-        SMTD_MTE(KC_F, KC_LSFT, 2)
-        SMTD_MTE(KC_G, KC_RIGHT_GUI, 2)
-        SMTD_MTE(KC_H, KC_RIGHT_GUI, 2)
-        SMTD_MTE(KC_J, KC_RSFT, 2)
-        SMTD_MTE(KC_K, KC_RIGHT_CTRL, 2)
-        SMTD_MTE(KC_L, KC_RIGHT_ALT, 2)
+        SMTD_MT(KC_A, KC_LEFT_GUI, 2)
+        SMTD_MT(KC_S, KC_LEFT_ALT, 2)
+        SMTD_MT(KC_D, KC_LEFT_CTRL, 2)
+        SMTD_MT(KC_F, KC_LSFT, 2)
+        SMTD_MT(KC_G, KC_RIGHT_GUI, 2)
+        SMTD_MT(KC_H, KC_RIGHT_GUI, 2)
+        SMTD_MT(KC_J, KC_RSFT, 2)
+        SMTD_MT(KC_K, KC_RIGHT_CTRL, 2)
+        SMTD_MT(KC_L, KC_RIGHT_ALT, 2)
 
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_F, CYR_F, KC_LEFT_GUI)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_YI, CYR_YI, KC_LEFT_ALT)
@@ -83,22 +83,22 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_D, CYR_D, KC_RIGHT_ALT)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_ZH, CYR_ZH, KC_RIGHT_GUI)
 
-        SMTD_MTE(KC_4, KC_LEFT_ALT, 2, false)
-        SMTD_MTE(KC_5, KC_LEFT_CTRL, 2, false)
-        SMTD_MTE(KC_6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MTE(KC_CIRC, KC_LCMD, 2, false)
-        SMTD_MTE(KC_AT, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MTE(KC_HASH, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(KC_4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(KC_5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(KC_6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(KC_CIRC, KC_LCMD, 2, false)
+        SMTD_MT(KC_AT, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(KC_HASH, KC_RIGHT_CTRL, 2, false)
 
-        SMTD_MTE(KC_F4, KC_LEFT_ALT, 2, false)
-        SMTD_MTE(KC_F5, KC_LEFT_CTRL, 2, false)
-        SMTD_MTE(KC_F6, KC_LEFT_SHIFT, 2, false)
-        SMTD_MTE(KC_F11, KC_LEFT_GUI, 2, false)
-        SMTD_MTE(KC_LEFT, KC_RIGHT_GUI, 2, false)
-        SMTD_MTE(KC_DOWN, KC_RIGHT_SHIFT, 2, false)
-        SMTD_MTE(KC_UP, KC_RIGHT_CTRL, 2, false)
-        SMTD_MTE(KC_RIGHT, KC_RIGHT_ALT, 2, false)
-        SMTD_MTE(KC_VOLU, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(KC_F4, KC_LEFT_ALT, 2, false)
+        SMTD_MT(KC_F5, KC_LEFT_CTRL, 2, false)
+        SMTD_MT(KC_F6, KC_LEFT_SHIFT, 2, false)
+        SMTD_MT(KC_F11, KC_LEFT_GUI, 2, false)
+        SMTD_MT(KC_LEFT, KC_RIGHT_GUI, 2, false)
+        SMTD_MT(KC_DOWN, KC_RIGHT_SHIFT, 2, false)
+        SMTD_MT(KC_UP, KC_RIGHT_CTRL, 2, false)
+        SMTD_MT(KC_RIGHT, KC_RIGHT_ALT, 2, false)
+        SMTD_MT(KC_VOLU, KC_RIGHT_GUI, 2, false)
 
         case CKC_DF_COMBO: {
             switch (action) {
