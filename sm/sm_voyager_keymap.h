@@ -6,6 +6,9 @@
 #define IIIIIII KC_NO
 #define   ___   KC_NO // no switches on a board
 
+#define ML_SAFE_RANGE SAFE_RANGE // removed from zsa's qmk in firmware24
+
+
 
 enum custom_keycodes {
 
@@ -13,9 +16,11 @@ enum custom_keycodes {
     M_QUE,
     M_EURO,
     M_RUB,
+    M_HYPR,
 
     CKC_DF_COMBO,
 
+    CKC_CYR_YY,
     CKC_CYR_F,
     CKC_CYR_YI,
     CKC_CYR_V,
@@ -47,14 +52,14 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [L_EN] = LAYOUT_voyager(
       ___  ,     ___  ,      KC_W,      KC_E,      KC_R,      KC_T,             KC_Y,      KC_U,      KC_I,      KC_O,     ___  ,     ___  ,
-    IIIIIII,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,            KC_H,     KC_J,     KC_K,     KC_L,   KC_RCMD,   IIIIIII,
+     M_HYPR,      KC_A,      KC_S,      KC_D,      KC_F,      KC_G,             KC_H,      KC_J,       KC_K,     KC_L,   KC_RCMD,   IIIIIII,
     IIIIIII,      KC_Z,      KC_X,      KC_C,      KC_V,      KC_B,             KC_N,      KC_M,      KC_P,      KC_Q,     M_QUE,   IIIIIII,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               KC_SPACE, KC_ENTER,          KC_ESC,   KC_TAB
   ),
   [L_RU] = LAYOUT_voyager(
       ___  ,     ___  ,    CYR_CC,     CYR_U,     CYR_K,     CYR_E,            CYR_N,     CYR_G,    CYR_SH,   CYR_SCH,     ___  ,     ___  ,
-     CYR_YY, CKC_CYR_F,CKC_CYR_YI, CKC_CYR_V, CKC_CYR_A, CKC_CYR_P,        CKC_CYR_R, CKC_CYR_O, CKC_CYR_L, CKC_CYR_D,CKC_CYR_ZH,    CYR_YE,
+ CKC_CYR_YY, CKC_CYR_F,CKC_CYR_YI, CKC_CYR_V, CKC_CYR_A, CKC_CYR_P,        CKC_CYR_R, CKC_CYR_O, CKC_CYR_L, CKC_CYR_D,CKC_CYR_ZH,    CYR_YE,
     CYR_SLD,    CYR_YA,    CYR_CH,    CYR_SS,     CYR_M,     CYR_I,            CYR_T,   CYR_SFT,     CYR_B,    CYR_YU,    CYR_ZZ,     CYR_H,
       ___  ,     ___  ,     ___  ,     ___  ,     ___  ,    KC_TAB,          IIIIIII,     ___  ,     ___  ,     ___  ,     ___  ,     ___  ,
                                               KC_SPACE, KC_ENTER,          KC_ESC,   KC_TAB

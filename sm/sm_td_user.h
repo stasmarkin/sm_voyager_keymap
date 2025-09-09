@@ -6,7 +6,9 @@
 #include "sm_utils.h"
 #include "modules/sm_td/sm_td.h"
 
-#define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, uc_key, mod)      \
+#define CASE_SMTD_TOM_SM_LAYOUTS(macro_key, uc_key, mod_key)  \
+    CASE_SMTD_TOMB_SM_LAYOUTS(macro_key, uc_key, MOD_BIT(mod_key))
+#define CASE_SMTD_TOMB_SM_LAYOUTS(macro_key, uc_key, mods)    \
         case macro_key: {                                     \
             switch (action) {                                 \
                 case SMTD_ACTION_TOUCH:                       \
@@ -15,10 +17,10 @@
                     process_sm_layouts_tap(uc_key);           \
                     return SMTD_RESOLUTION_DETERMINED;        \
                 case SMTD_ACTION_HOLD:                        \
-                    register_mods(MOD_BIT(mod));              \
+                    register_mods(mods);                      \
                     return SMTD_RESOLUTION_DETERMINED;        \
                 case SMTD_ACTION_RELEASE:                     \
-                    unregister_mods(MOD_BIT(mod));            \
+                    unregister_mods(mods);                    \
                     return SMTD_RESOLUTION_DETERMINED;        \
             }                                                 \
             break;                                            \
@@ -62,6 +64,7 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_LT(KC_ENTER, L_FN, 2)
         SMTD_LT(KC_TAB, L_FN, 2)
 
+        SMTD_MBTE5_ON_MKEY(M_HYPR, M_HYPR, MOD_HYPR, 1, false)
         SMTD_MT(KC_A, KC_LEFT_GUI, 2)
         SMTD_MT(KC_S, KC_LEFT_ALT, 2)
         SMTD_MT(KC_D, KC_LEFT_CTRL, 2)
@@ -72,6 +75,7 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_MT(KC_K, KC_RIGHT_CTRL, 2)
         SMTD_MT(KC_L, KC_RIGHT_ALT, 2)
 
+        CASE_SMTD_TOMB_SM_LAYOUTS(CKC_CYR_YY, CYR_YY, MOD_HYPR)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_F, CYR_F, KC_LEFT_GUI)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_YI, CYR_YI, KC_LEFT_ALT)
         CASE_SMTD_TOM_SM_LAYOUTS(CKC_CYR_V, CYR_V, KC_LEFT_CTRL)
@@ -224,6 +228,7 @@ char* smtd_keycode_to_str_user(uint16_t keycode) {
     switch (keycode) {
         case CKC_CYR_A: return "CKC_CYR_A";
         case CKC_CYR_D: return "CKC_CYR_D";
+        case CKC_CYR_YY: return "CKC_CYR_YY";
         case CKC_CYR_F: return "CKC_CYR_F";
         case CKC_CYR_L: return "CKC_CYR_L";
         case CKC_CYR_O: return "CKC_CYR_O";
