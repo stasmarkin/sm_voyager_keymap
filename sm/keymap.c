@@ -8,15 +8,36 @@
 #include "sm_td_user.h"
 #include "modules/sm_td/sm_td.h"
 
+// RGB timeout state
+uint32_t rgb_timer = 0;
+static bool rgb_disabled = false;
 
 bool process_smunicode(uint16_t keycode, keyrecord_t *record);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Reset RGB timeout on any key press
+    if (record->event.pressed) {
+        rgb_timer = timer_read32();
+        if (rgb_disabled) {
+            rgb_disabled = false;
+            rgb_matrix_enable();
+        }
+    }
+
     if (!process_smtd(keycode, record)) return false;
     if (!process_sm_layouts(keycode, record)) return false;
     if (!process_smunicode(keycode, record)) return false;
 
     return true;
+}
+
+
+void matrix_scan_user(void) {
+    // Check for RGB timeout
+    if (!rgb_disabled && timer_elapsed32(rgb_timer) > RGB_DISABLE_TIMEOUT) {
+        rgb_disabled = true;
+        rgb_matrix_disable();
+    }
 }
 
 bool process_smunicode(uint16_t keycode, keyrecord_t *record) {

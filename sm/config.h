@@ -22,3 +22,6 @@
 
 //#define SMTD_DEBUG_ENABLED
 //#define SMTD_GLOBAL_SIMULTANEOUS_PRESSES_DELAY_MS 5
+
+// RGB timeout configuration - 15 minutes in milliseconds
+#define RGB_DISABLE_TIMEOUT 900000
