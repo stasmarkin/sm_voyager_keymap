@@ -1,0 +1,81 @@
+{
+    "modules": [
+        "zsa/oryx",
+        "zsa/defaults",
+        "stasmarkin/sm_td",
+        "stasmarkin/sm_layouts"
+    ],
+    "keyboard": "zsa/voyager",
+    "keymap": "sm",
+    "layout": "LAYOUT_voyager",
+    "keycodes": [
+        {"key": "M_SCRN", "label": "Screenshot"},
+        {"key": "M_QUE", "label": "Question"},
+        {"key": "M_EURO", "label": "Euro"},
+        {"key": "M_RUB", "label": "Ruble"},
+        {"key": "CKC_DF_COMBO", "label": "DF Combo"},
+        {"key": "CKC_CYR_F", "label": "Cyr F"},
+        {"key": "CKC_CYR_YI", "label": "Cyr YI"},
+        {"key": "CKC_CYR_V", "label": "Cyr V"},
+        {"key": "CKC_CYR_A", "label": "Cyr A"},
+        {"key": "CKC_CYR_P", "label": "Cyr P"},
+        {"key": "CKC_CYR_R", "label": "Cyr R"},
+        {"key": "CKC_CYR_O", "label": "Cyr O"},
+        {"key": "CKC_CYR_L", "label": "Cyr L"},
+        {"key": "CKC_CYR_D", "label": "Cyr D"},
+        {"key": "CKC_CYR_YA_YE", "label": "Cyr YA/YE"},
+        {"key": "CKC_CYR_E_YO", "label": "Cyr E/YO"},
+        {"key": "CKC_CYR_SFT_SLD", "label": "Cyr SFT/SLD"},
+        {"key": "M_EMPTY1", "label": "Empty 1"},
+        {"key": "M_EMPTY2", "label": "Empty 2"},
+        {"key": "M_EMPTY3", "label": "Empty 3"},
+        {"key": "M_SPFY_LIKE", "label": "Spotify Like"},
+        {"key": "M_SPFY_PREV", "label": "Spotify Prev"},
+        {"key": "M_SPFY_PLAY", "label": "Spotify Play/Pause"},
+        {"key": "M_SPFY_NEXT", "label": "Spotify Seek/Next"}
+    ],
+    "layers": [
+        [
+            "KC_NO",   "KC_NO",   "KC_W",    "KC_E",    "KC_R",    "KC_T",          "KC_Y",    "KC_U",    "KC_I",    "KC_O",    "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_A",    "KC_S",    "KC_D",    "KC_F",    "KC_G",          "KC_H",    "KC_J",    "KC_K",    "KC_L",    "KC_Z",    "KC_NO",
+            "KC_NO",   "M_EMPTY3","KC_X",    "KC_C",    "KC_V",    "KC_B",          "KC_N",    "KC_M",    "KC_P",    "KC_Q",    "M_QUE",   "KC_NO",
+            "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+                                                         "KC_SPC",  "KC_ENT",        "QK_REP",  "KC_TAB"
+            ],
+        [
+            "KC_NO",      "CYR_B",      "CYR_CC",       "CYR_U",      "CYR_K",      "CKC_CYR_E_YO",   "CYR_N",      "CYR_G",        "CYR_SH",       "CYR_SCH",      "CYR_YU",     "KC_NO",
+            "KC_NO",      "CKC_CYR_F", "CKC_CYR_YI",  "CKC_CYR_V", "CKC_CYR_A", "CKC_CYR_P",       "CKC_CYR_R",  "CKC_CYR_O",   "CKC_CYR_L",   "CKC_CYR_D",   "CKC_CYR_YA_YE", "KC_NO",
+            "KC_NO",      "CYR_ZH",    "CYR_CH",       "CYR_SS",    "CYR_M",     "CYR_I",           "CYR_T",      "CKC_CYR_SFT_SLD", "CYR_ZZ",  "CYR_YY",      "CYR_H",        "KC_NO",
+            "KC_NO",    "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",         "KC_NO",      "KC_NO",      "KC_NO",      "KC_NO",      "KC_NO",      "KC_NO",
+                                                     "KC_SPC",     "KC_ENT",        "QK_REP",     "KC_TAB"
+        ],
+        [
+            "KC_NO",   "KC_NO",   "KC_Q",    "KC_W",    "KC_E",    "KC_R",          "KC_NO",   "M_EMPTY1","M_EMPTY2","KC_NO",   "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_LSFT", "KC_A",    "KC_S",    "KC_D",    "KC_F",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_LCTL", "KC_Z",    "KC_X",    "KC_C",    "KC_V",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+                                                         "KC_SPC",  "KC_ENT",        "QK_REP",  "KC_TAB"
+        ],
+        [
+            "KC_NO",   "KC_NO",   "KC_7",    "KC_8",    "KC_9",    "KC_PERC",       "KC_NO",   "KC_DLR",  "M_EURO",  "M_RUB",   "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_DOT",  "KC_4",    "KC_5",    "KC_6",    "KC_CIRC",       "KC_RCMD", "KC_AT",   "KC_HASH", "KC_ROPT", "KC_RCMD", "KC_NO",
+            "KC_NO",   "KC_0",    "KC_1",    "KC_2",    "KC_3",    "KC_NO",         "KC_NO",   "KC_AMPR", "KC_PIPE", "KC_TILD", "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+                                                         "KC_SPC",  "KC_ENT",        "QK_REP",  "KC_TAB"
+        ],
+        [
+            "KC_NO",   "KC_NO",   "KC_F7",   "KC_F8",   "KC_F9",   "KC_F10",        "M_SPFY_LIKE", "M_SPFY_PREV", "M_SPFY_PLAY", "M_SPFY_NEXT", "KC_NO",   "KC_NO",
+            "KC_NO",   "KC_LGUI", "KC_F4",   "KC_F5",   "KC_F6",   "KC_F11",        "KC_LEFT", "KC_DOWN", "KC_UP",   "KC_RIGHT","KC_VOLU", "KC_NO",
+            "KC_NO",   "M_SCRN",  "KC_F1",   "KC_F2",   "KC_F3",   "KC_F12",        "KC_HOME", "KC_PGDN", "KC_PGUP", "KC_END",  "KC_VOLD", "KC_NO",
+            "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",          "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+                                                         "KC_SPC",  "KC_ENT",        "QK_REP",  "KC_TAB"
+        ],
+        [
+            "KC_NO",   "CYR_B",   "CYR_CC",  "CYR_U",   "CYR_K",   "CYR_E",         "CYR_N",   "CYR_G",   "CYR_SH",  "CYR_SCH",  "CYR_YU", "KC_NO",
+            "KC_NO",   "CYR_F",   "CYR_YI",  "CYR_V",   "CYR_A",   "CYR_P",         "CYR_R",   "CYR_O",   "CYR_L",   "CYR_D",   "CYR_YA",  "KC_NO",
+            "KC_NO",   "CYR_ZH",  "CYR_CH",  "CYR_SS",  "CYR_M",   "CYR_I",         "CYR_T",   "CYR_SFT", "CYR_ZZ",  "CYR_YY",  "CYR_H",   "KC_NO",
+            "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",         "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",   "KC_NO",
+                                                         "KC_NO",   "KC_NO",         "KC_NO",   "KC_NO"
+        ]
+    ]
+}

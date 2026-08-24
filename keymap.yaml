@@ -1,112 +1,95 @@
 layout:
-  qmk_keyboard: zsa@voyager@split
+  qmk_keyboard: zsa/voyager
 
+# Key positions are indices into LAYOUT_voyager: row-major across both halves,
+# 0..11 top row, 12..23 home row, 24..35 bottom row, 36..47 unused, 48..51 thumbs.
 combos:
-  - { p: [ 7, 2 ], k: "Esc", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.9, rotation: -20 } #HARD
-  - { p: [ 7, 8 ], k: "OSM", l: [ "EN", "RU", "NUM" ], rotation: -20 }
-#  - { p: [ 13, 8 ], k: "", l: [ ] } #HARD
-  - { p: [ 13, 14 ], k: "UNDER", l: [ "EN", "RU", "NUM" ] }
-
+  # --- left hand: same physical keys on EN, RU and NUM ---------------------
+  - { p: [ 13, 2 ], k: "Esc", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.9, rotation: -20 }
+  - { p: [ 25, 26 ], k: "_", l: [ "EN", "RU", "NUM" ] }
   - { p: [ 2, 3 ], k: "+", l: [ "EN", "RU", "NUM" ] }
   - { p: [ 2, 4 ], k: ")", l: [ "EN", "RU", "NUM" ], a: "top", offset: 0.9 }
-  - { p: [ 8, 3 ], k: "*", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: -20 }
-  - { p: [ 8, 9 ], k: "OSM", l: [ "EN", "RU", "NUM" ] }
-#  - { p: [ 8, 10 ], k: "", l: [ ] } #OSM
-  - { p: [ 8, 15 ], k: "\\", l: [ "EN", "RU", "NUM" ], rotation: 20 } #HARD
-  - { p: [ 14, 9 ], k: "/", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: -20 }
-  - { p: [ 14, 15 ], k: "-", l: [ "EN", "RU", "NUM" ] }
-#  - { p: [ 14, 16 ], k: "", l: [ ] }
-
+  - { p: [ 14, 3 ], k: "*", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: -20 }
+  - { p: [ 14, 27 ], k: "\\", l: [ "EN", "RU", "NUM" ], rotation: 20 }
+  - { p: [ 26, 27 ], k: "-", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 26, 15 ], k: "/", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: -20 }
   - { p: [ 3, 4 ], k: "(", l: [ "EN", "RU", "NUM" ] }
-  - { p: [ 3, 10 ], k: "Undo", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
-  - { p: [ 9, 4 ], k: "Redo", l: [ "EN", "RU", "NUM" ], rotation: -20 } #HARD
-  - { p: [ 9, 10 ], k: "<|", l: [ "EN", "RU", "NUM" ] }
-  - { p: [ 9, 16 ], k: "Enter", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: 20 }
-  - { p: [ 15, 16 ], k: "=", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 3, 16 ], k: "Undo", l: [ "EN", "RU", "NUM" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 15, 4 ], k: "Redo", l: [ "EN", "RU", "NUM" ], rotation: -20 }
+  - { p: [ 15, 16 ], k: "Bksp", l: [ "EN", "RU", "NUM" ] }
+  - { p: [ 15, 28 ], k: "Enter", l: [ "EN", "RU", "NUM" ], a: "bottom", arc_scale: 0.8, offset: 0.4, rotation: 20 }
+  - { p: [ 27, 28 ], k: "=", l: [ "EN", "RU", "NUM" ] }
 
+  # --- right hand: EN and RU ------------------------------------------------
+  - { p: [ 7, 8 ], k: ":", l: [ "EN", "RU" ] }
+  - { p: [ 7, 9 ], k: "<", l: [ "EN", "RU" ], a: "top", arc_scale: 1, offset: 1.3, slide: -0.3 }
+  - { p: [ 19, 8 ], k: ";", l: [ "EN", "RU" ], a: "top", arc_scale: 0.6, offset: 0.2, rotation: -20 }
+  - { p: [ 19, 20 ], k: ".", l: [ "EN", "RU" ] }
+  - { p: [ 19, 21 ], k: "{", l: [ "EN", "RU" ], a: "top", arc_scale: 0.9, offset: 2.0, slide: 0.3 }
+  - { p: [ 31, 20 ], k: ",", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: -20 }
+  - { p: [ 31, 32 ], k: "—", l: [ "EN", "RU" ] }
+  - { p: [ 31, 33 ], k: "[", l: [ "EN", "RU" ], a: "bottom", offset: 0.6, slide: 0.3, arc_scale: 0.95 }
+  - { p: [ 8, 9 ], k: ">", l: [ "EN", "RU" ] }
+  - { p: [ 8, 21 ], k: "!", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 20, 21 ], k: "}", l: [ "EN", "RU" ] }
+  - { p: [ 20, 33 ], k: "?", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 32, 33 ], k: "]", l: [ "EN", "RU" ] }
+  - { p: [ 9, 22 ], k: "`", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
+  - { p: [ 21, 22 ], k: "\"", l: [ "EN", "RU" ] }
+  - { p: [ 33, 34 ], k: "'", l: [ "EN", "RU" ] }
 
-  - { p: [ 27, 28 ], k: ":", l: [ "EN", "RU" ] }
-  - { p: [ 27, 29 ], k: ">", l: [ "EN", "RU" ], a: "top", arc_scale: 1, offset: 1.3, slide: -0.3 }
-#  - { p: [ 27, 34 ], k: "", l: [ ] } #HARD
-  - { p: [ 33, 28 ], k: ";", l: [ "EN", "RU" ], a: "top", arc_scale: 0.6, offset: 0.2, rotation: -20  }
-  - { p: [ 33, 34 ], k: ".", l: [ "EN", "RU" ] }
-  - { p: [ 33, 35 ], k: "}", l: [ "EN", "RU" ], a: "top", arc_scale: 0.9, offset: 2.0, slide: 0.3 }
-  - { p: [ 39, 34 ], k: ",", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: -20 }
-  - { p: [ 39, 40 ], k: "—", l: [ "EN", "RU" ] }
-  - { p: [ 39, 41 ], k: "]", l: [ "EN", "RU" ], a: "bottom", offset: 0.6, slide: 0.3, arc_scale: 0.95 }
+  # --- across the halves ----------------------------------------------------
+  - { p: [ 16, 19 ], k: "Caps Word", l: [ "EN", "RU" ], a: "bottom", offset: 2.2 }
+  - { p: [ 15, 20 ], k: "OS lang", l: [ "EN", "RU" ], a: "top", offset: 2.6 }
 
-  - { p: [ 28, 29 ], k: "<", l: [ "EN", "RU" ] }
-  - { p: [ 28, 35 ], k: "!", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
-  - { p: [ 34, 35 ], k: "{", l: [ "EN", "RU" ] }
-  - { p: [ 34, 41 ], k: "?", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20  }
-#  - { p: [ 40, 35 ], k: "", l: [ ] } #HARD
-  - { p: [ 40, 41 ], k: "[", l: [ "EN", "RU" ] }
+  # One-shot mod combos on the home row (any subset of A/S/D/F) are not drawn:
+  # as arcs they bury the base layer, and the rule is easier read than seen.
+  # See README.
 
-#  - { p: [ 29, 36 ], k: "", l: [ ] }
-  - { p: [ 29, 36 ], k: "`", l: [ "EN", "RU" ], a: "top", arc_scale: 0.7, offset: 0.2, rotation: 20 }
-  - { p: [ 35, 36 ], k: "\"", l: [ "EN", "RU" ] }
-#  - { p: [ 35, 42 ], k: "", l: [ "EN", "RU" ], a: "bottom", arc_scale: 0.7, offset: 0.2, rotation: 20 } #HARD
-  - { p: [ 41, 42 ], k: "'", l: [ "EN", "RU" ] }
-
-
-  - { p: [ 14, 15, 16 ], k: "L(EN)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
-  - { p: [ 39, 40, 41 ], k: "L(RU)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
+  # --- layer switching ------------------------------------------------------
+  - { p: [ 26, 27, 28 ], k: "L(EN)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
+  - { p: [ 31, 32, 33 ], k: "L(RU)", l: [ "EN", "RU" ], a: "bottom", offset: 1.4 }
+  - { p: [ 3, 4, 7, 8 ], k: "L(GAME)", l: [ "EN" ], a: "top", offset: 1.6 }
+  - { p: [ 3, 4, 7, 8 ], k: "L(EN)", l: [ "GAME" ], a: "top", offset: 1.6 }
 
 layers:
   EN:
-    - [ "", "", W, E, R, T ]
-    - [ { t: "" }, { h: Cmd, t: A }, { h: Opt, t: S }, { h: Ctrl, t: D }, { h: Shift, t: F }, { h: Cmd, t: G } ]
-    - [ { t: "" }, Z , X, C, V, B ]
-    - [ "", "", "", "", "", "Tab" ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ Y, U, I, O, "", "" ]
-    - [ { h: Cmd, t: H }, { h: Shift, t: J }, { h: Ctrl, t: K }, { h: Opt, t: L }, { h: Cmd }, "" ]
-    - [ N, M, P, Q, "", "" ]
-    - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: "Esc" }, { h: FN,   t: "Tab" } ]
-
+    - [ "", "", W, E, R, T,                       Y, U, I, O, "", "" ]
+    - [ "", { t: A, h: Cmd }, { t: S, h: Opt }, { t: D, h: Ctrl }, { t: F, h: Shift }, { t: G, h: Cmd },
+        { t: H, h: Cmd }, { t: J, h: Shift }, { t: K, h: Ctrl }, { t: L, h: Opt }, { t: Z, h: Cmd }, "" ]
+    - [ "", { h: Hyper }, X, C, V, B,             N, M, P, Q, "", "" ]
+    - [ "", "", "", "", "", "",                   "", "", "", "", "", "" ]
+    - [ { t: Space, h: NUM }, { t: Enter, h: FN },  { t: Repeat, h: NUM }, { t: Tab, h: FN } ]
 
   RU:
-    - [ "", "", Ц, У, К, Е ]
-    - [ { t: "Й" }, { h: Cmd, t: Ф }, { h: Opt, t: Ы }, { h: Ctrl, t: В }, { h: Shift, t: А }, { h: Cmd, t: П } ]
-    - [ { t: "Ъ" }, Я, Ч, С, М, И ]
-    - [ "", "", "", "", "", "Tab" ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
+    - [ "", Б, Ц, У, К, { t: Е, h: Ё },           Н, Г, Ш, Щ, Ю, "" ]
+    - [ "", { t: Ф, h: Cmd }, { t: Ы, h: Opt }, { t: В, h: Ctrl }, { t: А, h: Shift }, { t: П, h: Cmd },
+        { t: Р, h: Cmd }, { t: О, h: Shift }, { t: Л, h: Ctrl }, { t: Д, h: Opt }, { t: Я, tr: Э, h: Cmd }, "" ]
+    - [ "", { t: Ж, h: Hyper }, Ч, С, М, И,       Т, { t: Ь, tr: Ъ }, З, Й, Х, "" ]
+    - [ "", "", "", "", "", "",                   "", "", "", "", "", "" ]
+    - [ { t: Space, h: NUM }, { t: Enter, h: FN },  { t: Repeat, h: NUM }, { t: Tab, h: FN } ]
 
-    - [ Н, Г, Ш, Щ, "", "" ]
-    - [ { h: Cmd, t: Р }, { h: Shift, t: О }, { h: Ctrl, t: Л }, { h: Opt, t: Д }, { h: Cmd, t: "Ж" }, "Э" ]
-    - [ Т, Ь, Б, Ю, "З", "Х" ]
-    - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
+  GAME:
+    - [ "", "", Q, W, E, R,                       "", "", "", "", "", "" ]
+    - [ "", Shift, A, S, D, F,                    "", "", "", "", "", "" ]
+    - [ "", Ctrl, Z, X, C, V,                     "", "", "", "", "", "" ]
+    - [ "", "", "", "", "", "",                   "", "", "", "", "", "" ]
+    - [ { t: Space, h: NUM }, { t: Enter, h: FN },  { t: Repeat, h: NUM }, { t: Tab, h: FN } ]
 
   NUM:
-    - [ "", "", 7, 8, 9, "%" ]
-    - [ "", { h: Cmd, t: ".", s: ":" }, { h: Opt, t: 4 }, { h: Ctrl, t: 5 }, { h: Shift, t: 6 }, { h: Cmd, t: "^" } ]
-    - [ "", 0, 1, 2, 3, "" ]
-    - [ "", "", "", "", "", "Tab" ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ "", "$", "€", "₽", "", "" ]
-    - [ { h: Cmd, t: "" }, { h: Shift, t: "@" }, { h: Ctrl, t: "#" }, { h: Opt, t: "" }, { h: Cmd }, "" ]
-    - [ "", "&", "|", "~", "", "" ]
-    - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
+    - [ "", "", 7, 8, 9, "%",                     "", "$", "€", "₽", "", "" ]
+    - [ "", { t: ".", tr: ":", h: Cmd }, { t: 4, h: Opt }, { t: 5, h: Ctrl }, { t: 6, h: Shift }, { t: "^", h: Cmd },
+        Cmd, { t: "@", h: Shift }, { t: "#", h: Ctrl }, Opt, Cmd, "" ]
+    - [ "", 0, 1, 2, 3, "",                       "", "&", "|", "~", "", "" ]
+    - [ "", "", "", "", "", "",                   "", "", "", "", "", "" ]
+    - [ { t: Space, h: NUM, type: held }, { t: Enter, h: FN },
+        { t: Repeat, h: NUM, type: held }, { t: Tab, h: FN } ]
 
   FN:
-    - [ "", "", F7, F8, F9, F10 ]
-    - [ "", { h: Cmd, t: "" }, { h: Opt, t: F4 }, { h: Ctrl, t: F5 }, { h: Shift, t: F6 }, { h: Cmd, t: "F11" } ]
-    - [ "", "SCNSHOT", F1, F2, F3, F12 ]
-    - [ "", "", "", "", "", "Tab" ]
-    - [ { h: NUM,   t: Space }, { h: FN,   t: Enter } ]
-
-    - [ "", "M_PREV", "M_PLAY", "️M_NXT", "", "" ]
-    - [ { h: Cmd, t: "←" }, { h: Shift, t: "↓" }, { h: Ctrl, t: "↑" }, { h: Opt, t: "→" }, { h: Cmd, t: "VOL+" }, "" ]
-    - [ "HOME", "PG↓", "PG↑", "END", "VOL-", "" ]
-    - [ "", "", "", "", "", "" ]
-    - [ { h: NUM,   t: Esc }, { h: FN,   t: Tab } ]
-
-
-
+    - [ "", "", F7, F8, F9, F10,                  Like, Prev, Play, { t: Seek, tr: Next }, "", "" ]
+    - [ "", Cmd, { t: F4, h: Opt }, { t: F5, h: Ctrl }, { t: F6, h: Shift }, { t: F11, h: Cmd },
+        { t: "←", h: Cmd }, { t: "↓", h: Shift }, { t: "↑", h: Ctrl }, { t: "→", h: Opt }, { t: "Vol+", h: Cmd }, "" ]
+    - [ "", Screenshot, F1, F2, F3, F12,          Home, "PG↓", "PG↑", End, "Vol−", "" ]
+    - [ "", "", "", "", "", "",                   "", "", "", "", "", "" ]
+    - [ { t: Space, h: NUM }, { t: Enter, h: FN, type: held },
+        { t: Repeat, h: NUM }, { t: Tab, h: FN, type: held } ]

@@ -10,18 +10,33 @@
 #define RGB_MATRIX_STARTUP_SPD 60
 
 #define MAX_DEFERRED_EXECUTORS 16
-#define COMBO_COUNT 105
+
+// Machine-local combos live in the gitignored sm_secrets.h; without it the
+// build just has fewer combos. See the hook macros in sm_voyager_combo.h.
+#if __has_include("sm_secrets.h")
+#    include "sm_secrets.h"
+#endif
+#ifndef SM_SECRETS_COMBO_COUNT
+#    define SM_SECRETS_COMBO_COUNT 0
+#endif
+
+#define COMBO_COUNT (104 + SM_SECRETS_COMBO_COUNT)
 
 #define TAPPING_TERM 200
 #define COMBO_TERM 35
 
 #define ONESHOT_TIMEOUT 5000
 
-#define SM_LAYOUTS_SHORTCUT_LAYER L_EN
+#define SM_LAYOUTS_SHORTCUT_LAYER 0
 #define SM_LAYOUTS_CYR_ENABLED
 
-//#define SMTD_DEBUG_ENABLED
-//#define SMTD_GLOBAL_SIMULTANEOUS_PRESSES_DELAY_MS 5
+// Dynamic release window: wider than the sm_td default (30) — the pinky was
+// missing holds. Keep in lockstep with the cygnus sm keymap.
+#define SMTD_GLOBAL_RELEASE_PERCENT 55
+
+// #define SMTD_DEBUG_ENABLED
+// #define SMTD_GLOBAL_SIMULTANEOUS_PRESSES_DELAY_MS 5
 
 // RGB timeout configuration - 15 minutes in milliseconds
 #define RGB_DISABLE_TIMEOUT 900000
+
